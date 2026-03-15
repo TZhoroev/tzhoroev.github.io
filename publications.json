@@ -1,0 +1,71 @@
+{
+  "total_citations": 82,
+  "h_index": 0,
+  "publications": [
+    {
+      "title": "Developing Gaussian Process and Theory-Informed Neural Network Models for Clinical Decision Making",
+      "authors": "Tilekbek Zhoroev",
+      "venue": "",
+      "year": 2025,
+      "citations": 0,
+      "url": "https://search.proquest.com/openview/831101f864e3d5342dec420d86815d6f/1?pq-origsite=gscholar&cbl=18750&diss=y"
+    },
+    {
+      "title": "New labor curves of dilation and station to improve the accuracy of predicting labor progress",
+      "authors": "Emily F Hamilton and Tilekbek Zhoroev and Philip A Warrick and Adi L Tarca and Thomas J Garite and Aaron B Caughey and Jason Melillo and Mona Prasad and Duncan Neilson and Peter Singson and Kimberlee McKay and Roberto Romero",
+      "venue": "American journal of obstetrics and gynecology",
+      "year": 2024,
+      "citations": 12,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0002937824003697"
+    },
+    {
+      "title": "Data-Driven Insights into Labor Progression with Gaussian Processes",
+      "authors": "Tilekbek Zhoroev and F. Hamilton and Emily and A. Warrick and Philip",
+      "venue": "Bioengineering",
+      "year": 2024,
+      "citations": 2,
+      "url": "https://www.mdpi.com/2306-5354/11/1/73"
+    },
+    {
+      "title": "A study on discrete and discrete fractional pharmacokinetics-pharmacodynamics models for tumor growth and anti-cancer effects",
+      "authors": "Ferhan M At\u0131c\u0131 and Mustafa At\u0131c\u0131 and Ngoc Nguyen and Tilekbek Zhoroev and Gilbert Koch",
+      "venue": "Computational and Mathematical Biophysics",
+      "year": 2019,
+      "citations": 61,
+      "url": "https://www.academia.edu/download/99140844/cmb-2019-0002.pdf"
+    },
+    {
+      "title": "Controllability and observability of time-invariant linear nabla fractional systems",
+      "authors": "Tilekbek Zhoroev and F Atici and M",
+      "venue": "Fractional Differential Calculus",
+      "year": 2019,
+      "citations": 4,
+      "url": "https://elibrary.ru/item.asp?id=78177190"
+    },
+    {
+      "title": "Controllability and Observability of Linear Nabla Discrete Fractional Systems",
+      "authors": "Tilekbek Zhoroev",
+      "venue": "",
+      "year": 2019,
+      "citations": 3,
+      "url": "https://digitalcommons.wku.edu/theses/3156/"
+    },
+    {
+      "title": "Controllability and Observability of Time-Varying Linear Nabla Fractional Systems",
+      "authors": "Tilekbek Zhoroev",
+      "venue": "",
+      "year": 2019,
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "title": "REPORT OF MAJOR IMPACT",
+      "authors": "Emily F Hamilton and Tilekbek Zhoroev and Philip A Warrick and Adi L Tarca and Thomas J Garite and Aaron B Caughey and Jason Melillo and Mona Prasad and Duncan Neilson and Peter Singson and Kimberlee McKay and Roberto Romero and Olivia Scoten and Katarina Tabi and Vanessa Paquette and Prescilla Carrion and Deirdre Ryan and Nevena V Radonjic and Elizabeth A Whitham and Catriona Hippman and Yan Luo and Yuanyuan Sun and Bixia Huang and Jingjing Chen and Bin Xu and Hui Li and Cristine Homsi Jorge and Kari B\u00f8 and Camila Chiazuto Catai and Luiz Gustavo Oliveira Brito and Patricia Driusso and Merete Kolberg Tennfjord and Joshua P Vogel and Phi-Yen Nguyen and Jen Ramson and Manarangi S De Silva and Minh D Pham and Saima Sultana and Steve McDonald and Kwame Adu-Bonsaffoh and Annie RA McDougall",
+      "venue": "",
+      "year": "",
+      "citations": 0,
+      "url": "https://scholar.google.com/scholar?cluster=10442876594770838511&hl=en&oi=scholarr"
+    }
+  ],
+  "last_updated": null
+}

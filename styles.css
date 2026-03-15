@@ -307,9 +307,37 @@ body {
 }
 
 /* Publications Section */
+.publications-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 40px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
 .publications-list {
     max-width: 900px;
     margin: 0 auto;
+}
+
+.publications-list .loading {
+    text-align: center;
+    color: var(--text-light);
 }
 
 .publication {
@@ -335,6 +363,16 @@ body {
     margin-bottom: 8px;
     color: var(--text);
     line-height: 1.4;
+}
+
+.pub-content h3 a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.pub-content h3 a:hover {
+    color: var(--primary);
 }
 
 .pub-authors {
