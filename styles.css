@@ -176,7 +176,7 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
 }
 .timeline-header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 8px; }
 .timeline-logo {
-    width: 44px; height: 44px; object-fit: contain; border-radius: 10px;
+    width: 32px; height: 32px; object-fit: contain; border-radius: 6px;
     flex-shrink: 0;
 }
 .timeline-header h3 { font-size: 1.15rem; color: var(--text); }
@@ -191,21 +191,23 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
 /* Education */
 .education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
 .education-card {
-    background: var(--bg-card); padding: 28px; border-radius: 12px; border: 1px solid var(--border);
-    display: flex; gap: 20px;
+    border-radius: 16px; overflow: hidden; position: relative;
+    background-size: cover; background-position: center;
+    min-height: 260px; display: flex; align-items: flex-end;
+    border: 1px solid var(--border);
 }
-.edu-logo {
-    width: 52px; height: 52px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    overflow: hidden;
+.edu-overlay {
+    width: 100%; padding: 24px;
+    background: linear-gradient(to top, rgba(15,23,42,0.92) 60%, rgba(15,23,42,0.5) 85%, transparent 100%);
+    color: #f1f5f9;
 }
-.edu-logo img { width: 100%; height: 100%; object-fit: contain; }
-.edu-logo i { font-size: 1.4rem; color: var(--primary); }
-.edu-content h3 { font-size: 1.1rem; margin-bottom: 4px; color: var(--text); }
-.edu-content .institution { font-weight: 600; color: var(--primary); margin-bottom: 4px; }
-.edu-content .date { color: var(--text-light); font-size: 0.9rem; margin-bottom: 8px; }
-.edu-content .details { color: var(--text-light); font-size: 0.95rem; }
-.edu-content .thesis, .edu-content .advisor { font-size: 0.9rem; color: var(--text-light); margin-top: 8px; }
+.edu-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.edu-logo-img { width: 36px; height: 36px; border-radius: 8px; }
+.edu-date { font-size: 0.8rem; color: #94a3b8; }
+.edu-overlay h3 { font-size: 1.15rem; margin-bottom: 4px; color: #fff; }
+.edu-overlay .institution { font-weight: 600; color: #60a5fa; margin-bottom: 4px; font-size: 0.95rem; }
+.edu-overlay .details { color: #cbd5e1; font-size: 0.9rem; }
+.edu-overlay .thesis, .edu-overlay .advisor { font-size: 0.85rem; color: #94a3b8; margin-top: 8px; }
 
 /* Awards */
 .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
@@ -265,6 +267,6 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
     .presentation-item { flex-direction: column; gap: 8px; }
     .timeline::before { left: 4px; }
     .timeline-marker { left: -1px; }
-    .education-card { flex-direction: column; }
+    .education-card { min-height: 220px; }
     .contact-info { flex-direction: column; gap: 16px; }
 }
