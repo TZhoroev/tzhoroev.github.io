@@ -177,7 +177,7 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
 .timeline-header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 8px; }
 .timeline-logo {
     width: 32px; height: 32px; object-fit: contain; border-radius: 6px;
-    flex-shrink: 0;
+    flex-shrink: 0; background: var(--bg-card); padding: 2px;
 }
 .timeline-header h3 { font-size: 1.15rem; color: var(--text); }
 .timeline-header .company { font-weight: 600; color: var(--primary); }
