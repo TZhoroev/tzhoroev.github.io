@@ -186,19 +186,20 @@
                 <p class="research-eyebrow"><i class="fas fa-hotel"></i> SAS Institute (IDeaS)</p>
                 <h1>Demand Forecasting &amp; Special Event Detection</h1>
                 <p class="subtitle">R&amp;D Intern · Jan 2024 — May 2025</p>
-                <p class="tagline" style="color:var(--text-light);max-width:720px;">Developed machine learning models for the hospitality industry — demand forecasting with meta-learning for data-scarce hotels and semi-supervised special event detection to improve revenue management decisions.</p>
+                <p class="tagline" style="color:var(--text-light);max-width:720px;">Developed Sparse Hierarchical Gaussian Process (SHGP) models for hotel room demand forecasting across major chains (Accor, Choice, Wyndham), and Dynamic Mode Decomposition (DMD) with anomaly detection for special event identification in the hospitality industry.</p>
                 <div class="hero-links" style="margin-top:24px;">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                 </div>
             </div>
             <aside class="info-card" id="overview">
                 <h2>Role &amp; Context</h2>
-                <p>Worked within IDeaS Revenue Solutions (a SAS company), a leading provider of revenue management software for the hospitality industry.</p>
+                <p>Worked within IDeaS Revenue Solutions (a SAS company), a leading provider of revenue management software for the hospitality industry. Benchmarked GP-based models against the existing IDeaS production forecast system.</p>
                 <div class="tech-badges">
                     <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
-                    <span class="tech-badge"><i class="fas fa-chart-bar"></i> Time Series</span>
+                    <span class="tech-badge"><i class="fas fa-chart-bar"></i> GPflow / SHGP</span>
                     <span class="tech-badge"><i class="fas fa-brain"></i> Meta-Learning</span>
-                    <span class="tech-badge"><i class="fas fa-tags"></i> Semi-Supervised</span>
+                    <span class="tech-badge"><i class="fas fa-wave-square"></i> DMD</span>
+                    <span class="tech-badge"><i class="fas fa-magnifying-glass-chart"></i> Anomaly Detection</span>
                 </div>
             </aside>
         </div>
@@ -211,22 +212,26 @@
                 <div class="projects-grid">
                     <article class="project-card">
                         <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Demand Forecasting</h3>
-                        <p>Built demand forecasting models for hotel occupancy prediction across multiple hotel chains.</p>
+                        <h3>Demand Forecasting with SHGP</h3>
+                        <p>Built a Sparse Hierarchical Gaussian Process (SHGP) model that captures both group-level trends across hotel chains and individual hotel behavior through a hierarchical kernel structure.</p>
                         <ul>
-                            <li>Developed forecasting models for hotel occupancy across multiple chains</li>
-                            <li>Optimized models using meta-learning for hotels with limited historical data</li>
-                            <li>Enabled accurate predictions even for newly opened or data-scarce properties</li>
+                            <li>Custom SHGP model with group kernel (shared across chain) + individual kernels per hotel using GPflow</li>
+                            <li>Predicted occupancy, booking-choice, and whole-group metrics across Accor, Choice, and Wyndham chains</li>
+                            <li>Booking curve analysis to incorporate real-time reservation patterns</li>
+                            <li>Compared forecasts against the IDeaS production system using days-to-arrival accuracy metrics</li>
+                            <li>ARIMA and Naïve baselines for benchmark comparison</li>
                         </ul>
                     </article>
                     <article class="project-card">
                         <div class="project-icon"><i class="fas fa-calendar-day"></i></div>
-                        <h3>Special Event Detection</h3>
-                        <p>Designed a semi-supervised learning model to automatically detect special events that impact hotel demand.</p>
+                        <h3>Special Event Detection with DMD</h3>
+                        <p>Designed a multi-method pipeline combining Dynamic Mode Decomposition, statistical anomaly detection, and GP classification to identify demand-driving events from occupancy time series.</p>
                         <ul>
-                            <li>Designed semi-supervised learning model for special event detection</li>
-                            <li>Identified demand-driving events (conferences, concerts, holidays, sports)</li>
-                            <li>Improved forecast accuracy by incorporating event-aware features</li>
+                            <li>Dynamic Mode Decomposition (DMD) to decompose occupancy into trend, seasonal, and residual components</li>
+                            <li>Z-Score anomaly detection on residuals using same-day-of-week moving averages and standard deviations</li>
+                            <li>GP regression with ordinal likelihood for event classification (high-volume vs. low-volume events)</li>
+                            <li>Event calendar integration to correlate detected anomalies with known events (conferences, concerts, holidays, sports)</li>
+                            <li>Gaussian Mixture Models (GMM) for unsupervised event clustering</li>
                         </ul>
                     </article>
                 </div>
@@ -242,14 +247,14 @@
                             <span class="repo-name"><i class="fab fa-github"></i> Demand-Forecasting-Project</span>
                             <span class="private-badge"><i class="fas fa-lock"></i> Private</span>
                         </div>
-                        <p>Demand forecasting models for hotel occupancy with meta-learning optimization for data-scarce properties across multiple hotel chains.</p>
+                        <p>SHGP model implementation in GPflow with EDA utilities, booking curve analysis, SGPR/SVGP experiments, ARIMA baselines, and system forecast comparison notebooks for Accor, Choice, and Wyndham chains.</p>
                     </article>
                     <article class="repo-card">
                         <div class="repo-header">
                             <span class="repo-name"><i class="fab fa-github"></i> Special-Event-Detection-Project</span>
                             <span class="private-badge"><i class="fas fa-lock"></i> Private</span>
                         </div>
-                        <p>Semi-supervised learning model for detecting special events that drive demand fluctuations in the hospitality industry.</p>
+                        <p>DMD tutorial and implementation, predictive models (v1–v3), event calendar matching, GMM-based clustering, Z-Score anomaly detection scripts, and hotel revenue analysis demos.</p>
                     </article>
                 </div>
             </div>

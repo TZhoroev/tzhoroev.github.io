@@ -129,12 +129,28 @@ body.dark .btn-secondary { background: #475569; }
 /* Research Cards (clickable) */
 .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
 a.research-card {
-    display: block; background: var(--bg-card); padding: 28px; border-radius: 12px;
+    display: block; padding: 28px; border-radius: 16px;
     box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
     text-decoration: none; color: inherit; border: 1px solid var(--border);
-    position: relative;
+    position: relative; overflow: hidden;
+    background-color: var(--bg-card);
+    background-size: cover; background-position: center;
 }
-a.research-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.15); border-color: var(--primary); }
+a.research-card[style*="background-image"]::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.88) 55%, rgba(15,23,42,0.96) 100%);
+    z-index: 0;
+}
+a.research-card[style*="background-image"] .research-icon,
+a.research-card[style*="background-image"] .research-badge,
+a.research-card[style*="background-image"] h3,
+a.research-card[style*="background-image"] p,
+a.research-card[style*="background-image"] .research-link { position: relative; z-index: 1; }
+a.research-card[style*="background-image"] h3 { color: #f1f5f9; }
+a.research-card[style*="background-image"] p { color: #cbd5e1; }
+a.research-card[style*="background-image"] .research-badge { background: rgba(255,255,255,0.1); color: #93c5fd; border-color: rgba(255,255,255,0.15); }
+a.research-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.2); border-color: var(--primary); }
 .research-icon {
     width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
