@@ -266,14 +266,6 @@
             border-top: 1px solid var(--border);
         }
         .figure-caption strong { color: var(--text); }
-        .figures-row {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
-        }
-        @media (max-width: 768px) {
-            .figures-row { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
@@ -422,23 +414,9 @@
         <section id="results-figures" class="section">
             <div class="container">
                 <h2 class="section-title">Results</h2>
-                <div class="figure-panel" style="margin-bottom:24px;">
-                    <img src="../assets/research/labor-population.jpg" alt="Population-level dilation and station predictions with 90% intervals" loading="lazy">
-                    <div class="figure-caption"><strong>Population comparison.</strong> Median prediction (black), 90% prediction interval (shaded), and 25th/75th percentile curves for cervical dilation (left) and fetal station (right) over time. Bottom panels show the corresponding population-level labor curves.</div>
-                </div>
-                <div class="figures-row" style="margin-bottom:24px;">
-                    <div class="figure-panel">
-                        <img src="../assets/research/labor-patient-normal.jpg" alt="Patient-level prediction for normal delivery" loading="lazy">
-                        <div class="figure-caption"><strong>Normal delivery.</strong> GP prediction (black) with uncertainty bands (blue) vs. Friedman curve (pink). Red line: C-section threshold.</div>
-                    </div>
-                    <div class="figure-panel">
-                        <img src="../assets/research/labor-patient-csection.jpg" alt="Patient-level prediction for C-section delivery" loading="lazy">
-                        <div class="figure-caption"><strong>C-section delivery.</strong> The model's uncertainty grows as labor stalls, signaling the need for clinical intervention.</div>
-                    </div>
-                </div>
                 <div class="figure-panel">
-                    <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time and RM-ANOVA P-values" loading="lazy">
-                    <div class="figure-caption"><strong>Statistical validation.</strong> Left: Sensitivity over time comparing SGPR model vs. WHO guidelines — SGPR consistently outperforms. Right: RM-ANOVA P-values confirm statistically significant differences (Time, Model, and Time×Model interactions all below the 0.05 significance threshold).</div>
+                    <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time: SGPR vs ACOG and WHO guidelines, with RM-ANOVA P-values" loading="lazy">
+                    <div class="figure-caption"><strong>Sensitivity comparison.</strong> Left: Sensitivity over time comparing SGPR model vs. WHO guidelines — SGPR consistently outperforms. Right: RM-ANOVA P-values confirm statistically significant differences (Time, Model, and Time×Model interactions all below the 0.05 significance threshold).</div>
                 </div>
             </div>
         </section>

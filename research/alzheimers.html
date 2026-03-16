@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alzheimer's Disease Progression Modeling | Tilekbek Zhoroev</title>
-    <meta name="description" content="Clinical-trial focused overview of uncertainty-aware Alzheimer's disease progression modeling with ordinal likelihood and Gaussian Processes.">
+    <meta name="description" content="Predicting progression of 11 ADAS-Cog subscores using Gaussian Processes with ordinal likelihood on CPAD clinical trial data.">
     <meta property="og:title" content="Alzheimer's Disease Progression Modeling | Tilekbek Zhoroev">
-    <meta property="og:description" content="Clinical-trial focused overview of uncertainty-aware Alzheimer's disease progression modeling with ordinal likelihood and Gaussian Processes.">
+    <meta property="og:description" content="Predicting progression of 11 ADAS-Cog subscores using Gaussian Processes with ordinal likelihood on CPAD clinical trial data.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tzhoroev.github.io/research/alzheimers.html">
     <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
@@ -38,43 +38,61 @@
             gap: 24px;
             align-items: stretch;
         }
-        .trial-panel,
+        .hero-copy { color: var(--text-light); }
+        .data-panel,
         .metric-card,
-        .dashboard-card,
-        .comparison-card,
+        .content-card,
         .equation-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 20px;
             box-shadow: var(--shadow);
         }
-        .trial-panel,
-        .dashboard-card,
-        .comparison-card,
+        .data-panel,
+        .content-card,
         .equation-card {
             padding: 28px;
         }
-        .trial-panel {
+        .data-panel {
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.11), rgba(16, 185, 129, 0.08));
         }
-        body.dark .trial-panel {
+        body.dark .data-panel {
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(16, 185, 129, 0.12));
         }
-        .hero-copy,
-        .trial-panel p,
-        .dashboard-card p,
-        .equation-card p,
-        .comparison-note,
-        td {
+        .data-panel p,
+        .content-card p,
+        .equation-card p {
             color: var(--text-light);
         }
-        .trial-panel h2,
-        .dashboard-card h2,
-        .comparison-card h2,
-        .equation-card h3,
-        th {
+        .data-panel h2,
+        .content-card h2,
+        .equation-card h3 {
             color: var(--text);
+            margin-bottom: 12px;
         }
+        .data-kpis {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .data-kpi {
+            padding: 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.62);
+            border: 1px solid rgba(37, 99, 235, 0.14);
+        }
+        body.dark .data-kpi {
+            background: rgba(15, 23, 42, 0.45);
+        }
+        .data-kpi span {
+            display: block;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .data-kpi { color: var(--text-light); font-size: 0.9rem; }
         .metric-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -90,51 +108,47 @@
             color: var(--text);
             margin-bottom: 8px;
         }
-        .dashboard-grid {
+        .overview-grid {
             display: grid;
-            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.35fr);
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 24px;
             align-items: start;
         }
-        .trial-points {
-            margin: 0;
-            padding-left: 18px;
-            display: grid;
-            gap: 10px;
-            color: var(--text-light);
+        .resource-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
         }
-        .comparison-table {
+        .resource-link:hover { color: var(--primary-dark); }
+        .figure-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .figure-panel img {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 18px;
+            display: block;
         }
-        .comparison-table th,
-        .comparison-table td {
-            padding: 14px 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-            vertical-align: top;
+        .figure-caption {
+            padding: 16px 24px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
         }
-        .comparison-table th {
-            font-size: 0.92rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        .figure-caption strong { color: var(--text); }
         .equation-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 18px;
         }
-        .equation-card {
-            overflow-x: auto;
-        }
+        .equation-card { overflow-x: auto; }
         .footer-link {
             color: #cbd5e1;
             text-decoration: none;
         }
-        .footer-link:hover {
-            color: #ffffff;
-        }
+        .footer-link:hover { color: #ffffff; }
         @media (max-width: 1100px) {
             .metric-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -142,7 +156,7 @@
         }
         @media (max-width: 900px) {
             .hero-clinical,
-            .dashboard-grid,
+            .overview-grid,
             .equation-grid {
                 grid-template-columns: 1fr;
             }
@@ -152,19 +166,15 @@
                 padding-top: 120px;
                 padding-bottom: 56px;
             }
-            .metric-grid {
+            .metric-grid,
+            .data-kpis {
                 grid-template-columns: 1fr;
             }
-            .trial-panel,
-            .dashboard-card,
-            .comparison-card,
+            .data-panel,
+            .content-card,
             .equation-card,
             .metric-card {
                 padding: 22px;
-            }
-            .comparison-table {
-                display: block;
-                overflow-x: auto;
             }
         }
     </style>
@@ -176,8 +186,8 @@
             <ul class="nav-menu">
                 <li><a href="../index.html">&larr; Back to Home</a></li>
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#trial-design">Trial Design</a></li>
-                <li><a href="#comparison">Comparison</a></li>
+                <li><a href="#adas">ADAS-Cog</a></li>
+                <li><a href="#approach">Approach</a></li>
                 <li><a href="#likelihood">Ordinal Likelihood</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
@@ -195,123 +205,120 @@
         <div class="container hero-clinical">
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-dna"></i> Johnson &amp; Johnson</p>
-                <h1>Alzheimer's Disease Progression Modeling</h1>
+                <h1>Predicting Alzheimer's Disease Progression</h1>
                 <p class="subtitle">Johnson &amp; Johnson · Summer Internship 2023</p>
-                <p class="hero-copy">This internship focused on longitudinal ADAS prediction from clinical-trial data. The design question was practical: how should uncertainty-aware Gaussian Process models be structured when outcomes are ordered, patient trajectories are heterogeneous, and trial interpretation depends on more than a single point forecast?</p>
+                <p class="hero-copy">The objective was to predict the longitudinal progression of all 11 ADAS-Cog (Alzheimer's Disease Assessment Scale – Cognitive) subscores using Gaussian Process models with ordinal likelihood. ADAS-Cog is the gold-standard cognitive endpoint in AD clinical trials, and accurate subscore-level forecasting enables finer-grained understanding of how different cognitive domains decline over time.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
-                    <a href="#comparison" class="btn btn-secondary"><i class="fas fa-table"></i> View Comparison</a>
+                    <a href="#adas" class="btn btn-secondary"><i class="fas fa-brain"></i> ADAS-Cog Subscores</a>
                 </div>
             </div>
-            <aside class="trial-panel" id="trial-design">
-                <h2>Trial-centered view</h2>
-                <p>The work emphasized model comparison under repeated validation, with ordinal likelihoods used to better reflect ordered cognitive outcomes.</p>
-                <ul class="trial-points">
-                    <li>1,683 patient records from clinical-trial datasets</li>
-                    <li>five candidate configurations compared with 5-fold cross-validation</li>
-                    <li>ADAS trajectories modeled with posterior uncertainty, not only mean trend</li>
-                </ul>
+            <aside class="data-panel">
+                <h2>Dataset</h2>
+                <p>Patient-level data from the <strong>CPAD</strong> (Critical Path for Alzheimer's Disease) database, hosted by C-Path. Includes demographics, APOE4 genotype, concomitant medications, MMSE, and ADAS-Cog assessments remapped to CDISC SDTM standard.</p>
+                <div class="data-kpis">
+                    <div class="data-kpi">
+                        <span>1,683</span>
+                        patients in analysis cohort
+                    </div>
+                    <div class="data-kpi">
+                        <span>36</span>
+                        clinical trials in CPAD
+                    </div>
+                    <div class="data-kpi">
+                        <span>11</span>
+                        ADAS-Cog subscores predicted
+                    </div>
+                    <div class="data-kpi">
+                        <span>5-fold</span>
+                        cross-validation
+                    </div>
+                </div>
+                <a class="resource-link" href="https://c-path.org/tools-platforms/critical-path-for-alzheimers-disease-cpad-database/" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:16px;"><i class="fas fa-database"></i> CPAD Database (C-Path)</a>
             </aside>
         </div>
         <div class="container metric-grid">
             <article class="metric-card">
-                <strong>1,683</strong>
-                patients in the analysis cohort
-            </article>
-            <article class="metric-card">
-                <strong>5</strong>
-                model configurations in the comparison study
-            </article>
-            <article class="metric-card">
-                <strong>5-fold</strong>
-                cross-validation for robustness checks
+                <strong>ADAS-Cog</strong>
+                gold-standard cognitive endpoint in AD trials
             </article>
             <article class="metric-card">
                 <strong>Ordinal</strong>
-                likelihood used to respect score ordering
+                likelihood respects ordered score structure
+            </article>
+            <article class="metric-card">
+                <strong>GP</strong>
+                models provide calibrated uncertainty bands
+            </article>
+            <article class="metric-card">
+                <strong>Subscore</strong>
+                level predictions across 5 cognitive domains
             </article>
         </div>
     </header>
 
     <main>
         <section id="overview" class="section">
-            <div class="container dashboard-grid">
-                <article class="dashboard-card">
-                    <h2>Clinical modeling assumptions</h2>
-                    <p>Let \(x_i\) denote covariates and visit-time information for patient \(i\), and let \(y_i\) denote the ordered ADAS outcome. The internship study treated progression as a latent smooth function observed with uncertainty, while explicitly accounting for the fact that ordered outcomes should not be handled as if they were unconstrained real values.</p>
-                    <p>That perspective makes two modeling layers essential: a Gaussian Process prior for flexible longitudinal structure and an ordinal observation model for clinically meaningful category boundaries.</p>
+            <div class="container overview-grid">
+                <article class="content-card">
+                    <h2>Why subscore-level prediction?</h2>
+                    <p>Most AD progression models predict only the total ADAS-Cog score (0–70). However, cognitive decline is heterogeneous — memory, language, visuospatial, praxis, and attention domains deteriorate at different rates across patients. Predicting all 11 subscores individually allows clinicians and trial designers to:</p>
+                    <ul style="color:var(--text-light);padding-left:18px;display:grid;gap:8px;margin-top:12px;">
+                        <li>Identify which cognitive domains decline fastest for a given patient</li>
+                        <li>Detect early signals of treatment effect on specific cognitive functions</li>
+                        <li>Design enrichment strategies for clinical trials based on domain-specific decline patterns</li>
+                    </ul>
                 </article>
-                <aside class="dashboard-card">
-                    <h2>Internship focus</h2>
-                    <p>The goal was comparative evaluation of GP model configurations for longitudinal ADAS prediction. This work focused on patient scale, validation rigor, and the role of ordinal likelihood in uncertainty-aware disease progression modeling.</p>
-                </aside>
+                <article class="content-card">
+                    <h2>Modeling approach</h2>
+                    <p>Each ADAS-Cog subscore is modeled as a latent smooth function observed with uncertainty. Since subscores are ordered integers (not continuous values), a standard Gaussian likelihood is inappropriate. Instead, an <strong>ordinal likelihood</strong> maps the latent GP output through ordered thresholds to produce properly calibrated category probabilities.</p>
+                    <p style="margin-top:12px;">Five GP configurations were systematically compared — from a continuous-response baseline to variational GP with ordinal likelihood — using 5-fold cross-validation to evaluate predictive accuracy and uncertainty calibration.</p>
+                </article>
             </div>
         </section>
 
-        <section id="comparison" class="section section-alt">
+        <section id="adas" class="section section-alt">
             <div class="container">
-                <div class="comparison-card">
-                    <h2>Five-Configuration Comparison</h2>
-                    <p class="comparison-note">The internship summary reports five compared configurations. The table below highlights their comparative role without relying on internal code names.</p>
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Configuration</th>
-                                <th>Modeling focus</th>
-                                <th>Purpose in the study</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Configuration 1</td>
-                                <td>Continuous-response GP baseline</td>
-                                <td>Establish a smooth probabilistic benchmark for ADAS trajectories.</td>
-                            </tr>
-                            <tr>
-                                <td>Configuration 2</td>
-                                <td>Sparse GP approximation</td>
-                                <td>Test whether computational simplification changes the quality of uncertainty estimates.</td>
-                            </tr>
-                            <tr>
-                                <td>Configuration 3</td>
-                                <td>Variational GP</td>
-                                <td>Support scalable approximate inference across repeated cross-validation splits.</td>
-                            </tr>
-                            <tr>
-                                <td>Configuration 4</td>
-                                <td>Variational GP with ordinal likelihood</td>
-                                <td>Respect the ordered structure of observed cognitive outcomes.</td>
-                            </tr>
-                            <tr>
-                                <td>Configuration 5</td>
-                                <td>Final uncertainty-aware comparison candidate</td>
-                                <td>Contrast calibration, interpretability, and predictive stability against the other four settings.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <h2 class="section-title">ADAS-Cog 11 Subscales</h2>
+                <div class="figure-panel" style="margin-bottom:24px;">
+                    <img src="../assets/research/alz-adas-subscores.jpg" alt="ADAS-Cog 11 subscales breakdown by cognitive domain with maximum scores" loading="lazy">
+                    <div class="figure-caption"><strong>ADAS-Cog 11 subscales.</strong> The assessment covers 5 cognitive domains: Memory (Word Recall, Delayed Word Recall, Orientation, Word Recognition), Language (Commands, Naming, Spoken Language, Word Finding), Visuospatial (Constructional Praxis), Praxis (Ideational Praxis), and Attention (Remembering Test Instructions). Total score range: 0–70 (higher = worse cognition).</div>
                 </div>
             </div>
         </section>
 
-        <section id="likelihood" class="section">
-            <div class="container equation-grid">
-                <article class="equation-card">
-                    <h3>Gaussian Process posterior</h3>
-                    <div class="math">\[
-                        \mu(x_*) = K(x_*, X)\left[K(X,X) + \sigma^2 I\right]^{-1} y
-                    \]</div>
-                    <div class="math">\[
-                        \operatorname{Var}(f_*) = K(x_*, x_*) - K(x_*, X)\left[K(X,X) + \sigma^2 I\right]^{-1}K(X, x_*)
-                    \]</div>
-                    <p>The posterior mean and variance summarize expected cognitive progression together with confidence in that forecast.</p>
-                </article>
-                <article class="equation-card">
-                    <h3>Ordinal likelihood</h3>
-                    <div class="math">\[
-                        p(y_i = k \mid f_i) = g\big(\tau_k - f_i\big) - g\big(\tau_{k-1} - f_i\big), \qquad \tau_0 &lt; \tau_1 &lt; \cdots &lt; \tau_K
-                    \]</div>
-                    <p>The thresholds \(\tau_k\) encode ordered ADAS categories, while the link function \(g\) converts the latent GP output into category probabilities.</p>
-                </article>
+        <section id="approach" class="section">
+            <div class="container">
+                <h2 class="section-title">Modeling Pipeline</h2>
+                <div class="figure-panel" style="margin-bottom:24px;">
+                    <img src="../assets/research/alz-pipeline.jpg" alt="Modeling pipeline: CPAD Database → Feature Engineering → GP Models → 11 ADAS-Cog Subscore Predictions" loading="lazy">
+                    <div class="figure-caption"><strong>End-to-end pipeline.</strong> Patient-level data from CPAD (demographics, APOE4, MMSE, visit timeline) feeds into 5 GP model configurations evaluated with 5-fold cross-validation, producing uncertainty-aware predictions for all 11 ADAS-Cog subscores.</div>
+                </div>
+                <div class="figure-panel">
+                    <img src="../assets/research/alz-trajectories.jpg" alt="Illustrative GP-predicted ADAS-Cog trajectories with uncertainty bands for different severity levels" loading="lazy">
+                    <div class="figure-caption"><strong>Illustrative GP trajectories.</strong> ADAS-Cog total score predictions over 36 months for Normal Cognition (green), Mild AD (blue), and Moderate AD (red). Shaded bands represent 68% and 95% prediction intervals. Uncertainty grows with prediction horizon, reflecting genuine clinical unpredictability in long-term disease progression.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="likelihood" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Ordinal Likelihood</h2>
+                <div class="equation-grid">
+                    <article class="equation-card">
+                        <h3>Why ordinal?</h3>
+                        <p>ADAS-Cog subscores are ordered integers (e.g., Word Recall: 0–10). Treating them as continuous values ignores their discrete, ordered nature. The ordinal likelihood maps the latent GP function through ordered thresholds \(\tau_k\), producing calibrated probabilities for each score level.</p>
+                        <div class="math" style="margin-top:16px;">\[
+                            p(y_i = k \mid f_i) = g\big(\tau_k - f_i\big) - g\big(\tau_{k-1} - f_i\big)
+                        \]</div>
+                        <p style="margin-top:12px;">where \(\tau_0 &lt; \tau_1 &lt; \cdots &lt; \tau_K\) are learned thresholds and \(g\) is a monotonic link function (e.g., probit or logistic).</p>
+                    </article>
+                    <article class="equation-card">
+                        <h3>Key advantage</h3>
+                        <p>The ordinal model naturally encodes that a prediction of "score 5" should be more likely to err toward 4 or 6 than toward 0 or 10. This produces more clinically meaningful uncertainty estimates compared to Gaussian or classification likelihoods.</p>
+                        <p style="margin-top:12px;">Combined with the GP prior's flexible longitudinal structure, this approach provides patient-specific progression curves with properly calibrated confidence intervals — essential for clinical trial planning and personalized treatment decisions.</p>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
