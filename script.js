@@ -31,11 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar shadow on scroll
+    // Navbar shadow on scroll + scroll-to-top visibility
     const navbar = document.querySelector('.navbar');
+    const scrollTopBtn = document.getElementById('scroll-top');
     window.addEventListener('scroll', function() {
         navbar.style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
+        if (scrollTopBtn) {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+        }
     });
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // Load publications
     loadPublications();
@@ -50,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('.research-card, .timeline-item, .education-card, .award-item, .presentation-item').forEach(el => {
+    document.querySelectorAll('.research-card, .timeline-item, .education-card, .award-item').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';

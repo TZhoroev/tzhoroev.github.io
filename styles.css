@@ -106,7 +106,14 @@ body.dark .btn-secondary { background: #475569; }
 /* Sections */
 .section { padding: 80px 24px; }
 .section-alt { background: var(--bg-alt); transition: background-color 0.3s ease; }
-.section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 48px; color: var(--text); }
+.section-title {
+    font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 48px; color: var(--text);
+    position: relative; display: inline-block; width: 100%;
+}
+.section-title::after {
+    content: ''; display: block; width: 48px; height: 3px; border-radius: 2px;
+    background: var(--primary); margin: 12px auto 0;
+}
 
 /* About */
 .about-content p { font-size: 1.1rem; max-width: 800px; margin: 0 auto 24px; text-align: center; color: var(--text-light); }
@@ -127,7 +134,7 @@ a.research-card {
     text-decoration: none; color: inherit; border: 1px solid var(--border);
     position: relative;
 }
-a.research-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+a.research-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.15); border-color: var(--primary); }
 .research-icon {
     width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
@@ -219,18 +226,27 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
 .award-item h4 { font-size: 1rem; margin-bottom: 4px; color: var(--text); }
 .award-item p { font-size: 0.9rem; color: var(--text-light); }
 
-/* Presentations */
-.presentations-list { max-width: 800px; margin: 0 auto; }
-.presentation-item {
-    display: flex; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--border);
-    align-items: flex-start;
+/* Footer */
+.footer { background: var(--footer-bg); color: #94a3b8; padding: 32px 24px; text-align: center; }
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.footer-social { display: flex; gap: 16px; }
+.footer-social a {
+    color: #94a3b8; font-size: 1.1rem; transition: color 0.2s;
 }
-.presentation-item:last-child { border-bottom: none; }
-.pres-date { min-width: 80px; font-weight: 700; color: var(--primary); font-size: 0.95rem; flex-shrink: 0; }
-.presentation-item h4 { font-size: 1rem; color: var(--text); margin-bottom: 4px; }
-.presentation-item p { font-size: 0.9rem; color: var(--text-light); }
+.footer-social a:hover { color: var(--primary-light); }
+.footer p { font-size: 0.9rem; }
 
-/* Contact */
+/* Scroll to top */
+.scroll-top {
+    position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px;
+    background: var(--primary); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 999;
+}
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { transform: translateY(-2px); }
 .contact-content { text-align: center; }
 .contact-info { display: flex; justify-content: center; gap: 48px; margin-bottom: 32px; flex-wrap: wrap; }
 .contact-item { display: flex; align-items: center; gap: 12px; color: var(--text); }
@@ -244,10 +260,6 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
     transition: all 0.2s; border: 1px solid var(--border);
 }
 .social-links a:hover { background: var(--primary); color: white; border-color: var(--primary); }
-
-/* Footer */
-.footer { background: var(--footer-bg); color: #94a3b8; padding: 24px; text-align: center; }
-.footer p { font-size: 0.9rem; }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -264,7 +276,6 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
     .hero-links { justify-content: center; }
     .research-grid { grid-template-columns: 1fr; }
     .publication { flex-direction: column; gap: 8px; }
-    .presentation-item { flex-direction: column; gap: 8px; }
     .timeline::before { left: 4px; }
     .timeline-marker { left: -1px; }
     .education-card { min-height: 220px; }
