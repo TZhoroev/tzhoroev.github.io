@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpretable Discovery of Hidden Dynamics in BK Virus Infection | Tilekbek Zhoroev</title>
+    <meta name="description" content="PhD dissertation research integrating PINNs, causal inference, and symbolic regression to uncover interpretable serum-creatinine dynamics after BK virus infection in renal transplantation.">
+    <meta property="og:title" content="Interpretable Discovery of Hidden Dynamics in BK Virus Infection | Tilekbek Zhoroev">
+    <meta property="og:description" content="PhD dissertation research integrating PINNs, causal inference, and symbolic regression to uncover interpretable serum-creatinine dynamics after BK virus infection in renal transplantation.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tzhoroev.github.io/research/pinns-bkv.html">
+    <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+
+<style>
+    .research-hero {
+        padding-top: 140px;
+        padding-bottom: 72px;
+    }
+    .research-hero-content {
+        display: block;
+        max-width: 980px;
+    }
+    .research-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+    }
+    .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+    }
+    .meta-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+    .meta-chip i {
+        color: var(--primary);
+    }
+    .research-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 2.15fr) minmax(280px, 0.95fr);
+        gap: 24px;
+        align-items: start;
+    }
+    .detail-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 32px;
+    }
+    .content-flow h2,
+    .sidebar-card h3,
+    .highlight-panel h3,
+    .callout h4 {
+        color: var(--text);
+    }
+    .content-flow h2 {
+        font-size: 1.6rem;
+        margin: 0 0 16px;
+    }
+    .content-flow h2:not(:first-child) {
+        margin-top: 32px;
+    }
+    .content-flow p {
+        color: var(--text-light);
+        margin-bottom: 16px;
+        font-size: 1rem;
+    }
+    .highlight-panel,
+    .callout {
+        margin-top: 24px;
+        padding: 24px;
+        border-radius: 16px;
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+    }
+    .highlight-panel h3,
+    .callout h4 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        font-size: 1.05rem;
+    }
+    .highlight-panel i,
+    .callout i,
+    .fact-label i,
+    .repo-card i,
+    .publication-card i {
+        color: var(--primary);
+    }
+    .bullet-list {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+        padding: 0;
+        margin: 0;
+    }
+    .bullet-list li {
+        position: relative;
+        padding-left: 22px;
+        color: var(--text-light);
+    }
+    .bullet-list li::before {
+        content: '\2022';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--primary);
+        font-weight: 700;
+    }
+    .equation-block {
+        margin: 18px 0;
+        padding: 20px 24px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.04));
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        overflow-x: auto;
+    }
+    body.dark .equation-block {
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(59, 130, 246, 0.06));
+        border-color: rgba(96, 165, 250, 0.24);
+    }
+    .equation-caption {
+        display: block;
+        margin-top: 12px;
+        color: var(--text-light);
+        font-size: 0.92rem;
+    }
+    .facts-list {
+        display: grid;
+        gap: 18px;
+    }
+    .fact-item {
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+    }
+    .fact-item:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    .fact-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: var(--text);
+    }
+    .fact-item p,
+    .callout p {
+        color: var(--text-light);
+        margin: 0;
+    }
+    .method-grid,
+    .publication-grid,
+    .repo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    .method-card,
+    .publication-card,
+    .repo-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+    }
+    .method-card h3,
+    .publication-card h3,
+    .repo-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+        color: var(--text);
+    }
+    .method-card p,
+    .publication-card p,
+    .repo-card p {
+        color: var(--text-light);
+        margin-bottom: 12px;
+    }
+    .publication-meta,
+    .repo-link,
+    .note-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.92rem;
+        text-decoration: none;
+    }
+    .repo-link:hover {
+        color: var(--primary-dark);
+    }
+    .footer-link {
+        color: #cbd5e1;
+        text-decoration: none;
+    }
+    .footer-link:hover {
+        color: #ffffff;
+    }
+    @media (max-width: 900px) {
+        .research-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: 768px) {
+        .research-hero {
+            padding-top: 120px;
+            padding-bottom: 56px;
+        }
+        .detail-card {
+            padding: 24px;
+        }
+        .hero-meta {
+            gap: 10px;
+        }
+        .meta-chip {
+            width: 100%;
+            justify-content: flex-start;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">TZ</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">&larr; Back to Home</a></li>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#software">Code</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero research-hero">
+        <div class="hero-content research-hero-content">
+            <div class="hero-text">
+                <p class="research-eyebrow"><i class="fas fa-brain"></i> Research Detail</p>
+                <h1>Interpretable Discovery of Hidden Dynamics in BK Virus Infection</h1>
+                <p class="subtitle">NC State University (PhD Dissertation)</p>
+                <p class="tagline">This dissertation research combined physics-informed neural networks, causal reasoning, and symbolic regression to recover interpretable differential-equation structure from hidden BK virus infection dynamics in renal transplantation.</p>
+                <div class="hero-links">
+                    <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                    <a href="https://github.com/lululxvi/deepxde" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> DeepXDE</a><a href="https://github.com/MilesCranmer/PySR" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> PySR</a>
+                </div>
+                <div class="hero-meta">
+                    <span class="meta-chip"><i class="fas fa-flask"></i>Theory-informed neural networks for renal transplantation</span><span class="meta-chip"><i class="fas fa-wave-square"></i>Interpretable ODE discovery from black-box models</span><span class="meta-chip"><i class="fas fa-user-graduate"></i>Dissertation completed in 2025 under Dr. Kevin Flores</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="overview" class="section">
+            <div class="container research-layout">
+                <article class="detail-card content-flow">
+                    <h2>Research Overview</h2>
+                    
+<p>BK virus infection after kidney transplantation can trigger complex changes in serum creatinine, a clinically important marker of renal function. This work aimed to recover the hidden dynamical mechanisms governing those changes by combining flexible neural models with explicit mathematical structure.</p>
+<p>The research integrated <strong>Physics-Informed Neural Networks (PINNs)</strong>, <strong>causal inference</strong>, and <strong>symbolic regression</strong>. PINNs were used to fit noisy clinical trajectories while respecting ordinary differential equation constraints, and symbolic regression was then used to distill black-box behavior into interpretable ODE terms.</p>
+<p>This project formed part of the dissertation <strong>“Developing Gaussian Process and Theory-Informed Neural Network Models for Clinical Decision Making”</strong> (2025) at NC State University, advised by <strong>Dr. Kevin Flores</strong>. The broader goal was to move from accurate prediction alone toward mechanistic understanding that clinicians can inspect and trust.</p>
+
+                    <div class="highlight-panel">
+                        <h3><i class="fas fa-star"></i>Core Contributions</h3>
+                        <ul class="bullet-list">
+                            <li>Integrated PINNs, causal inference, and symbolic regression in a unified workflow for hidden-dynamics discovery.</li><li>Modeled serum-creatinine ODE dynamics arising after BK virus infection in renal transplantation.</li><li>Extracted interpretable governing terms from black-box neural network surrogates rather than stopping at predictive accuracy.</li><li>Positioned neural differential-equation modeling as a tool for clinically meaningful, hypothesis-generating discovery.</li>
+                        </ul>
+                    </div>
+                    <h2>Mathematical Formulation</h2>
+                    <p>PINNs embed mechanistic structure into the training objective by penalizing violations of governing equations. This makes the learned representation data-consistent while still honoring prior scientific knowledge about the dynamics.</p>
+                    <div class="equation-block">\[\mathcal{L}_{\mathrm{PINN}} = \mathrm{MSE}_{\mathrm{data}} + \lambda\,\mathrm{MSE}_{\mathrm{physics}}\]<span class="equation-caption">Composite loss balancing data fidelity against the residual of the governing ODE constraints.</span></div><div class="equation-block">\[\mathrm{MSE}_{\mathrm{physics}} = \frac{1}{N_r}\sum_{i=1}^{N_r}\left\lVert \dot{c}(t_i) - f_{\theta}(c(t_i), t_i, u(t_i))\right\rVert^2\]<span class="equation-caption">Physics residual enforcing agreement between the neural network representation and the serum-creatinine dynamical model.</span></div>
+                </article>
+                <aside class="detail-card sidebar-card">
+                    <h3>At a Glance</h3>
+                    <div class="facts-list">
+                        <div class="fact-item"><div class="fact-label"><i class="fas fa-building-columns"></i>Program</div><p>PhD research in Applied Mathematics at NC State University.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-notes-medical"></i>Clinical focus</div><p>Renal transplantation and post-BK-virus serum-creatinine dynamics.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-sitemap"></i>Interpretability</div><p>Symbolic regression used to recover human-readable ODE structure.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-chalkboard-user"></i>Advisor</div><p>Dr. Kevin Flores.</p></div>
+                    </div>
+                    <div class="callout">
+                        <h4><i class="fas fa-lightbulb"></i>Why it matters</h4>
+                        <p>By pairing theory-informed learning with symbolic regression, the project supports a shift from opaque predictive models toward interpretable, mechanistic insights that can help generate clinically actionable hypotheses.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="methodology" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Methodology</h2>
+                <div class="method-grid">
+                    <article class="method-card"><h3>Physics-Informed Neural Networks</h3><p>The neural model was trained on observed trajectories while penalizing violations of the candidate ODE system, ensuring that learned dynamics remained scientifically grounded.</p></article><article class="method-card"><h3>Causal and Mechanistic Framing</h3><p>Causal inference concepts guided which variables and interactions should be interpreted as potential drivers of renal-function change rather than mere correlates.</p></article><article class="method-card"><h3>Symbolic Regression for Equation Recovery</h3><p>After fitting the black-box surrogate, symbolic regression searched for concise analytical expressions that reproduced the learned dynamics in an interpretable ODE form.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications" class="section">
+            <div class="container">
+                <h2 class="section-title">Related Publications</h2>
+                <div class="publication-grid">
+                    <article class="publication-card"><h3>Developing Gaussian Process and Theory-Informed Neural Network Models for Clinical Decision Making</h3><p>Dissertation documenting the broader modeling agenda, including the BK virus hidden-dynamics study and its interpretable neural differential-equation framework.</p><span class="publication-meta"><i class="fas fa-scroll"></i>PhD Dissertation, NC State University, 2025</span><div style="margin-top:12px;"><span class="publication-meta"><i class="fas fa-book"></i>PhD Dissertation, NC State University, 2025</span></div></article><article class="publication-card"><h3>Advisor and dissertation context</h3><p>The BK virus project sits within a larger scientific machine learning program focused on clinically grounded, interpretable decision-support models.</p><span class="publication-meta"><i class="fas fa-scroll"></i>Advised by Dr. Kevin Flores</span><div style="margin-top:12px;"><span class="publication-meta"><i class="fas fa-book"></i>Advised by Dr. Kevin Flores</span></div></article>
+                </div>
+            </div>
+        </section>
+
+        <section id="software" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Code and Repositories</h2>
+                <div class="repo-grid">
+                    <article class="repo-card"><h3>DeepXDE</h3><p>Widely used open-source library for physics-informed learning, neural differential equations, and scientific machine learning workflows.</p><a class="repo-link" href="https://github.com/lululxvi/deepxde" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Open repository</a></article><article class="repo-card"><h3>PySR</h3><p>Symbolic regression framework well suited for discovering interpretable governing equations from learned trajectories.</p><a class="repo-link" href="https://github.com/MilesCranmer/PySR" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Open repository</a></article><article class="repo-card"><h3>Project code availability</h3><p>The dissertation research is summarized here, but a dedicated public repository for the BK virus study was not specified in the available materials.</p><span class="note-label"><i class="fas fa-lock"></i>No public repository listed</span></article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Tilekbek Zhoroev &middot; <a href="../index.html" class="footer-link">Return to the main site</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

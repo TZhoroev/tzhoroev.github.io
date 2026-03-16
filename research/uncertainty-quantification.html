@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uncertainty Quantification Methods | Tilekbek Zhoroev</title>
+    <meta name="description" content="A broad uncertainty quantification portfolio spanning sensitivity analysis, parameter estimation, MCMC, intervals, surrogate models, and model discrepancy detection in Python and MATLAB.">
+    <meta property="og:title" content="Uncertainty Quantification Methods | Tilekbek Zhoroev">
+    <meta property="og:description" content="A broad uncertainty quantification portfolio spanning sensitivity analysis, parameter estimation, MCMC, intervals, surrogate models, and model discrepancy detection in Python and MATLAB.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tzhoroev.github.io/research/uncertainty-quantification.html">
+    <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+
+<style>
+    .research-hero {
+        padding-top: 140px;
+        padding-bottom: 72px;
+    }
+    .research-hero-content {
+        display: block;
+        max-width: 980px;
+    }
+    .research-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+    }
+    .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+    }
+    .meta-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+    .meta-chip i {
+        color: var(--primary);
+    }
+    .research-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 2.15fr) minmax(280px, 0.95fr);
+        gap: 24px;
+        align-items: start;
+    }
+    .detail-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 32px;
+    }
+    .content-flow h2,
+    .sidebar-card h3,
+    .highlight-panel h3,
+    .callout h4 {
+        color: var(--text);
+    }
+    .content-flow h2 {
+        font-size: 1.6rem;
+        margin: 0 0 16px;
+    }
+    .content-flow h2:not(:first-child) {
+        margin-top: 32px;
+    }
+    .content-flow p {
+        color: var(--text-light);
+        margin-bottom: 16px;
+        font-size: 1rem;
+    }
+    .highlight-panel,
+    .callout {
+        margin-top: 24px;
+        padding: 24px;
+        border-radius: 16px;
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+    }
+    .highlight-panel h3,
+    .callout h4 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        font-size: 1.05rem;
+    }
+    .highlight-panel i,
+    .callout i,
+    .fact-label i,
+    .repo-card i,
+    .publication-card i {
+        color: var(--primary);
+    }
+    .bullet-list {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+        padding: 0;
+        margin: 0;
+    }
+    .bullet-list li {
+        position: relative;
+        padding-left: 22px;
+        color: var(--text-light);
+    }
+    .bullet-list li::before {
+        content: '\2022';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--primary);
+        font-weight: 700;
+    }
+    .equation-block {
+        margin: 18px 0;
+        padding: 20px 24px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.04));
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        overflow-x: auto;
+    }
+    body.dark .equation-block {
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(59, 130, 246, 0.06));
+        border-color: rgba(96, 165, 250, 0.24);
+    }
+    .equation-caption {
+        display: block;
+        margin-top: 12px;
+        color: var(--text-light);
+        font-size: 0.92rem;
+    }
+    .facts-list {
+        display: grid;
+        gap: 18px;
+    }
+    .fact-item {
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+    }
+    .fact-item:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    .fact-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: var(--text);
+    }
+    .fact-item p,
+    .callout p {
+        color: var(--text-light);
+        margin: 0;
+    }
+    .method-grid,
+    .publication-grid,
+    .repo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    .method-card,
+    .publication-card,
+    .repo-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+    }
+    .method-card h3,
+    .publication-card h3,
+    .repo-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+        color: var(--text);
+    }
+    .method-card p,
+    .publication-card p,
+    .repo-card p {
+        color: var(--text-light);
+        margin-bottom: 12px;
+    }
+    .publication-meta,
+    .repo-link,
+    .note-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.92rem;
+        text-decoration: none;
+    }
+    .repo-link:hover {
+        color: var(--primary-dark);
+    }
+    .footer-link {
+        color: #cbd5e1;
+        text-decoration: none;
+    }
+    .footer-link:hover {
+        color: #ffffff;
+    }
+    @media (max-width: 900px) {
+        .research-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: 768px) {
+        .research-hero {
+            padding-top: 120px;
+            padding-bottom: 56px;
+        }
+        .detail-card {
+            padding: 24px;
+        }
+        .hero-meta {
+            gap: 10px;
+        }
+        .meta-chip {
+            width: 100%;
+            justify-content: flex-start;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">TZ</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">&larr; Back to Home</a></li>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#software">Code</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero research-hero">
+        <div class="hero-content research-hero-content">
+            <div class="hero-text">
+                <p class="research-eyebrow"><i class="fas fa-chart-line"></i> Research Detail</p>
+                <h1>Uncertainty Quantification Methods</h1>
+                <p class="subtitle">NC State University</p>
+                <p class="tagline">This research and software portfolio covers a full uncertainty quantification workflow, from sensitivity analysis and parameter estimation to MCMC sampling, surrogate modeling, interval construction, and model discrepancy detection.</p>
+                <div class="hero-links">
+                    <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                    <a href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub Repo</a>
+                </div>
+                <div class="hero-meta">
+                    <span class="meta-chip"><i class="fas fa-diagram-project"></i>Six complementary uncertainty quantification areas</span><span class="meta-chip"><i class="fab fa-python"></i>Implemented in both Python and MATLAB</span><span class="meta-chip"><i class="fas fa-cubes"></i>Bayesian, frequentist, and surrogate-based methods</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="overview" class="section">
+            <div class="container research-layout">
+                <article class="detail-card content-flow">
+                    <h2>Research Overview</h2>
+                    
+<p>This body of work provides a comprehensive implementation layer for <strong>uncertainty quantification (UQ)</strong>, designed to support modeling workflows where data, parameters, and structural assumptions all contribute to uncertainty. The project spans both theoretical methods and practical numerical implementations.</p>
+<p>The portfolio covers six major areas: <strong>sensitivity analysis</strong>, <strong>parameter estimation</strong>, <strong>MCMC sampling</strong>, <strong>frequentist confidence and prediction intervals</strong>, <strong>surrogate modeling</strong>, and <strong>model discrepancy detection</strong>. Together, these components form a flexible toolkit for calibration, inference, propagation, and diagnostics.</p>
+<p>Implementations were developed in both <strong>Python</strong> and <strong>MATLAB</strong>, making the repository useful for research prototyping, teaching, and reproducible computational experiments. The result is a broad, method-oriented resource rather than a single narrowly scoped application.</p>
+
+                    <div class="highlight-panel">
+                        <h3><i class="fas fa-star"></i>Core Contributions</h3>
+                        <ul class="bullet-list">
+                            <li>Implemented local and global sensitivity analysis, including Morris screening and Sobol index estimation.</li><li>Covered parameter estimation workflows based on ordinary least squares and constrained optimization.</li><li>Included MCMC algorithms such as Metropolis-Hastings and Adaptive Metropolis for Bayesian calibration.</li><li>Added interval estimation, surrogate modeling, and model-discrepancy diagnostics in a unified repository.</li>
+                        </ul>
+                    </div>
+                    <h2>Mathematical Formulation</h2>
+                    <p>Uncertainty quantification links data, models, and parameters through both deterministic and probabilistic reasoning. Bayesian inversion and variance-based sensitivity indices are two central examples that appear repeatedly throughout the project.</p>
+                    <div class="equation-block">\[p(\theta\mid y) \propto p(y\mid \theta)\,p(\theta)\]<span class="equation-caption">Bayes’ theorem for posterior inference, the starting point for calibration and MCMC sampling.</span></div><div class="equation-block">\[S_i = \frac{\operatorname{Var}_{\theta_i}\!\left(\mathbb{E}[Y\mid \theta_i]\right)}{\operatorname{Var}(Y)}, \qquad S_{T_i} = 1 - \frac{\operatorname{Var}_{\theta_{\sim i}}\!\left(\mathbb{E}[Y\mid \theta_{\sim i}]\right)}{\operatorname{Var}(Y)}\]<span class="equation-caption">First-order and total-order Sobol indices measuring the contribution of a parameter to output variance.</span></div>
+                </article>
+                <aside class="detail-card sidebar-card">
+                    <h3>At a Glance</h3>
+                    <div class="facts-list">
+                        <div class="fact-item"><div class="fact-label"><i class="fas fa-list-check"></i>Project scope</div><p>Six project areas spanning analysis, inference, surrogates, and diagnostics.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-laptop-code"></i>Languages</div><p>Implemented in Python and MATLAB.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-magnifying-glass-chart"></i>Sensitivity methods</div><p>Local methods plus Morris screening and Sobol indices.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-dice"></i>Sampling</div><p>Metropolis-Hastings and Adaptive Metropolis MCMC.</p></div>
+                    </div>
+                    <div class="callout">
+                        <h4><i class="fas fa-lightbulb"></i>Why it matters</h4>
+                        <p>By assembling the full UQ stack in one place, the project helps bridge theory and practice: researchers can move from parameter screening to inference, surrogate construction, and discrepancy analysis without changing conceptual frameworks.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="methodology" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Methodology</h2>
+                <div class="method-grid">
+                    <article class="method-card"><h3>Sensitivity Analysis</h3><p>The toolkit includes local derivative-based analyses together with global methods such as Morris screening and Sobol indices for ranking influential inputs and interactions.</p></article><article class="method-card"><h3>Inference and Calibration</h3><p>Parameter estimation combines least-squares optimization with Bayesian calibration via MCMC, supporting both deterministic fitting and posterior uncertainty analysis.</p></article><article class="method-card"><h3>Surrogates and Diagnostics</h3><p>Polynomial approximations and Gaussian Process surrogates reduce computational cost, while model discrepancy tools help diagnose structural mismatch between simulations and observed data.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications" class="section">
+            <div class="container">
+                <h2 class="section-title">Related Publications</h2>
+                <div class="publication-grid">
+                    <article class="publication-card"><h3>Uncertainty Quantification repository</h3><p>This work is primarily shared as a public repository containing implementations, examples, and reusable numerical building blocks rather than as a single journal article.</p><span class="publication-meta"><i class="fas fa-scroll"></i>Open-source software artifact</span><div style="margin-top:12px;"><a class="publication-meta" href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i>View GitHub repository</a></div></article><article class="publication-card"><h3>Research and teaching utility</h3><p>The collection functions as a practical reference for core UQ methods, supporting both classroom use and research experimentation across calibration and uncertainty propagation tasks.</p><span class="publication-meta"><i class="fas fa-scroll"></i>Method portfolio in Python and MATLAB</span><div style="margin-top:12px;"><span class="publication-meta"><i class="fas fa-book"></i>Method portfolio in Python and MATLAB</span></div></article>
+                </div>
+            </div>
+        </section>
+
+        <section id="software" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Code and Repositories</h2>
+                <div class="repo-grid">
+                    <article class="repo-card"><h3>Uncertainty-Quantification</h3><p>Main public repository with Python and MATLAB implementations covering six major UQ topics.</p><a class="repo-link" href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Open repository</a></article><article class="repo-card"><h3>Python workflows</h3><p>Python implementations support numerical experimentation, sampling, surrogate modeling, and reproducible analysis pipelines.</p><a class="repo-link" href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Browse Python code</a></article><article class="repo-card"><h3>MATLAB workflows</h3><p>MATLAB implementations mirror the methodological coverage, making the project useful for courses and legacy scientific computing environments.</p><a class="repo-link" href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Browse MATLAB code</a></article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Tilekbek Zhoroev &middot; <a href="../index.html" class="footer-link">Return to the main site</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

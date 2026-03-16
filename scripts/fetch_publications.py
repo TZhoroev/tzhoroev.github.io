@@ -48,8 +48,12 @@ def fetch_publications():
             'total_citations': total_citations,
             'h_index': h_index,
             'publications': publications,
-            'last_updated': None  # Will be set by JS
+            'last_updated': None  # Will be set with current date
         }
+        
+        # Set last_updated to today
+        from datetime import date
+        result['last_updated'] = date.today().isoformat()
         
         return result
         

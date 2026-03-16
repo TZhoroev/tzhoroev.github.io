@@ -20,7 +20,7 @@
     },
     {
       "title": "Data-Driven Insights into Labor Progression with Gaussian Processes",
-      "authors": "Tilekbek Zhoroev and F. Hamilton and Emily and A. Warrick and Philip",
+      "authors": "Tilekbek Zhoroev and Emily F. Hamilton and Philip A. Warrick",
       "venue": "Bioengineering",
       "year": 2024,
       "citations": 2,
@@ -28,7 +28,7 @@
     },
     {
       "title": "A study on discrete and discrete fractional pharmacokinetics-pharmacodynamics models for tumor growth and anti-cancer effects",
-      "authors": "Ferhan M At\u0131c\u0131 and Mustafa At\u0131c\u0131 and Ngoc Nguyen and Tilekbek Zhoroev and Gilbert Koch",
+      "authors": "Ferhan M. Atıcı and Mustafa Atıcı and Ngoc Nguyen and Tilekbek Zhoroev and Gilbert Koch",
       "venue": "Computational and Mathematical Biophysics",
       "year": 2019,
       "citations": 61,
@@ -36,7 +36,7 @@
     },
     {
       "title": "Controllability and observability of time-invariant linear nabla fractional systems",
-      "authors": "Tilekbek Zhoroev and F Atici and M",
+      "authors": "Tilekbek Zhoroev and Ferhan M. Atıcı",
       "venue": "Fractional Differential Calculus",
       "year": 2019,
       "citations": 4,
@@ -67,5 +67,5 @@
       "url": "https://scholar.google.com/scholar?cluster=10442876594770838511&hl=en&oi=scholarr"
     }
   ],
-  "last_updated": null
+  "last_updated": "2026-03-16"
 }

@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tilekbek Zhoroev | Applied Mathematician & Data Scientist</title>
+    <title>Tilekbek Zhoroev | Applied Mathematician &amp; Data Scientist</title>
+    <meta name="description" content="Tilekbek Zhoroev — Ph.D. in Applied Mathematics, Data Scientist at Microsoft. Research in Gaussian processes, physics-informed neural networks, uncertainty quantification, and clinical decision making.">
+    <meta property="og:title" content="Tilekbek Zhoroev | Applied Mathematician & Data Scientist">
+    <meta property="og:description" content="Ph.D. in Applied Mathematics. Research in Gaussian processes, PINNs, and uncertainty quantification.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tzhoroev.github.io">
+    <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -15,12 +22,15 @@
             <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#research">Research</a></li>
-                <li><a href="#projects">Projects</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="#presentations">Talks</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -45,10 +55,16 @@
                     <a href="https://linkedin.com/in/tzhoroev" target="_blank" class="btn btn-secondary">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
+                    <a href="assets/T_Zhoroev_cv.pdf" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-file-pdf"></i> Academic CV
+                    </a>
+                    <a href="assets/Zhoroev_CV.pdf" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-file-pdf"></i> Industry CV
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="assets/profile.jpg" alt="Tilekbek Zhoroev" onerror="this.style.display='none'">
+                <img src="assets/profile.jpg" alt="Tilekbek Zhoroev">
             </div>
         </div>
     </header>
@@ -68,6 +84,7 @@
                             <li>Gaussian Processes</li>
                             <li>Bayesian Inference</li>
                             <li>Clinical Decision Support</li>
+                            <li>Fractional Calculus</li>
                         </ul>
                     </div>
                     <div class="skill-category">
@@ -89,99 +106,50 @@
         <div class="container">
             <h2 class="section-title">Research</h2>
             <div class="research-grid">
-                <div class="research-card">
-                    <div class="research-icon"><i class="fas fa-baby"></i></div>
+                <a href="research/labor-progression.html" class="research-card">
+                    <div class="research-icon"><i class="fas fa-heartbeat"></i></div>
+                    <span class="research-badge">PeriGen / NIH / NICHD</span>
                     <h3>Labor Progression Prediction</h3>
-                    <p>Developed novel machine learning models using Gaussian Processes to predict labor progression, improving clinical decision-making in obstetrics. Published in American Journal of Obstetrics and Gynecology.</p>
-                </div>
-                <div class="research-card">
+                    <p>Developed Sparse Gaussian Process models with meta-learning to predict cervical dilation and fetal station in real time, improving clinical decision-making in obstetrics. Validated on 49,694 births, demonstrating superiority over WHO and ACOG guidelines.</p>
+                    <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="research/pinns-bkv.html" class="research-card">
                     <div class="research-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Physics-Informed Neural Networks</h3>
-                    <p>Created hybrid ML frameworks combining PINNs with causal inference and symbolic regression for modeling biological systems, enabling interpretable and uncertainty-aware predictions.</p>
-                </div>
-                <div class="research-card">
+                    <span class="research-badge">NC State University (PhD)</span>
+                    <h3>Interpretable Discovery of Hidden Dynamics in BKV Infection</h3>
+                    <p>Integrated Physics-Informed Neural Networks, causal inference, and symbolic regression to uncover hidden creatinine dynamics in BK virus infection after kidney transplantation. Extracted interpretable ODE terms from black-box models.</p>
+                    <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="research/alzheimers.html" class="research-card">
+                    <div class="research-icon"><i class="fas fa-dna"></i></div>
+                    <span class="research-badge">Johnson &amp; Johnson</span>
+                    <h3>Alzheimer's Disease Progression Modeling</h3>
+                    <p>Developed Variational Gaussian Process models with ordinal likelihood to predict ADAS cognitive scores and quantify uncertainty in Alzheimer's disease progression, using clinical trial data from 1,683 patients.</p>
+                    <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="research/uncertainty-quantification.html" class="research-card">
                     <div class="research-icon"><i class="fas fa-chart-line"></i></div>
+                    <span class="research-badge">NC State University</span>
                     <h3>Uncertainty Quantification</h3>
-                    <p>Applied Bayesian approaches for uncertainty propagation in mathematical models, detecting discrepancies between model predictions and observational data in physical and biological systems.</p>
-                </div>
-                <div class="research-card">
+                    <p>Comprehensive implementations of UQ methods: sensitivity analysis, parameter estimation, MCMC sampling, uncertainty propagation, surrogate models, and model discrepancy detection with Python and MATLAB.</p>
+                    <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="research/pharmacokinetics.html" class="research-card">
                     <div class="research-icon"><i class="fas fa-pills"></i></div>
-                    <h3>Pharmacokinetics Modeling</h3>
-                    <p>Studied discrete and discrete fractional pharmacokinetics-pharmacodynamics models for tumor growth and anti-cancer effects using fractional calculus.</p>
-                </div>
+                    <span class="research-badge">Western Kentucky University</span>
+                    <h3>Discrete Fractional Pharmacokinetics Modeling</h3>
+                    <p>Studied discrete and discrete fractional PK/PD models for tumor growth and anti-cancer effects using nabla fractional calculus. Established controllability and observability conditions for fractional systems. Funded by KSEF.</p>
+                    <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-lock project-icon-private"></i>
-                        <span class="project-badge">PhD Research</span>
-                    </div>
-                    <h3>PINNS-BKV</h3>
-                    <p>Physics-Informed Neural Networks for modeling serum-creatinine ODE dynamics in renal transplantation. Combines PINNs with causal inference and symbolic regression for interpretable, uncertainty-aware immunosuppressant dosing.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>TensorFlow</span>
-                        <span>PINNs</span>
-                        <span>Clinical ML</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-lock project-icon-private"></i>
-                        <span class="project-badge">SAS / IDeaS</span>
-                    </div>
-                    <h3>Demand Forecasting</h3>
-                    <p>Developed demand forecasting models for hotel occupancy across multiple chains with hundreds of properties. Used meta-learning optimization for accurate predictions with limited historical data.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Meta-Learning</span>
-                        <span>Time Series</span>
-                        <span>Forecasting</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-lock project-icon-private"></i>
-                        <span class="project-badge">SAS / IDeaS</span>
-                    </div>
-                    <h3>Special Event Detection</h3>
-                    <p>Semi-supervised learning model for detecting special events (holidays, concerts, conferences) to improve demand forecasting accuracy during anomalous periods.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Semi-supervised</span>
-                        <span>Anomaly Detection</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <a href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank"><i class="fab fa-github"></i></a>
-                        <span class="project-badge">Academic</span>
-                    </div>
-                    <h3>Uncertainty Quantification</h3>
-                    <p>Comprehensive implementations of UQ methods: sensitivity analysis, parameter estimation, MCMC, surrogate models, and model discrepancy detection with Python and MATLAB.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>MATLAB</span>
-                        <span>Bayesian</span>
-                        <span>MCMC</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="publications" class="section section-alt">
+    <section id="publications" class="section">
         <div class="container">
             <h2 class="section-title">Publications</h2>
             <div class="publications-stats" id="pub-stats"></div>
             <div class="publications-list" id="publications-list">
-                <!-- Publications loaded dynamically from publications.json -->
                 <p class="loading">Loading publications...</p>
             </div>
             <div class="publications-link">
@@ -211,8 +179,8 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <h3>R&D Intern</h3>
-                            <span class="company">SAS Institute</span>
+                            <h3>R&amp;D Intern</h3>
+                            <span class="company">SAS Institute (IDeaS)</span>
                             <span class="date">Jan 2024 - May 2025</span>
                         </div>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Cary, NC</p>
@@ -233,9 +201,9 @@
                         </div>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Cary, NC</p>
                         <ul>
-                            <li>Developed ML models for predicting labor progression using TensorFlow and GPFlow</li>
-                            <li>Optimized training procedures achieving 10x speedup</li>
-                            <li>Collaborated with clinicians to improve obstetric decision-making</li>
+                            <li>Developed GP models for predicting labor progression using TensorFlow and GPFlow</li>
+                            <li>Optimized training procedures achieving 10x speedup with stochastic methods</li>
+                            <li>Collaborated with NIH/NICHD researchers and clinicians</li>
                         </ul>
                     </div>
                 </div>
@@ -244,13 +212,14 @@
                     <div class="timeline-content">
                         <div class="timeline-header">
                             <h3>Data Science Intern</h3>
-                            <span class="company">Johnson & Johnson</span>
+                            <span class="company">Johnson &amp; Johnson</span>
                             <span class="date">May 2023 - Aug 2023</span>
                         </div>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Titusville, NJ</p>
                         <ul>
-                            <li>Enhanced prediction accuracy for early Alzheimer's disease diagnosis</li>
-                            <li>Executed comprehensive data preprocessing for data reliability</li>
+                            <li>Built Variational Gaussian Process model for Alzheimer's disease progression</li>
+                            <li>Predicted ADAS cognitive scores with uncertainty quantification</li>
+                            <li>Compared 5 model configurations using 5-fold cross-validation</li>
                         </ul>
                     </div>
                 </div>
@@ -258,13 +227,13 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <h3>Research & Teaching Assistant</h3>
+                            <h3>Research &amp; Teaching Assistant</h3>
                             <span class="company">North Carolina State University</span>
                             <span class="date">Aug 2020 - May 2025</span>
                         </div>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Raleigh, NC</p>
                         <ul>
-                            <li>Developed physics-integrated ML methods for biological systems</li>
+                            <li>Developed PINNs framework for BK virus infection dynamics</li>
                             <li>Implemented Bayesian approaches for uncertainty quantification</li>
                             <li>Delivered lectures for six undergraduate courses</li>
                         </ul>
@@ -279,9 +248,7 @@
             <h2 class="section-title">Education</h2>
             <div class="education-grid">
                 <div class="education-card">
-                    <div class="edu-logo">
-                        <i class="fas fa-university"></i>
-                    </div>
+                    <div class="edu-logo"><i class="fas fa-university"></i></div>
                     <div class="edu-content">
                         <h3>Ph.D. in Applied Mathematics</h3>
                         <p class="institution">North Carolina State University</p>
@@ -292,9 +259,7 @@
                     </div>
                 </div>
                 <div class="education-card">
-                    <div class="edu-logo">
-                        <i class="fas fa-university"></i>
-                    </div>
+                    <div class="edu-logo"><i class="fas fa-university"></i></div>
                     <div class="edu-content">
                         <h3>M.S. in Mathematics</h3>
                         <p class="institution">Western Kentucky University</p>
@@ -304,9 +269,7 @@
                     </div>
                 </div>
                 <div class="education-card">
-                    <div class="edu-logo">
-                        <i class="fas fa-university"></i>
-                    </div>
+                    <div class="edu-logo"><i class="fas fa-university"></i></div>
                     <div class="edu-content">
                         <h3>B.S. in Mathematics</h3>
                         <p class="institution">Erciyes University, Turkey</p>
@@ -320,7 +283,7 @@
 
     <section id="awards" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Honors & Awards</h2>
+            <h2 class="section-title">Honors and Awards</h2>
             <div class="awards-grid">
                 <div class="award-item">
                     <i class="fas fa-medal"></i>
@@ -339,22 +302,72 @@
                 <div class="award-item">
                     <i class="fas fa-trophy"></i>
                     <div>
-                        <h4>Honorable Mention - IMO</h4>
-                        <p>54th International Mathematical Olympiad, Cape Town, 2014</p>
+                        <h4>Fruit of the Loom Mathematics Award</h4>
+                        <p>Western Kentucky University, 2019</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-trophy"></i>
+                    <div>
+                        <h4>Honorable Mention, 54th IMO</h4>
+                        <p>International Mathematical Olympiad, Cape Town, 2014</p>
                     </div>
                 </div>
                 <div class="award-item">
                     <i class="fas fa-medal"></i>
                     <div>
-                        <h4>Bronze Medal - National Olympiad</h4>
-                        <p>Kyrgyzstan Mathematical Olympiad, 2014</p>
+                        <h4>Silver Medal, National Olympiad</h4>
+                        <p>Kyrgyzstan Mathematical Olympiad, 2013</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-medal"></i>
+                    <div>
+                        <h4>Honorary Degree, First Place</h4>
+                        <p>Erciyes University, Science College, 2017</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="presentations" class="section">
+        <div class="container">
+            <h2 class="section-title">Presentations</h2>
+            <div class="presentations-list">
+                <div class="presentation-item">
+                    <span class="pres-date">Nov 2019</span>
+                    <div>
+                        <h4>Controllability and Observability of Linear Time-Invariant Nabla Fractional Discrete Systems</h4>
+                        <p>39th Annual Mathematics Symposium, Western Kentucky University</p>
+                    </div>
+                </div>
+                <div class="presentation-item">
+                    <span class="pres-date">Oct 2019</span>
+                    <div>
+                        <h4>Controllability and Observability of Time-Varying Linear Nabla Fractional Systems</h4>
+                        <p>International Symposium on Biomathematics and Ecology, University of Wisconsin, La Crosse</p>
+                    </div>
+                </div>
+                <div class="presentation-item">
+                    <span class="pres-date">May 2019</span>
+                    <div>
+                        <h4>Discrete and Discrete Fractional PK-PD Models for Tumor Growth and Anti-Cancer Effects</h4>
+                        <p>NSF-CBMS Conference on Mathematical Molecular Biosciences and Biophysics, University of Alabama</p>
+                    </div>
+                </div>
+                <div class="presentation-item">
+                    <span class="pres-date">Mar 2019</span>
+                    <div>
+                        <h4>Controllability and Observability of Linear Time-Invariant Nabla Fractional Discrete Systems</h4>
+                        <p>2019 Annual Meeting of KYMAA, Centre College, Danville, KY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section section-alt">
         <div class="container">
             <h2 class="section-title">Contact</h2>
             <div class="contact-content">
@@ -385,7 +398,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Tilekbek Zhoroev. All rights reserved.</p>
+            <p>&copy; 2026 Tilekbek Zhoroev. All rights reserved.</p>
         </div>
     </footer>
 
