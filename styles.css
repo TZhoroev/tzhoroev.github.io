@@ -176,8 +176,7 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
 }
 .timeline-header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 8px; }
 .timeline-logo {
-    width: 44px; height: 44px; object-fit: contain; border-radius: 8px;
-    background: var(--bg-card); padding: 4px; border: 1px solid var(--border);
+    width: 44px; height: 44px; object-fit: contain; border-radius: 10px;
     flex-shrink: 0;
 }
 .timeline-header h3 { font-size: 1.15rem; color: var(--text); }
@@ -196,9 +195,9 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
     display: flex; gap: 20px;
 }
 .edu-logo {
-    width: 56px; height: 56px; border-radius: 12px;
+    width: 52px; height: 52px; border-radius: 12px;
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    background: var(--bg-alt); border: 1px solid var(--border); overflow: hidden; padding: 6px;
+    overflow: hidden;
 }
 .edu-logo img { width: 100%; height: 100%; object-fit: contain; }
 .edu-logo i { font-size: 1.4rem; color: var(--primary); }
