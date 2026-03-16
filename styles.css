@@ -139,7 +139,7 @@ a.research-card {
 a.research-card[style*="background-image"]::before {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.88) 55%, rgba(15,23,42,0.96) 100%);
+    background: linear-gradient(180deg, rgba(15,23,42,0.25) 0%, rgba(15,23,42,0.55) 50%, rgba(15,23,42,0.78) 100%);
     z-index: 0;
 }
 a.research-card[style*="background-image"] .research-icon,
