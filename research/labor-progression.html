@@ -52,8 +52,7 @@
         .panel,
         .metric-card,
         .publication-card,
-        .flow-step,
-        .equation-card {
+        .flow-step {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 20px;
@@ -70,8 +69,7 @@
         .panel h2,
         .results-panel h3,
         .publication-card h3,
-        .flow-step h3,
-        .equation-card h3 {
+        .flow-step h3 {
             color: var(--text);
             margin-bottom: 12px;
         }
@@ -80,7 +78,6 @@
         .results-list li,
         .publication-card p,
         .flow-step p,
-        .equation-card p,
         .assumption-list li {
             color: var(--text-light);
         }
@@ -190,19 +187,6 @@
             background: rgba(37, 99, 235, 0.12);
             color: var(--primary);
         }
-        .equation-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 24px;
-        }
-        .equation-card {
-            padding: 24px;
-            overflow-x: auto;
-        }
-        .equation-card .math {
-            margin: 14px 0;
-        }
         .publication-grid {
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         }
@@ -242,8 +226,7 @@
         }
         @media (max-width: 900px) {
             .hero-panel,
-            .overview-grid,
-            .equation-grid {
+            .overview-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -259,7 +242,6 @@
             }
             .panel,
             .data-banner,
-            .equation-card,
             .publication-card,
             .flow-step,
             .metric-card {
@@ -402,7 +384,15 @@
 
         <section id="method" class="section section-alt">
             <div class="container">
-                <h2 class="section-title">Methodology Flow</h2>
+                <h2 class="section-title">Methodology</h2>
+                <div class="figure-panel" style="margin-bottom:24px;">
+                    <img src="../assets/research/labor-sgpr-overview.jpg" alt="SGPR model overview: input variables, mathematical model, and prediction targets" loading="lazy">
+                    <div class="figure-caption"><strong>Model overview.</strong> The SGPR model takes 6 input variables from the previous time step and predicts cervical dilation D(t) and fetal station S(t). Each patient is treated as a separate meta-task.</div>
+                </div>
+                <div class="figure-panel" style="margin-bottom:24px;">
+                    <img src="../assets/research/labor-gp-improvements.jpg" alt="Challenges and solutions: scalability with SGPR, adaptability with meta-learning" loading="lazy">
+                    <div class="figure-caption"><strong>Key innovations.</strong> SGPR introduces inducing points to reduce complexity from O(n³) to O(nm²). Meta-learning enables rapid adaptation to new patients with limited observations.</div>
+                </div>
                 <div class="flowchart">
                     <article class="flow-step">
                         <div class="flow-index">1</div>
@@ -425,22 +415,7 @@
                         <p>Posterior forecasts are benchmarked against WHO and ACOG labor curves to quantify the value of individualized prediction.</p>
                     </article>
                 </div>
-                <div class="equation-grid">
-                    <article class="equation-card">
-                        <h3>Posterior mean</h3>
-                        <div class="math">\[
-                            \mu(x_*) = K(x_*, X)\left[K(X,X) + \sigma^2 I\right]^{-1} y
-                        \]</div>
-                        <p>The posterior mean gives the expected future labor state for a candidate time-covariate point \(x_*\).</p>
-                    </article>
-                    <article class="equation-card">
-                        <h3>Posterior variance</h3>
-                        <div class="math">\[
-                            \operatorname{Var}(f_*) = K(x_*, x_*) - K(x_*, X)\left[K(X,X) + \sigma^2 I\right]^{-1}K(X, x_*)
-                        \]</div>
-                        <p>The posterior variance quantifies how much confidence clinicians should place in the individualized forecast.</p>
-                    </article>
-                </div>
+
             </div>
         </section>
 
@@ -463,7 +438,7 @@
                 </div>
                 <div class="figure-panel">
                     <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time and RM-ANOVA P-values" loading="lazy">
-                    <div class="figure-caption"><strong>Statistical validation.</strong> Left: Sensitivity over time comparing SGPR model vs. ACOG guidelines. Right: RM-ANOVA P-values confirm statistically significant differences (Time, Model, and Time×Model interactions below 0.05 threshold).</div>
+                    <div class="figure-caption"><strong>Statistical validation.</strong> Left: Sensitivity over time comparing SGPR model vs. WHO guidelines — SGPR consistently outperforms. Right: RM-ANOVA P-values confirm statistically significant differences (Time, Model, and Time×Model interactions all below the 0.05 significance threshold).</div>
                 </div>
             </div>
         </section>
