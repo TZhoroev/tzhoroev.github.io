@@ -266,6 +266,32 @@
                 padding: 22px;
             }
         }
+        .figure-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .figure-panel img {
+            width: 100%;
+            display: block;
+        }
+        .figure-caption {
+            padding: 16px 24px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+        }
+        .figure-caption strong { color: var(--text); }
+        .figures-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .figures-row { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -296,55 +322,55 @@
                 <p class="research-eyebrow"><i class="fas fa-heartbeat"></i> PeriGen / NIH / NICHD</p>
                 <h1>Labor Progression Prediction with Gaussian Processes</h1>
                 <p class="subtitle">PeriGen / NIH / NICHD</p>
-                <p class="hero-note">This project reframed labor monitoring as a probabilistic forecasting problem: instead of comparing every patient to a single population curve, sparse Gaussian Process models updated individualized expectations and uncertainty as new cervical exams arrived.</p>
+                <p class="hero-note">Predicting labor progression is crucial for timely clinical decisions such as determining when to intervene with cesarean sections. Fixed-structure models like the Friedman curve assume labor follows a predefined pattern, fail to adapt in real time, and do not account for individual variations. This project developed a Sparse Gaussian Process model with meta-learning that provides patient-specific predictions with calibrated uncertainty.</p>
                 <div class="hero-actions">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publications" class="btn btn-secondary"><i class="fas fa-scroll"></i> Publications</a>
                 </div>
             </div>
             <aside class="data-banner" aria-label="Labor dataset summary">
-                <h2>Dataset scale</h2>
-                <p>The validation cohort came from the Consortium on Safe Labor and was large enough to stress-test individualized predictions across diverse labor trajectories.</p>
+                <h2>Dataset</h2>
+                <p>Labor progression records from the Consortium on Safe Labor, including time series of cervical dilation, effacement, fetal station, contractions, and epidural use.</p>
                 <div class="dataset-kpis">
                     <div class="dataset-kpi">
                         <span>49,694</span>
                         births in the evaluation dataset
                     </div>
                     <div class="dataset-kpi">
-                        <span>2</span>
-                        tracked targets: dilation and fetal station
+                        <span>3–12</span>
+                        cervical exams per patient
                     </div>
                     <div class="dataset-kpi">
-                        <span>WHO</span>
-                        benchmarked against standard labor curves
+                        <span>D(t), S(t)</span>
+                        dilation and station predicted
                     </div>
                     <div class="dataset-kpi">
-                        <span>ACOG</span>
-                        benchmarked against clinical thresholds
+                        <span>WHO + ACOG</span>
+                        benchmarked against guidelines
                     </div>
                 </div>
             </aside>
         </div>
         <div class="container metrics-grid">
             <article class="metric-card">
-                <div class="metric-label">Prediction mode</div>
-                <span class="metric-value">Real time</span>
-                <p class="metric-detail">Forecasts update as new observations are collected during labor.</p>
+                <div class="metric-label">Model</div>
+                <span class="metric-value">SGPR</span>
+                <p class="metric-detail">Sparse GP reduces complexity with inducing points (m &laquo; n).</p>
             </article>
             <article class="metric-card">
-                <div class="metric-label">Core result</div>
-                <span class="metric-value">Personalized</span>
-                <p class="metric-detail">Patient-specific forecasts replaced one-size-fits-all progression rules.</p>
+                <div class="metric-label">Adaptation</div>
+                <span class="metric-value">Meta-Learning</span>
+                <p class="metric-detail">Each patient is a separate meta-task; model adapts with limited observations.</p>
             </article>
             <article class="metric-card">
-                <div class="metric-label">Uncertainty</div>
-                <span class="metric-value">Calibrated</span>
-                <p class="metric-detail">Posterior variance was treated as a first-class clinical signal.</p>
+                <div class="metric-label">Input Features</div>
+                <span class="metric-value">6 variables</span>
+                <p class="metric-detail">D(t-1), E(t-1), S(t-1), contractions, epidural, induction.</p>
             </article>
             <article class="metric-card">
-                <div class="metric-label">Benchmarks</div>
-                <span class="metric-value">2 standards</span>
-                <p class="metric-detail">Performance was compared against WHO and ACOG guidance.</p>
+                <div class="metric-label">Prediction</div>
+                <span class="metric-value">Real-time</span>
+                <p class="metric-detail">Forecasts update as new cervical exams arrive during labor.</p>
             </article>
         </div>
     </header>
@@ -353,23 +379,22 @@
         <section id="overview" class="section">
             <div class="container overview-grid">
                 <article class="panel">
-                    <h2>What the model assumed</h2>
-                    <p>Let \(x_i\) denote time and observed maternal-fetal covariates at exam \(i\), and let \(y_i\) denote the corresponding labor state measurement. The modeling assumptions were:</p>
+                    <h2>Limitations of previous work</h2>
                     <ul class="assumption-list">
-                        <li>observations arrive sequentially, so the forecast must update online rather than after a complete trajectory is known;</li>
-                        <li>measurement noise is explicit, with \(y_i = f(x_i) + \varepsilon_i\) and \(\varepsilon_i \sim \mathcal{N}(0, \sigma^2)\);</li>
-                        <li>the latent function \(f\) is smooth but patient-specific, which makes Gaussian Process priors attractive for partial trajectories.</li>
+                        <li><strong>Rigid patterns:</strong> Models like the Friedman curve assume labor follows a predefined pattern, leading to inaccuracy when real data deviates.</li>
+                        <li><strong>No real-time adaptation:</strong> They do not update as new data becomes available, causing outdated predictions.</li>
+                        <li><strong>Population-based:</strong> Fail to account for individual variations common in labor.</li>
                     </ul>
-                    <p>This clinical perspective motivates a sparse GP approach that can scale to the full evaluation cohort while retaining per-patient posterior forecasts.</p>
+                    <h2 style="margin-top:24px;">Our approach</h2>
+                    <p>Using SGPR as a predictive model where each patient's data is treated as a separate meta-task. The model predicts two key factors: cervical dilation D(t) and fetal station S(t), using 6 input variables: D(t-1), effacement E(t-1), station S(t-1), contractions C(t-1), epidural use U, and labor induction L.</p>
                 </article>
                 <aside class="panel results-panel" id="results">
-                    <span class="result-badge"><i class="fas fa-chart-column"></i> Key outcomes</span>
-                    <h3>Results emphasized on this page</h3>
+                    <span class="result-badge"><i class="fas fa-chart-column"></i> Key results</span>
+                    <h3>Conclusions</h3>
                     <ul class="results-list">
-                        <li>Large-scale validation on 49,694 births gave the forecasting approach clinical breadth.</li>
-                        <li>Both cervical dilation and fetal station were modeled, rather than relying on a single summary signal.</li>
-                        <li>Guideline curves from WHO and ACOG served as explicit comparators for practical relevance.</li>
-                        <li>Uncertainty estimates were retained in the final output, not discarded after training.</li>
+                        <li>Developed a novel GP model that adapts to real-time labor progression with patient-specific data, providing both prediction and uncertainty.</li>
+                        <li>Implemented meta-learning to allow the GP to learn from different patients and adapt quickly with minimal data.</li>
+                        <li>Demonstrated superiority over static WHO and ACOG guidelines, potentially reducing unnecessary medical interventions.</li>
                     </ul>
                 </aside>
             </div>
@@ -419,7 +444,31 @@
             </div>
         </section>
 
-        <section id="publications" class="section">
+        <section id="results-figures" class="section">
+            <div class="container">
+                <h2 class="section-title">Results</h2>
+                <div class="figure-panel" style="margin-bottom:24px;">
+                    <img src="../assets/research/labor-population.jpg" alt="Population-level dilation and station predictions with 90% intervals" loading="lazy">
+                    <div class="figure-caption"><strong>Population comparison.</strong> Median prediction (black), 90% prediction interval (shaded), and 25th/75th percentile curves for cervical dilation (left) and fetal station (right) over time. Bottom panels show the corresponding population-level labor curves.</div>
+                </div>
+                <div class="figures-row" style="margin-bottom:24px;">
+                    <div class="figure-panel">
+                        <img src="../assets/research/labor-patient-normal.jpg" alt="Patient-level prediction for normal delivery" loading="lazy">
+                        <div class="figure-caption"><strong>Normal delivery.</strong> GP prediction (black) with uncertainty bands (blue) vs. Friedman curve (pink). Red line: C-section threshold.</div>
+                    </div>
+                    <div class="figure-panel">
+                        <img src="../assets/research/labor-patient-csection.jpg" alt="Patient-level prediction for C-section delivery" loading="lazy">
+                        <div class="figure-caption"><strong>C-section delivery.</strong> The model's uncertainty grows as labor stalls, signaling the need for clinical intervention.</div>
+                    </div>
+                </div>
+                <div class="figure-panel">
+                    <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time and RM-ANOVA P-values" loading="lazy">
+                    <div class="figure-caption"><strong>Statistical validation.</strong> Left: Sensitivity over time comparing SGPR model vs. ACOG guidelines. Right: RM-ANOVA P-values confirm statistically significant differences (Time, Model, and Time×Model interactions below 0.05 threshold).</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications" class="section section-alt">
             <div class="container">
                 <h2 class="section-title">Confirmed Publications</h2>
                 <div class="publication-grid">
