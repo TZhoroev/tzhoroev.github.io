@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Labor Progression Prediction with Gaussian Processes | Tilekbek Zhoroev</title>
-    <meta name="description" content="Sparse Gaussian Process models with meta-learning for real-time labor progression prediction, validated on 49,694 births and benchmarked against WHO and ACOG guidelines.">
+    <meta name="description" content="Data-driven overview of Gaussian Process labor progression prediction validated on 49,694 births with individualized uncertainty-aware forecasts.">
     <meta property="og:title" content="Labor Progression Prediction with Gaussian Processes | Tilekbek Zhoroev">
-    <meta property="og:description" content="Sparse Gaussian Process models with meta-learning for real-time labor progression prediction, validated on 49,694 births and benchmarked against WHO and ACOG guidelines.">
+    <meta property="og:description" content="Data-driven overview of Gaussian Process labor progression prediction validated on 49,694 births with individualized uncertainty-aware forecasts.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tzhoroev.github.io/research/labor-progression.html">
     <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
@@ -14,240 +14,259 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
-
-<style>
-    .research-hero {
-        padding-top: 140px;
-        padding-bottom: 72px;
-    }
-    .research-hero-content {
-        display: block;
-        max-width: 980px;
-    }
-    .research-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 14px;
-        border-radius: 999px;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        color: var(--primary);
-        font-weight: 600;
-        margin-bottom: 20px;
-        box-shadow: var(--shadow);
-    }
-    .hero-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 24px;
-    }
-    .meta-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        color: var(--text-light);
-        font-size: 0.95rem;
-    }
-    .meta-chip i {
-        color: var(--primary);
-    }
-    .research-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 2.15fr) minmax(280px, 0.95fr);
-        gap: 24px;
-        align-items: start;
-    }
-    .detail-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        box-shadow: var(--shadow);
-        padding: 32px;
-    }
-    .content-flow h2,
-    .sidebar-card h3,
-    .highlight-panel h3,
-    .callout h4 {
-        color: var(--text);
-    }
-    .content-flow h2 {
-        font-size: 1.6rem;
-        margin: 0 0 16px;
-    }
-    .content-flow h2:not(:first-child) {
-        margin-top: 32px;
-    }
-    .content-flow p {
-        color: var(--text-light);
-        margin-bottom: 16px;
-        font-size: 1rem;
-    }
-    .highlight-panel,
-    .callout {
-        margin-top: 24px;
-        padding: 24px;
-        border-radius: 16px;
-        background: var(--bg-alt);
-        border: 1px solid var(--border);
-    }
-    .highlight-panel h3,
-    .callout h4 {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 14px;
-        font-size: 1.05rem;
-    }
-    .highlight-panel i,
-    .callout i,
-    .fact-label i,
-    .repo-card i,
-    .publication-card i {
-        color: var(--primary);
-    }
-    .bullet-list {
-        list-style: none;
-        display: grid;
-        gap: 12px;
-        padding: 0;
-        margin: 0;
-    }
-    .bullet-list li {
-        position: relative;
-        padding-left: 22px;
-        color: var(--text-light);
-    }
-    .bullet-list li::before {
-        content: '\2022';
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: var(--primary);
-        font-weight: 700;
-    }
-    .equation-block {
-        margin: 18px 0;
-        padding: 20px 24px;
-        border-radius: 16px;
-        background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.04));
-        border: 1px solid rgba(37, 99, 235, 0.18);
-        overflow-x: auto;
-    }
-    body.dark .equation-block {
-        background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(59, 130, 246, 0.06));
-        border-color: rgba(96, 165, 250, 0.24);
-    }
-    .equation-caption {
-        display: block;
-        margin-top: 12px;
-        color: var(--text-light);
-        font-size: 0.92rem;
-    }
-    .facts-list {
-        display: grid;
-        gap: 18px;
-    }
-    .fact-item {
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--border);
-    }
-    .fact-item:last-child {
-        padding-bottom: 0;
-        border-bottom: none;
-    }
-    .fact-label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        margin-bottom: 6px;
-        color: var(--text);
-    }
-    .fact-item p,
-    .callout p {
-        color: var(--text-light);
-        margin: 0;
-    }
-    .method-grid,
-    .publication-grid,
-    .repo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 20px;
-    }
-    .method-card,
-    .publication-card,
-    .repo-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 24px;
-        box-shadow: var(--shadow);
-    }
-    .method-card h3,
-    .publication-card h3,
-    .repo-card h3 {
-        font-size: 1.05rem;
-        margin-bottom: 10px;
-        color: var(--text);
-    }
-    .method-card p,
-    .publication-card p,
-    .repo-card p {
-        color: var(--text-light);
-        margin-bottom: 12px;
-    }
-    .publication-meta,
-    .repo-link,
-    .note-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--primary);
-        font-weight: 600;
-        font-size: 0.92rem;
-        text-decoration: none;
-    }
-    .repo-link:hover {
-        color: var(--primary-dark);
-    }
-    .footer-link {
-        color: #cbd5e1;
-        text-decoration: none;
-    }
-    .footer-link:hover {
-        color: #ffffff;
-    }
-    @media (max-width: 900px) {
-        .research-layout {
-            grid-template-columns: 1fr;
-        }
-    }
-    @media (max-width: 768px) {
+    <style>
         .research-hero {
-            padding-top: 120px;
-            padding-bottom: 56px;
+            padding-top: 140px;
+            padding-bottom: 72px;
         }
-        .detail-card {
-            padding: 24px;
+        .hero-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+            gap: 24px;
+            align-items: stretch;
         }
-        .hero-meta {
+        .research-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        .hero-note {
+            color: var(--text-light);
+            max-width: 760px;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .data-banner,
+        .panel,
+        .metric-card,
+        .publication-card,
+        .flow-step,
+        .equation-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        .data-banner {
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(14, 165, 233, 0.08));
+        }
+        body.dark .data-banner {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(14, 165, 233, 0.12));
+        }
+        .data-banner h2,
+        .panel h2,
+        .results-panel h3,
+        .publication-card h3,
+        .flow-step h3,
+        .equation-card h3 {
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+        .data-banner p,
+        .panel p,
+        .results-list li,
+        .publication-card p,
+        .flow-step p,
+        .equation-card p,
+        .assumption-list li {
+            color: var(--text-light);
+        }
+        .dataset-kpis {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .dataset-kpi {
+            padding: 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.62);
+            border: 1px solid rgba(37, 99, 235, 0.14);
+        }
+        body.dark .dataset-kpi {
+            background: rgba(15, 23, 42, 0.45);
+            border-color: rgba(96, 165, 250, 0.18);
+        }
+        .dataset-kpi span {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+        .metric-card {
+            padding: 20px;
+        }
+        .metric-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-light);
+        }
+        .metric-value {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .metric-detail {
+            margin-top: 8px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        .overview-grid,
+        .math-grid,
+        .publication-grid {
+            display: grid;
+            gap: 24px;
+        }
+        .overview-grid {
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
+        }
+        .panel {
+            padding: 30px;
+        }
+        .assumption-list,
+        .results-list {
+            margin: 0;
+            padding-left: 18px;
+            display: grid;
             gap: 10px;
         }
-        .meta-chip {
-            width: 100%;
-            justify-content: flex-start;
+        .results-panel {
+            display: grid;
+            gap: 18px;
         }
-    }
-</style>
-
+        .result-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: var(--bg-alt);
+            color: var(--primary);
+            font-weight: 600;
+            border: 1px solid var(--border);
+            width: fit-content;
+        }
+        .flowchart {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 28px;
+        }
+        .flow-step {
+            padding: 24px;
+            position: relative;
+        }
+        .flow-index {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: inline-grid;
+            place-items: center;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: rgba(37, 99, 235, 0.12);
+            color: var(--primary);
+        }
+        .equation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+        .equation-card {
+            padding: 24px;
+            overflow-x: auto;
+        }
+        .equation-card .math {
+            margin: 14px 0;
+        }
+        .publication-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .publication-card {
+            padding: 26px;
+        }
+        .pub-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+        .resource-link,
+        .footer-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .resource-link:hover,
+        .footer-link:hover {
+            color: var(--primary-dark);
+        }
+        .footer-link {
+            color: #cbd5e1;
+            font-weight: 400;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+        }
+        @media (max-width: 1100px) {
+            .metrics-grid,
+            .flowchart {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 900px) {
+            .hero-panel,
+            .overview-grid,
+            .equation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .research-hero {
+                padding-top: 120px;
+                padding-bottom: 56px;
+            }
+            .metrics-grid,
+            .flowchart,
+            .dataset-kpis {
+                grid-template-columns: 1fr;
+            }
+            .panel,
+            .data-banner,
+            .equation-card,
+            .publication-card,
+            .flow-step,
+            .metric-card {
+                padding: 22px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -256,8 +275,9 @@
             <ul class="nav-menu">
                 <li><a href="../index.html">&larr; Back to Home</a></li>
                 <li><a href="#overview">Overview</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#method">Method</a></li>
                 <li><a href="#publications">Publications</a></li>
-                <li><a href="#software">Code</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
@@ -271,79 +291,150 @@
     </nav>
 
     <header class="hero research-hero">
-        <div class="hero-content research-hero-content">
+        <div class="container hero-panel">
             <div class="hero-text">
-                <p class="research-eyebrow"><i class="fas fa-heartbeat"></i> Research Detail</p>
+                <p class="research-eyebrow"><i class="fas fa-heartbeat"></i> Data-Driven Research Detail</p>
                 <h1>Labor Progression Prediction with Gaussian Processes</h1>
                 <p class="subtitle">PeriGen / NIH / NICHD</p>
-                <p class="tagline">Sparse Gaussian Process models with meta-learning were developed to predict cervical dilation and fetal station in real time, turning large-scale obstetric data into individualized, uncertainty-aware labor forecasts.</p>
-                <div class="hero-links">
+                <p class="hero-note">This project reframed labor monitoring as a probabilistic forecasting problem: instead of comparing every patient to a single population curve, sparse Gaussian Process models updated individualized expectations and uncertainty as new cervical exams arrived.</p>
+                <div class="hero-actions">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
-                    <a href="https://github.com/GPflow/GPflow" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> GPflow</a><a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> TensorFlow</a>
-                </div>
-                <div class="hero-meta">
-                    <span class="meta-chip"><i class="fas fa-hospital-user"></i>49,694 births from the Consortium on Safe Labor</span><span class="meta-chip"><i class="fas fa-chart-line"></i>Real-time prediction of dilation and fetal station</span><span class="meta-chip"><i class="fas fa-award"></i>Outperformed WHO and ACOG labor curves</span>
+                    <a href="#publications" class="btn btn-secondary"><i class="fas fa-scroll"></i> View Publications</a>
                 </div>
             </div>
+            <aside class="data-banner" aria-label="Labor dataset summary">
+                <h2>Dataset scale</h2>
+                <p>The validation cohort came from the Consortium on Safe Labor and was large enough to stress-test individualized predictions across diverse labor trajectories.</p>
+                <div class="dataset-kpis">
+                    <div class="dataset-kpi">
+                        <span>49,694</span>
+                        births in the evaluation dataset
+                    </div>
+                    <div class="dataset-kpi">
+                        <span>2</span>
+                        tracked targets: dilation and fetal station
+                    </div>
+                    <div class="dataset-kpi">
+                        <span>WHO</span>
+                        benchmarked against standard labor curves
+                    </div>
+                    <div class="dataset-kpi">
+                        <span>ACOG</span>
+                        benchmarked against clinical thresholds
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="container metrics-grid">
+            <article class="metric-card">
+                <div class="metric-label">Prediction mode</div>
+                <span class="metric-value">Real time</span>
+                <p class="metric-detail">Forecasts update as new observations are collected during labor.</p>
+            </article>
+            <article class="metric-card">
+                <div class="metric-label">Core result</div>
+                <span class="metric-value">Personalized</span>
+                <p class="metric-detail">Patient-specific forecasts replaced one-size-fits-all progression rules.</p>
+            </article>
+            <article class="metric-card">
+                <div class="metric-label">Uncertainty</div>
+                <span class="metric-value">Calibrated</span>
+                <p class="metric-detail">Posterior variance was treated as a first-class clinical signal.</p>
+            </article>
+            <article class="metric-card">
+                <div class="metric-label">Benchmarks</div>
+                <span class="metric-value">2 standards</span>
+                <p class="metric-detail">Performance was compared against WHO and ACOG guidance.</p>
+            </article>
         </div>
     </header>
 
     <main>
         <section id="overview" class="section">
-            <div class="container research-layout">
-                <article class="detail-card content-flow">
-                    <h2>Research Overview</h2>
-                    
-<p>This project focused on replacing one-size-fits-all labor curves with individualized probabilistic forecasts. By combining sparse Gaussian Process models with meta-learning, the system continuously updated predictions of cervical dilation and fetal station as new observations arrived during labor.</p>
-<p>The models were validated on <strong>49,694 births</strong> from the Consortium on Safe Labor dataset, providing a large and clinically meaningful test bed for real-time prediction. The emphasis was not only on point prediction, but also on calibrated uncertainty estimates that can support safer, context-aware decision making in obstetrics.</p>
-<p>The resulting framework demonstrated stronger predictive performance than rule-based labor curves and thresholds from the <strong>World Health Organization (WHO)</strong> and the <strong>American College of Obstetricians and Gynecologists (ACOG)</strong>. Implementation was built with <strong>GPflow</strong> and <strong>TensorFlow</strong>, enabling scalable training and efficient deployment of sparse kernels in practice.</p>
-
-                    <div class="highlight-panel">
-                        <h3><i class="fas fa-star"></i>Core Contributions</h3>
-                        <ul class="bullet-list">
-                            <li>Developed sparse Gaussian Process models with meta-learning to forecast labor progression at the patient level.</li><li>Modeled both cervical dilation and fetal station to support richer tracking of labor state over time.</li><li>Validated the framework on a large obstetric cohort of 49,694 births from the Consortium on Safe Labor.</li><li>Demonstrated superior predictive utility relative to WHO and ACOG labor curves and guideline-based thresholds.</li>
-                        </ul>
-                    </div>
-                    <h2>Mathematical Formulation</h2>
-                    <p>Gaussian Processes provide a principled Bayesian framework for interpolation, forecasting, and uncertainty quantification. In this setting, posterior updates transformed partially observed labor trajectories into individualized predictive distributions for future labor states.</p>
-                    <div class="equation-block">\[\mu(x_*) = K(x_*, X)\left[K(X, X) + \sigma^2 I\right]^{-1} y\]<span class="equation-caption">Posterior mean used to estimate the expected labor state at a future time or clinical covariate value.</span></div><div class="equation-block">\[\operatorname{Var}(f_*) = K(x_*, x_*) - K(x_*, X)\left[K(X, X) + \sigma^2 I\right]^{-1}K(X, x_*)\]<span class="equation-caption">Posterior variance used to quantify uncertainty, an essential ingredient for responsible real-time clinical decision support.</span></div>
+            <div class="container overview-grid">
+                <article class="panel">
+                    <h2>What the model assumed</h2>
+                    <p>Let \(x_i\) denote time and observed maternal-fetal covariates at exam \(i\), and let \(y_i\) denote the corresponding labor state measurement. The modeling assumptions were:</p>
+                    <ul class="assumption-list">
+                        <li>observations arrive sequentially, so the forecast must update online rather than after a complete trajectory is known;</li>
+                        <li>measurement noise is explicit, with \(y_i = f(x_i) + \varepsilon_i\) and \(\varepsilon_i \sim \mathcal{N}(0, \sigma^2)\);</li>
+                        <li>the latent function \(f\) is smooth but patient-specific, which makes Gaussian Process priors attractive for partial trajectories.</li>
+                    </ul>
+                    <p>That setup makes the page intentionally data-forward: the clinical value comes from how the method scales to tens of thousands of births while still returning individualized posterior forecasts.</p>
                 </article>
-                <aside class="detail-card sidebar-card">
-                    <h3>At a Glance</h3>
-                    <div class="facts-list">
-                        <div class="fact-item"><div class="fact-label"><i class="fas fa-building"></i>Affiliation</div><p>PeriGen / NIH / NICHD collaboration on predictive models for labor monitoring.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-database"></i>Dataset</div><p>Consortium on Safe Labor cohort spanning tens of thousands of births.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-microchip"></i>Implementation</div><p>Sparse GP models implemented with GPflow and TensorFlow.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-scale-balanced"></i>Benchmark</div><p>Compared directly against WHO and ACOG labor curves and guideline rules.</p></div>
-                    </div>
-                    <div class="callout">
-                        <h4><i class="fas fa-lightbulb"></i>Why it matters</h4>
-                        <p>This work moves labor management away from rigid population averages and toward patient-specific probabilistic forecasting, allowing clinicians to reason about both expected progression and uncertainty in real time.</p>
-                    </div>
+                <aside class="panel results-panel" id="results">
+                    <span class="result-badge"><i class="fas fa-chart-column"></i> Key outcomes</span>
+                    <h3>Results emphasized on this page</h3>
+                    <ul class="results-list">
+                        <li>Large-scale validation on 49,694 births gave the forecasting approach clinical breadth.</li>
+                        <li>Both cervical dilation and fetal station were modeled, rather than relying on a single summary signal.</li>
+                        <li>Guideline curves from WHO and ACOG served as explicit comparators for practical relevance.</li>
+                        <li>Uncertainty estimates were retained in the final output, not discarded after training.</li>
+                    </ul>
                 </aside>
             </div>
         </section>
 
-        <section id="methodology" class="section section-alt">
+        <section id="method" class="section section-alt">
             <div class="container">
-                <h2 class="section-title">Methodology</h2>
-                <div class="method-grid">
-                    <article class="method-card"><h3>Sparse Gaussian Process Modeling</h3><p>Sparse inducing-point approximations preserved the expressive power of Gaussian Processes while keeping inference efficient enough for large-scale obstetric data and real-time updates.</p></article><article class="method-card"><h3>Meta-Learned Trajectory Adaptation</h3><p>Meta-learning strategies helped the model adapt rapidly to partial patient trajectories, making the framework more effective in early and mid-labor when observations are still limited.</p></article><article class="method-card"><h3>Clinical Benchmarking</h3><p>Model outputs were evaluated against canonical guideline curves, enabling a direct comparison between individualized probabilistic forecasts and standard labor management heuristics.</p></article>
+                <h2 class="section-title">Methodology Flow</h2>
+                <div class="flowchart">
+                    <article class="flow-step">
+                        <div class="flow-index">1</div>
+                        <h3>Ingest longitudinal exams</h3>
+                        <p>Sequential cervical dilation, fetal station, and timing information define a partially observed labor trajectory for each patient.</p>
+                    </article>
+                    <article class="flow-step">
+                        <div class="flow-index">2</div>
+                        <h3>Fit sparse GP structure</h3>
+                        <p>Sparse inducing-point approximations keep inference computationally practical on a dataset with nearly fifty thousand births.</p>
+                    </article>
+                    <article class="flow-step">
+                        <div class="flow-index">3</div>
+                        <h3>Adapt to partial histories</h3>
+                        <p>Meta-learning components help the model respond quickly when only an early or mid-labor trajectory is available.</p>
+                    </article>
+                    <article class="flow-step">
+                        <div class="flow-index">4</div>
+                        <h3>Compare against guidelines</h3>
+                        <p>Posterior forecasts are benchmarked against WHO and ACOG labor curves to quantify the value of individualized prediction.</p>
+                    </article>
+                </div>
+                <div class="equation-grid">
+                    <article class="equation-card">
+                        <h3>Posterior mean</h3>
+                        <div class="math">\[
+                            \mu(x_*) = K(x_*, X)\left[K(X,X) + \sigma^2 I\right]^{-1} y
+                        \]</div>
+                        <p>The posterior mean gives the expected future labor state for a candidate time-covariate point \(x_*\).</p>
+                    </article>
+                    <article class="equation-card">
+                        <h3>Posterior variance</h3>
+                        <div class="math">\[
+                            \operatorname{Var}(f_*) = K(x_*, x_*) - K(x_*, X)\left[K(X,X) + \sigma^2 I\right]^{-1}K(X, x_*)
+                        \]</div>
+                        <p>The posterior variance quantifies how much confidence clinicians should place in the individualized forecast.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
         <section id="publications" class="section">
             <div class="container">
-                <h2 class="section-title">Related Publications</h2>
+                <h2 class="section-title">Confirmed Publications</h2>
                 <div class="publication-grid">
-                    <article class="publication-card"><h3>Real-time labor progression prediction study</h3><p>Journal publication reporting the Gaussian Process framework for labor progression prediction and its comparative advantage over established guideline curves.</p><span class="publication-meta"><i class="fas fa-scroll"></i>American Journal of Obstetrics and Gynecology, 2024 · 12 citations</span><div style="margin-top:12px;"><span class="publication-meta"><i class="fas fa-book"></i>American Journal of Obstetrics and Gynecology, 2024 · 12 citations</span></div></article><article class="publication-card"><h3>Sparse and meta-learned modeling for labor monitoring</h3><p>Companion publication describing the modeling approach, validation strategy, and translational relevance for obstetric monitoring workflows.</p><span class="publication-meta"><i class="fas fa-scroll"></i>Bioengineering, 2024 · 2 citations</span><div style="margin-top:12px;"><span class="publication-meta"><i class="fas fa-book"></i>Bioengineering, 2024 · 2 citations</span></div></article>
-                </div>
-            </div>
-        </section>
-
-        <section id="software" class="section section-alt">
-            <div class="container">
-                <h2 class="section-title">Code and Repositories</h2>
-                <div class="repo-grid">
-                    <article class="repo-card"><h3>GPflow</h3><p>Core Gaussian Process library used for scalable variational and sparse modeling in TensorFlow.</p><a class="repo-link" href="https://github.com/GPflow/GPflow" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Open repository</a></article><article class="repo-card"><h3>TensorFlow</h3><p>Numerical backbone for optimization, automatic differentiation, and deployment of the model implementation.</p><a class="repo-link" href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Open repository</a></article><article class="repo-card"><h3>Project code availability</h3><p>The research page summarizes the published work; a dedicated public PeriGen/NIH repository was not linked in the available materials.</p><span class="note-label"><i class="fas fa-lock"></i>No public repository listed</span></article>
+                    <article class="publication-card">
+                        <div class="pub-meta"><i class="fas fa-book-open"></i> American Journal of Obstetrics and Gynecology</div>
+                        <h3>Real-time labor progression prediction paper</h3>
+                        <p>This paper documents the clinically grounded forecasting framework and its comparison against established labor curves.</p>
+                        <a class="resource-link" href="https://www.sciencedirect.com/science/article/pii/S0002937824003697" target="_blank" rel="noopener noreferrer">Read on ScienceDirect</a>
+                    </article>
+                    <article class="publication-card">
+                        <div class="pub-meta"><i class="fas fa-book-open"></i> Bioengineering</div>
+                        <h3>Gaussian Process modeling companion paper</h3>
+                        <p>This companion article highlights the modeling strategy, translation to practice, and uncertainty-aware interpretation.</p>
+                        <a class="resource-link" href="https://www.mdpi.com/2306-5354/11/1/73" target="_blank" rel="noopener noreferrer">Read on MDPI</a>
+                    </article>
                 </div>
             </div>
         </section>

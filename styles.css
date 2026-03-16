@@ -110,12 +110,14 @@ body.dark .btn-secondary { background: #475569; }
 
 /* About */
 .about-content p { font-size: 1.1rem; max-width: 800px; margin: 0 auto 24px; text-align: center; color: var(--text-light); }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 48px; }
-.skill-category { background: var(--bg-card); padding: 24px; border-radius: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); }
-.skill-category h3 { font-size: 1.1rem; margin-bottom: 16px; color: var(--primary); }
-.skill-category ul { list-style: none; }
-.skill-category li { padding: 8px 0; border-bottom: 1px solid var(--border); color: var(--text-light); }
-.skill-category li:last-child { border-bottom: none; }
+.research-interests { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.interest-tag {
+    display: inline-block; padding: 8px 20px; border-radius: 24px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--primary); font-weight: 500; font-size: 0.9rem;
+    transition: all 0.2s;
+}
+.interest-tag:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
 /* Research Cards (clickable) */
 .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
@@ -172,7 +174,12 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
     position: absolute; left: -5px; top: 4px; width: 12px; height: 12px;
     background: var(--primary); border-radius: 50%; border: 2px solid var(--bg-alt);
 }
-.timeline-header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.timeline-header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 8px; }
+.timeline-logo {
+    width: 44px; height: 44px; object-fit: contain; border-radius: 8px;
+    background: var(--bg-card); padding: 4px; border: 1px solid var(--border);
+    flex-shrink: 0;
+}
 .timeline-header h3 { font-size: 1.15rem; color: var(--text); }
 .timeline-header .company { font-weight: 600; color: var(--primary); }
 .timeline-header .date { color: var(--text-light); font-size: 0.9rem; }
@@ -189,10 +196,12 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
     display: flex; gap: 20px;
 }
 .edu-logo {
-    width: 56px; height: 56px; background: var(--primary); border-radius: 12px;
+    width: 56px; height: 56px; border-radius: 12px;
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    background: var(--bg-alt); border: 1px solid var(--border); overflow: hidden; padding: 6px;
 }
-.edu-logo i { font-size: 1.4rem; color: white; }
+.edu-logo img { width: 100%; height: 100%; object-fit: contain; }
+.edu-logo i { font-size: 1.4rem; color: var(--primary); }
 .edu-content h3 { font-size: 1.1rem; margin-bottom: 4px; color: var(--text); }
 .edu-content .institution { font-weight: 600; color: var(--primary); margin-bottom: 4px; }
 .edu-content .date { color: var(--text-light); font-size: 0.9rem; margin-bottom: 8px; }

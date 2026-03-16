@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alzheimer's Disease Progression Modeling | Tilekbek Zhoroev</title>
-    <meta name="description" content="Variational Gaussian Process models with ordinal likelihood for uncertainty-aware prediction of Alzheimer's disease progression from clinical trial data on 1,683 patients.">
+    <meta name="description" content="Clinical-trial focused overview of uncertainty-aware Alzheimer's disease progression modeling with ordinal likelihood and Gaussian Processes.">
     <meta property="og:title" content="Alzheimer's Disease Progression Modeling | Tilekbek Zhoroev">
-    <meta property="og:description" content="Variational Gaussian Process models with ordinal likelihood for uncertainty-aware prediction of Alzheimer's disease progression from clinical trial data on 1,683 patients.">
+    <meta property="og:description" content="Clinical-trial focused overview of uncertainty-aware Alzheimer's disease progression modeling with ordinal likelihood and Gaussian Processes.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tzhoroev.github.io/research/alzheimers.html">
     <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
@@ -14,240 +14,160 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
-
-<style>
-    .research-hero {
-        padding-top: 140px;
-        padding-bottom: 72px;
-    }
-    .research-hero-content {
-        display: block;
-        max-width: 980px;
-    }
-    .research-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 14px;
-        border-radius: 999px;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        color: var(--primary);
-        font-weight: 600;
-        margin-bottom: 20px;
-        box-shadow: var(--shadow);
-    }
-    .hero-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 24px;
-    }
-    .meta-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        color: var(--text-light);
-        font-size: 0.95rem;
-    }
-    .meta-chip i {
-        color: var(--primary);
-    }
-    .research-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 2.15fr) minmax(280px, 0.95fr);
-        gap: 24px;
-        align-items: start;
-    }
-    .detail-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        box-shadow: var(--shadow);
-        padding: 32px;
-    }
-    .content-flow h2,
-    .sidebar-card h3,
-    .highlight-panel h3,
-    .callout h4 {
-        color: var(--text);
-    }
-    .content-flow h2 {
-        font-size: 1.6rem;
-        margin: 0 0 16px;
-    }
-    .content-flow h2:not(:first-child) {
-        margin-top: 32px;
-    }
-    .content-flow p {
-        color: var(--text-light);
-        margin-bottom: 16px;
-        font-size: 1rem;
-    }
-    .highlight-panel,
-    .callout {
-        margin-top: 24px;
-        padding: 24px;
-        border-radius: 16px;
-        background: var(--bg-alt);
-        border: 1px solid var(--border);
-    }
-    .highlight-panel h3,
-    .callout h4 {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 14px;
-        font-size: 1.05rem;
-    }
-    .highlight-panel i,
-    .callout i,
-    .fact-label i,
-    .repo-card i,
-    .publication-card i {
-        color: var(--primary);
-    }
-    .bullet-list {
-        list-style: none;
-        display: grid;
-        gap: 12px;
-        padding: 0;
-        margin: 0;
-    }
-    .bullet-list li {
-        position: relative;
-        padding-left: 22px;
-        color: var(--text-light);
-    }
-    .bullet-list li::before {
-        content: '\2022';
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: var(--primary);
-        font-weight: 700;
-    }
-    .equation-block {
-        margin: 18px 0;
-        padding: 20px 24px;
-        border-radius: 16px;
-        background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.04));
-        border: 1px solid rgba(37, 99, 235, 0.18);
-        overflow-x: auto;
-    }
-    body.dark .equation-block {
-        background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(59, 130, 246, 0.06));
-        border-color: rgba(96, 165, 250, 0.24);
-    }
-    .equation-caption {
-        display: block;
-        margin-top: 12px;
-        color: var(--text-light);
-        font-size: 0.92rem;
-    }
-    .facts-list {
-        display: grid;
-        gap: 18px;
-    }
-    .fact-item {
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--border);
-    }
-    .fact-item:last-child {
-        padding-bottom: 0;
-        border-bottom: none;
-    }
-    .fact-label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        margin-bottom: 6px;
-        color: var(--text);
-    }
-    .fact-item p,
-    .callout p {
-        color: var(--text-light);
-        margin: 0;
-    }
-    .method-grid,
-    .publication-grid,
-    .repo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 20px;
-    }
-    .method-card,
-    .publication-card,
-    .repo-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 24px;
-        box-shadow: var(--shadow);
-    }
-    .method-card h3,
-    .publication-card h3,
-    .repo-card h3 {
-        font-size: 1.05rem;
-        margin-bottom: 10px;
-        color: var(--text);
-    }
-    .method-card p,
-    .publication-card p,
-    .repo-card p {
-        color: var(--text-light);
-        margin-bottom: 12px;
-    }
-    .publication-meta,
-    .repo-link,
-    .note-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--primary);
-        font-weight: 600;
-        font-size: 0.92rem;
-        text-decoration: none;
-    }
-    .repo-link:hover {
-        color: var(--primary-dark);
-    }
-    .footer-link {
-        color: #cbd5e1;
-        text-decoration: none;
-    }
-    .footer-link:hover {
-        color: #ffffff;
-    }
-    @media (max-width: 900px) {
-        .research-layout {
-            grid-template-columns: 1fr;
-        }
-    }
-    @media (max-width: 768px) {
+    <style>
         .research-hero {
-            padding-top: 120px;
-            padding-bottom: 56px;
+            padding-top: 140px;
+            padding-bottom: 64px;
         }
-        .detail-card {
-            padding: 24px;
-        }
-        .hero-meta {
+        .research-eyebrow {
+            display: inline-flex;
+            align-items: center;
             gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
         }
-        .meta-chip {
+        .hero-clinical {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.92fr);
+            gap: 24px;
+            align-items: stretch;
+        }
+        .trial-panel,
+        .metric-card,
+        .dashboard-card,
+        .comparison-card,
+        .equation-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        .trial-panel,
+        .dashboard-card,
+        .comparison-card,
+        .equation-card {
+            padding: 28px;
+        }
+        .trial-panel {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.11), rgba(16, 185, 129, 0.08));
+        }
+        body.dark .trial-panel {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(16, 185, 129, 0.12));
+        }
+        .hero-copy,
+        .trial-panel p,
+        .dashboard-card p,
+        .equation-card p,
+        .comparison-note,
+        td {
+            color: var(--text-light);
+        }
+        .trial-panel h2,
+        .dashboard-card h2,
+        .comparison-card h2,
+        .equation-card h3,
+        th {
+            color: var(--text);
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .metric-card {
+            padding: 20px;
+        }
+        .metric-card strong {
+            display: block;
+            font-size: 1.55rem;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.35fr);
+            gap: 24px;
+            align-items: start;
+        }
+        .trial-points {
+            margin: 0;
+            padding-left: 18px;
+            display: grid;
+            gap: 10px;
+            color: var(--text-light);
+        }
+        .comparison-table {
             width: 100%;
-            justify-content: flex-start;
+            border-collapse: collapse;
+            margin-top: 18px;
         }
-    }
-</style>
-
+        .comparison-table th,
+        .comparison-table td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        .comparison-table th {
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .equation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+        .equation-card {
+            overflow-x: auto;
+        }
+        .footer-link {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+        }
+        @media (max-width: 1100px) {
+            .metric-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 900px) {
+            .hero-clinical,
+            .dashboard-grid,
+            .equation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .research-hero {
+                padding-top: 120px;
+                padding-bottom: 56px;
+            }
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+            .trial-panel,
+            .dashboard-card,
+            .comparison-card,
+            .equation-card,
+            .metric-card {
+                padding: 22px;
+            }
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -256,8 +176,9 @@
             <ul class="nav-menu">
                 <li><a href="../index.html">&larr; Back to Home</a></li>
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#software">Code</a></li>
+                <li><a href="#trial-design">Trial Design</a></li>
+                <li><a href="#comparison">Comparison</a></li>
+                <li><a href="#likelihood">Ordinal Likelihood</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
@@ -271,80 +192,126 @@
     </nav>
 
     <header class="hero research-hero">
-        <div class="hero-content research-hero-content">
+        <div class="container hero-clinical">
             <div class="hero-text">
-                <p class="research-eyebrow"><i class="fas fa-dna"></i> Research Detail</p>
+                <p class="research-eyebrow"><i class="fas fa-dna"></i> Clinical-Trial Research Detail</p>
                 <h1>Alzheimer's Disease Progression Modeling</h1>
-                <p class="subtitle">Johnson & Johnson (Summer Internship 2023)</p>
-                <p class="tagline">During a Summer 2023 internship at Johnson & Johnson, variational Gaussian Process models with ordinal likelihood were developed to predict ADAS cognitive scores and quantify uncertainty in Alzheimer's disease progression.</p>
+                <p class="subtitle">Johnson &amp; Johnson · Summer Internship 2023</p>
+                <p class="hero-copy">This internship focused on longitudinal ADAS prediction from clinical-trial data. The design question was practical: how should uncertainty-aware Gaussian Process models be structured when outcomes are ordered, patient trajectories are heterogeneous, and trial interpretation depends on more than a single point forecast?</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
-                    <a href="https://github.com/GPflow/GPflow" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> GPflow</a><a href="https://github.com/tensorflow/probability" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> TF Probability</a>
-                </div>
-                <div class="hero-meta">
-                    <span class="meta-chip"><i class="fas fa-users"></i>1,683 patients from clinical trial datasets</span><span class="meta-chip"><i class="fas fa-vials"></i>Five model configurations compared with 5-fold cross-validation</span><span class="meta-chip"><i class="fas fa-shield-heart"></i>Uncertainty-aware prediction of ADAS trajectories</span>
+                    <a href="#comparison" class="btn btn-secondary"><i class="fas fa-table"></i> View Comparison</a>
                 </div>
             </div>
+            <aside class="trial-panel" id="trial-design">
+                <h2>Trial-centered view</h2>
+                <p>The work emphasized model comparison under repeated validation, with ordinal likelihoods used to better reflect ordered cognitive outcomes.</p>
+                <ul class="trial-points">
+                    <li>1,683 patient records from clinical-trial datasets</li>
+                    <li>five candidate configurations compared with 5-fold cross-validation</li>
+                    <li>ADAS trajectories modeled with posterior uncertainty, not only mean trend</li>
+                </ul>
+            </aside>
+        </div>
+        <div class="container metric-grid">
+            <article class="metric-card">
+                <strong>1,683</strong>
+                patients in the analysis cohort
+            </article>
+            <article class="metric-card">
+                <strong>5</strong>
+                model configurations in the comparison study
+            </article>
+            <article class="metric-card">
+                <strong>5-fold</strong>
+                cross-validation for robustness checks
+            </article>
+            <article class="metric-card">
+                <strong>Ordinal</strong>
+                likelihood used to respect score ordering
+            </article>
         </div>
     </header>
 
     <main>
         <section id="overview" class="section">
-            <div class="container research-layout">
-                <article class="detail-card content-flow">
-                    <h2>Research Overview</h2>
-                    
-<p>Alzheimer’s disease progression is heterogeneous, making it difficult to forecast cognitive decline with a single deterministic trajectory. This project addressed that challenge with <strong>variational Gaussian Process</strong> models that produced both predictions and uncertainty estimates for longitudinal cognitive outcomes.</p>
-<p>The modeling target was <strong>ADAS cognitive score progression</strong>, using clinical trial data from <strong>1,683 patients</strong>. An ordinal likelihood formulation was used to better respect the structure of observed outcomes, while a variational approximation enabled scalable learning for several competing model choices.</p>
-<p>Five distinct model configurations were compared using <strong>5-fold cross-validation</strong>, allowing the internship study to evaluate trade-offs in fit, calibration, and predictive robustness. The project emphasized uncertainty quantification as a core requirement for translating disease-progression models into decision-support settings.</p>
-
-                    <div class="highlight-panel">
-                        <h3><i class="fas fa-star"></i>Core Contributions</h3>
-                        <ul class="bullet-list">
-                            <li>Developed variational Gaussian Process models tailored to ordinal clinical outcomes in Alzheimer’s disease.</li><li>Predicted ADAS cognitive scores while quantifying uncertainty in patient-specific disease trajectories.</li><li>Benchmarked five modeling configurations with 5-fold cross-validation on 1,683 patients.</li><li>Positioned probabilistic progression models as more informative than single-value forecasts for clinical research workflows.</li>
-                        </ul>
-                    </div>
-                    <h2>Mathematical Formulation</h2>
-                    <p>Variational inference provided a tractable route to fitting Gaussian Process models with non-Gaussian likelihoods. The objective balances data fit under the approximate posterior with a regularization term that keeps the variational family close to the GP prior.</p>
-                    <div class="equation-block">\[\mathcal{L}_{\mathrm{ELBO}} = \mathbb{E}_{q(f)}\big[\log p(y\mid f)\big] - \mathrm{KL}\big(q(f)\,\|\,p(f)\big)\]<span class="equation-caption">Evidence lower bound used to optimize the variational posterior for ordinal-outcome Gaussian Process models.</span></div><div class="equation-block">\[p(y_i = k\mid f_i) = g(\tau_k - f_i) - g(\tau_{k-1} - f_i)\]<span class="equation-caption">Ordinal likelihood structure that maps latent GP function values to ordered cognitive-score categories through thresholds.</span></div>
+            <div class="container dashboard-grid">
+                <article class="dashboard-card">
+                    <h2>Clinical modeling assumptions</h2>
+                    <p>Let \(x_i\) denote covariates and visit-time information for patient \(i\), and let \(y_i\) denote the ordered ADAS outcome. The internship study treated progression as a latent smooth function observed with uncertainty, while explicitly accounting for the fact that ordered outcomes should not be handled as if they were unconstrained real values.</p>
+                    <p>That perspective makes two modeling layers essential: a Gaussian Process prior for flexible longitudinal structure and an ordinal observation model for clinically meaningful category boundaries.</p>
                 </article>
-                <aside class="detail-card sidebar-card">
-                    <h3>At a Glance</h3>
-                    <div class="facts-list">
-                        <div class="fact-item"><div class="fact-label"><i class="fas fa-building"></i>Affiliation</div><p>Johnson & Johnson summer internship project in 2023.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-brain"></i>Clinical endpoint</div><p>ADAS cognitive scores for Alzheimer’s disease progression modeling.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-layer-group"></i>Model family</div><p>Variational Gaussian Processes with ordinal likelihood.</p></div><div class="fact-item"><div class="fact-label"><i class="fas fa-repeat"></i>Validation</div><p>Five configurations tested with 5-fold cross-validation.</p></div>
-                    </div>
-                    <div class="callout">
-                        <h4><i class="fas fa-lightbulb"></i>Why it matters</h4>
-                        <p>Uncertainty-aware progression modeling can help distinguish confident forecasts from ambiguous ones, which is especially important when clinical trial populations are heterogeneous and downstream decisions depend on risk-sensitive interpretation.</p>
-                    </div>
+                <aside class="dashboard-card">
+                    <h2>Internship emphasis</h2>
+                    <p>The practical goal was comparative evaluation, not publication packaging. This page therefore focuses on patient scale, validation structure, and the role of ordinal likelihood in uncertainty-aware disease progression modeling.</p>
                 </aside>
             </div>
         </section>
 
-        <section id="methodology" class="section section-alt">
+        <section id="comparison" class="section section-alt">
             <div class="container">
-                <h2 class="section-title">Methodology</h2>
-                <div class="method-grid">
-                    <article class="method-card"><h3>Variational Gaussian Processes</h3><p>A variational approximation made it feasible to fit flexible nonparametric models while preserving the Bayesian uncertainty quantification that is critical in disease progression analysis.</p></article><article class="method-card"><h3>Ordinal Outcome Modeling</h3><p>Ordinal likelihoods respected the structure of cognitive scoring and reduced the mismatch that can arise when discrete or ordered outcomes are treated as purely continuous.</p></article><article class="method-card"><h3>Cross-Validated Model Comparison</h3><p>Five candidate configurations were assessed with 5-fold cross-validation to compare predictive performance, uncertainty behavior, and robustness across patient subsets.</p></article>
+                <div class="comparison-card">
+                    <h2>Five-Configuration Comparison</h2>
+                    <p class="comparison-note">The internship summary reports five compared configurations. The table below highlights their comparative role without relying on internal code names.</p>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Configuration</th>
+                                <th>Modeling focus</th>
+                                <th>Purpose in the study</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Configuration 1</td>
+                                <td>Continuous-response GP baseline</td>
+                                <td>Establish a smooth probabilistic benchmark for ADAS trajectories.</td>
+                            </tr>
+                            <tr>
+                                <td>Configuration 2</td>
+                                <td>Sparse GP approximation</td>
+                                <td>Test whether computational simplification changes the quality of uncertainty estimates.</td>
+                            </tr>
+                            <tr>
+                                <td>Configuration 3</td>
+                                <td>Variational GP</td>
+                                <td>Support scalable approximate inference across repeated cross-validation splits.</td>
+                            </tr>
+                            <tr>
+                                <td>Configuration 4</td>
+                                <td>Variational GP with ordinal likelihood</td>
+                                <td>Respect the ordered structure of observed cognitive outcomes.</td>
+                            </tr>
+                            <tr>
+                                <td>Configuration 5</td>
+                                <td>Final uncertainty-aware comparison candidate</td>
+                                <td>Contrast calibration, interpretability, and predictive stability against the other four settings.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
 
-        <section id="publications" class="section">
-            <div class="container">
-                <h2 class="section-title">Related Publications</h2>
-                <div class="publication-grid">
-                    <article class="publication-card"><h3>Internship research summary</h3><p>This project was completed as an internship research study. No public manuscript was specified in the provided materials, but the work centered on probabilistic modeling of ADAS trajectories with uncertainty quantification.</p><span class="publication-meta"><i class="fas fa-scroll"></i>Johnson & Johnson, 2023</span><div style="margin-top:12px;"><span class="publication-meta"><i class="fas fa-book"></i>Johnson & Johnson, 2023</span></div></article><article class="publication-card"><h3>Methodological contribution</h3><p>The main research outcome was a comparative modeling framework for Alzheimer’s disease progression that emphasized calibrated uncertainty alongside predictive performance.</p><span class="publication-meta"><i class="fas fa-scroll"></i>Variational GP modeling with ordinal likelihood</span><div style="margin-top:12px;"><span class="publication-meta"><i class="fas fa-book"></i>Variational GP modeling with ordinal likelihood</span></div></article>
-                </div>
-            </div>
-        </section>
-
-        <section id="software" class="section section-alt">
-            <div class="container">
-                <h2 class="section-title">Code and Repositories</h2>
-                <div class="repo-grid">
-                    <article class="repo-card"><h3>GPflow</h3><p>Useful open-source framework for Gaussian Process modeling in TensorFlow, including scalable variational workflows.</p><a class="repo-link" href="https://github.com/GPflow/GPflow" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Open repository</a></article><article class="repo-card"><h3>TensorFlow Probability</h3><p>Probabilistic programming and variational inference tools relevant to approximate Bayesian inference for complex likelihoods.</p><a class="repo-link" href="https://github.com/tensorflow/probability" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i>Open repository</a></article><article class="repo-card"><h3>Project code availability</h3><p>A public Johnson & Johnson repository for this internship study was not specified in the available materials.</p><span class="note-label"><i class="fas fa-lock"></i>No public repository listed</span></article>
-                </div>
+        <section id="likelihood" class="section">
+            <div class="container equation-grid">
+                <article class="equation-card">
+                    <h3>Gaussian Process posterior</h3>
+                    <div class="math">\[
+                        \mu(x_*) = K(x_*, X)\left[K(X,X) + \sigma^2 I\right]^{-1} y
+                    \]</div>
+                    <div class="math">\[
+                        \operatorname{Var}(f_*) = K(x_*, x_*) - K(x_*, X)\left[K(X,X) + \sigma^2 I\right]^{-1}K(X, x_*)
+                    \]</div>
+                    <p>The posterior mean and variance summarize expected cognitive progression together with confidence in that forecast.</p>
+                </article>
+                <article class="equation-card">
+                    <h3>Ordinal likelihood</h3>
+                    <div class="math">\[
+                        p(y_i = k \mid f_i) = g\big(\tau_k - f_i\big) - g\big(\tau_{k-1} - f_i\big), \qquad \tau_0 &lt; \tau_1 &lt; \cdots &lt; \tau_K
+                    \]</div>
+                    <p>The thresholds \(\tau_k\) encode ordered ADAS categories, while the link function \(g\) converts the latent GP output into category probabilities.</p>
+                </article>
             </div>
         </section>
     </main>
