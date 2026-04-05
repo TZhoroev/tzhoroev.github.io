@@ -132,10 +132,6 @@ async function loadPublications() {
                     <span class="stat-label">Total Citations</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">${data.h_index}</span>
-                    <span class="stat-label">h-index</span>
-                </div>
-                <div class="stat-item">
                     <span class="stat-number">${data.publications.length}</span>
                     <span class="stat-label">Publications</span>
                 </div>

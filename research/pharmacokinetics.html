@@ -185,15 +185,15 @@
                 <h1>Discrete Fractional Pharmacokinetics Modeling</h1>
                 <p class="subtitle">Western Kentucky University</p>
                 <span class="research-status status-published">📄 Published in Computational and Mathematical Biophysics (2019)</span>
-                <p class="hero-copy">This project studies pharmacokinetic and pharmacodynamic dynamics through the lens of discrete fractional calculus. The emphasis is mathematical first: define the nabla operators carefully, state the assumptions clearly, and then use that framework to reason about memory, controllability, and observability.</p>
+                <p class="hero-copy">When modeling how a drug moves through the body, classical approaches assume the system has no memory — each time step depends only on the current state. But pharmacological systems often retain memory of earlier drug exposure, and ignoring this can lead to misleading predictions. This project uses discrete fractional calculus — specifically nabla operators — to build PK/PD models that naturally encode this history, providing a mathematically rigorous framework for modeling tumor growth and anti-cancer drug effects.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publications" class="btn btn-secondary"><i class="fas fa-book"></i> Publications</a>
                 </div>
             </div>
             <aside class="theorem-card" id="overview">
-                <h2>Why fractional operators matter</h2>
-                <p>Classical discrete differences depend only on nearby states, but pharmacological systems often retain memory of earlier exposure. Nabla fractional operators encode that history directly, making them natural tools for discrete PK/PD models with hereditary effects.</p>
+                <h2>Why fractional operators?</h2>
+                <p>In a standard discrete difference equation, the next state depends only on the current one and its immediate neighbor. But when a patient receives chemotherapy, the body's response today is shaped by all the doses that came before — not just the last one. Nabla fractional operators encode this entire history through a weighted sum, where the weights decay according to a rising factorial kernel. This makes them a natural mathematical tool for modeling systems with hereditary effects.</p>
             </aside>
         </div>
     </header>
@@ -208,21 +208,21 @@
                         <div class="math">\[
                             \nabla x(t) = x(t) - x(t-1)
                         \]</div>
-                        <p>This operator is the discrete-time analogue of a first derivative and is the building block for the fractional constructions that follow.</p>
+                        <p>The starting point: a discrete-time analogue of the first derivative. Simple, memoryless, and the building block for everything that follows.</p>
                     </article>
                     <article class="definition-card">
                         <h3>Fractional nabla sum</h3>
                         <div class="math">\[
                             \nabla_a^{-\alpha} x(t) = \frac{1}{\Gamma(\alpha)} \sum_{s=a+1}^{t} \big(t-\rho(s)\big)^{\overline{\alpha-1}} x(s), \qquad \rho(s)=s-1
                         \]</div>
-                        <p>The fractional sum aggregates prior states with weights determined by the rising factorial kernel, making memory explicit.</p>
+                        <p>This is where memory enters the picture. The fractional sum aggregates all prior states, weighted by a kernel that decays over time — so recent history matters more, but old history isn't forgotten.</p>
                     </article>
                     <article class="definition-card">
                         <h3>Fractional nabla difference</h3>
                         <div class="math">\[
                             \nabla_a^{\alpha} x(t) = \nabla^{n}\,\nabla_a^{-(n-\alpha)}x(t), \qquad n-1 &lt; \alpha &lt; n
                         \]</div>
-                        <p>This definition extends integer-order differencing to non-integer order \(\alpha\), which is the key step in fractional discrete dynamics.</p>
+                        <p>The key generalization: extending integer-order differencing to non-integer orders \(\alpha\). When \(\alpha = 1\) you recover the standard backward difference; fractional values give you tunable memory depth.</p>
                     </article>
                 </div>
             </div>
@@ -231,22 +231,22 @@
         <section id="assumptions" class="section section-alt">
             <div class="container content-grid">
                 <article class="assumption-card">
-                    <h2>Modeling assumptions</h2>
-                    <p>To keep notation consistent, the page assumes:</p>
+                    <h2>Modeling setup</h2>
+                    <p>To keep the mathematics clean, we work under a few assumptions:</p>
                     <ul class="assumption-list">
-                        <li>time is sampled on a discrete grid \(t \in \mathbb{N}_a\);</li>
-                        <li>the fractional order satisfies \(0 &lt; \alpha &lt; 1\) unless otherwise noted;</li>
-                        <li>state variables represent PK/PD quantities whose current behavior can depend on the full history encoded by the nabla kernel.</li>
+                        <li>Time is sampled on a discrete grid \(t \in \mathbb{N}_a\) — natural for dosing schedules and clinical measurements;</li>
+                        <li>The fractional order satisfies \(0 &lt; \alpha &lt; 1\), which gives us "partial memory" rather than full or zero memory;</li>
+                        <li>State variables represent drug concentrations and tumor volumes whose current values depend on the entire dosing history.</li>
                     </ul>
                     <div class="math">\[
                         \nabla_a^{\alpha} x(t+1) = A x(t) + B u(t), \qquad y(t) = C x(t)
                     \]</div>
-                    <p>This state-space form is the entry point for controllability and observability analysis in linear nabla fractional systems.</p>
+                    <p>This state-space form is our entry point for studying controllability (can we steer the system to a desired state?) and observability (can we infer hidden states from measurements?) in fractional PK/PD systems.</p>
                 </article>
                 <aside class="assumption-card">
-                    <h2>Application context</h2>
-                    <p>The mathematical framework supports discrete and discrete fractional PK/PD models for tumor growth and anti-cancer treatment response. The scientific contribution lies in connecting rigorous operator definitions to biologically motivated models with memory.</p>
-                    <p>The work was supported by the Kentucky Science and Engineering Foundation and culminated in both a journal paper and a master's thesis.</p>
+                    <h2>Real-world application</h2>
+                    <p>The mathematical framework was applied to discrete and discrete fractional PK/PD models for tumor growth and anti-cancer drug response. The key contribution is showing that fractional operators provide a principled way to model the memory effects observed in real pharmacological data — like the way a patient's response to a drug depends not just on today's dose, but on the cumulative exposure over weeks.</p>
+                    <p>This work was supported by the Kentucky Science and Engineering Foundation and led to a published journal paper and my master's thesis at Western Kentucky University.</p>
                 </aside>
             </div>
         </section>

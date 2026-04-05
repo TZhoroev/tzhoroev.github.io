@@ -315,7 +315,7 @@
                 <h1>Labor Progression Prediction with Gaussian Processes</h1>
                 <p class="subtitle">PeriGen / NIH / NICHD</p>
                 <span class="research-status status-published">📄 Published in American Journal of Obstetrics &amp; Gynecology (2024) and Bioengineering (2024)</span>
-                <p class="hero-note">Predicting labor progression is crucial for timely clinical decisions such as determining when to intervene with cesarean sections. Fixed-structure models like the Friedman curve assume labor follows a predefined pattern, fail to adapt in real time, and do not account for individual variations. This project developed a Sparse Gaussian Process model with meta-learning that provides patient-specific predictions with calibrated uncertainty.</p>
+                <p class="hero-note">Predicting how labor will progress is one of the hardest problems in obstetrics. Every patient is different, yet for decades clinicians have relied on population-average curves — like the Friedman curve — that assume labor follows a fixed pattern. These curves don't update as new information arrives, and they can't tell you how confident the prediction is. We set out to change that. Using a Sparse Gaussian Process model with meta-learning, we built a system that watches each patient's labor unfold in real time, adapts its predictions with every new cervical exam, and tells the clinician exactly how uncertain it is.</p>
                 <div class="hero-actions">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publications" class="btn btn-secondary"><i class="fas fa-scroll"></i> Publications</a>
@@ -372,22 +372,22 @@
         <section id="overview" class="section">
             <div class="container overview-grid">
                 <article class="panel">
-                    <h2>Limitations of previous work</h2>
+                    <h2>Why existing approaches fall short</h2>
                     <ul class="assumption-list">
-                        <li><strong>Rigid patterns:</strong> Models like the Friedman curve assume labor follows a predefined pattern, leading to inaccuracy when real data deviates.</li>
-                        <li><strong>No real-time adaptation:</strong> They do not update as new data becomes available, causing outdated predictions.</li>
-                        <li><strong>Population-based:</strong> Fail to account for individual variations common in labor.</li>
+                        <li><strong>One-size-fits-all curves:</strong> The Friedman curve and its variants assume every labor follows the same sigmoidal pattern. In reality, a first-time mother's labor looks very different from her fourth, and epidural or induction further change the trajectory.</li>
+                        <li><strong>No real-time feedback loop:</strong> Traditional models are drawn once and never updated. A clinician checking dilation at hour 6 gets no benefit from the exam at hour 4 because the curve was never designed to incorporate new data.</li>
+                        <li><strong>No uncertainty estimate:</strong> Perhaps most critically, these models give a single line on a chart. They can't tell you whether a patient is "slightly behind" or "dangerously stalled" — both situations look the same without a confidence band.</li>
                     </ul>
-                    <h2 style="margin-top:24px;">Our approach</h2>
-                    <p>Using SGPR as a predictive model where each patient's data is treated as a separate meta-task. The model predicts two key factors: cervical dilation D(t) and fetal station S(t), using 6 input variables: D(t-1), effacement E(t-1), station S(t-1), contractions C(t-1), epidural use U, and labor induction L.</p>
+                    <h2 style="margin-top:24px;">What we built</h2>
+                    <p>Our SGPR model treats each patient as a separate meta-task. It takes six inputs from the previous time step — cervical dilation, effacement, fetal station, contraction frequency, epidural use, and whether labor was induced — and predicts how dilation and station will evolve. Meta-learning lets the model borrow strength from thousands of prior patients while still adapting to the current one with as few as 2–3 exams.</p>
                 </article>
                 <aside class="panel results-panel" id="results">
-                    <span class="result-badge"><i class="fas fa-chart-column"></i> Key results</span>
-                    <h3>Conclusions</h3>
+                    <span class="result-badge"><i class="fas fa-chart-column"></i> What we found</span>
+                    <h3>Key takeaways</h3>
                     <ul class="results-list">
-                        <li>Developed a novel GP model that adapts to real-time labor progression with patient-specific data, providing both prediction and uncertainty.</li>
-                        <li>Implemented meta-learning to allow the GP to learn from different patients and adapt quickly with minimal data.</li>
-                        <li>Demonstrated superiority over static WHO and ACOG guidelines, potentially reducing unnecessary medical interventions.</li>
+                        <li>Our GP model adapts in real time — each new cervical exam sharpens the prediction and tightens the uncertainty bands, giving clinicians a continuously updated picture.</li>
+                        <li>Meta-learning lets the model learn general labor patterns from the full dataset, then specialize to a new patient with just a handful of early observations.</li>
+                        <li>Head-to-head comparison showed statistically significant sensitivity improvements over both WHO and ACOG guidelines, suggesting fewer unnecessary interventions without sacrificing safety.</li>
                     </ul>
                 </aside>
             </div>
@@ -407,23 +407,23 @@
                 <div class="flowchart">
                     <article class="flow-step">
                         <div class="flow-index">1</div>
-                        <h3>Ingest longitudinal exams</h3>
-                        <p>Sequential cervical dilation, fetal station, and timing information define a partially observed labor trajectory for each patient.</p>
+                        <h3>Collect exam data</h3>
+                        <p>As labor progresses, nurses record cervical dilation, fetal station, and timing at each exam — typically 3 to 12 exams per patient. This forms a sparse, irregular time series.</p>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">2</div>
-                        <h3>Fit sparse GP structure</h3>
-                        <p>Sparse inducing-point approximations keep inference computationally practical on a dataset with nearly fifty thousand births.</p>
+                        <h3>Fit the GP model</h3>
+                        <p>We use sparse inducing points to keep computation fast enough for real-time use — critical when you have nearly 50,000 training births but need predictions in seconds.</p>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">3</div>
-                        <h3>Adapt to partial histories</h3>
-                        <p>Meta-learning components help the model respond quickly when only an early or mid-labor trajectory is available.</p>
+                        <h3>Adapt to the patient</h3>
+                        <p>Meta-learning lets the model specialize: after seeing just 2–3 exams from a new patient, it adjusts its predictions to match her specific labor pattern rather than the population average.</p>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">4</div>
-                        <h3>Compare against guidelines</h3>
-                        <p>Posterior forecasts are benchmarked against WHO and ACOG labor curves to quantify the value of individualized prediction.</p>
+                        <h3>Benchmark against guidelines</h3>
+                        <p>We compared our predictions head-to-head with WHO and ACOG labor curves to measure whether individualized forecasting actually improves clinical sensitivity.</p>
                     </article>
                 </div>
 

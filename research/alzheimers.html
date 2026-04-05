@@ -226,7 +226,7 @@
                 <h1>Predicting Alzheimer's Disease Progression</h1>
                 <p class="subtitle">Johnson &amp; Johnson · Summer Internship 2023</p>
                 <span class="research-status status-proprietary">🏢 Industry Research — Johnson &amp; Johnson Internship (Unpublished)</span>
-                <p class="hero-copy">The objective was to predict the longitudinal progression of all 11 ADAS-Cog (Alzheimer's Disease Assessment Scale – Cognitive) subscores using Gaussian Process models with ordinal likelihood. ADAS-Cog is the gold-standard cognitive endpoint in AD clinical trials, and accurate subscore-level forecasting enables finer-grained understanding of how different cognitive domains decline over time.</p>
+                <p class="hero-copy">Alzheimer's disease doesn't affect every cognitive ability equally — memory, language, and spatial reasoning can decline at very different rates in different patients. Most prediction models only forecast the total ADAS-Cog score, collapsing all that heterogeneity into a single number. During my summer internship at Johnson &amp; Johnson, I built Gaussian Process models with ordinal likelihood that predict each of the 11 individual ADAS-Cog subscores, giving trial designers and clinicians a much finer-grained view of how cognition changes over time.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#adas" class="btn btn-secondary"><i class="fas fa-brain"></i> ADAS-Cog Subscores</a>
@@ -280,18 +280,18 @@
         <section id="overview" class="section">
             <div class="container overview-grid">
                 <article class="content-card">
-                    <h2>Why subscore-level prediction?</h2>
-                    <p>Most AD progression models predict only the total ADAS-Cog score (0–70). However, cognitive decline is heterogeneous — memory, language, visuospatial, praxis, and attention domains deteriorate at different rates across patients. Predicting all 11 subscores individually allows clinicians and trial designers to:</p>
+                    <h2>Why predict individual subscores?</h2>
+                    <p>Most Alzheimer's models focus on the total ADAS-Cog score (0–70), which sums across all cognitive domains. But this total hides important patterns. One patient might be losing language skills rapidly while memory stays relatively intact; another might show the opposite trajectory. Predicting all 11 subscores individually lets us:</p>
                     <ul style="color:var(--text-light);padding-left:18px;display:grid;gap:8px;margin-top:12px;">
-                        <li>Identify which cognitive domains decline fastest for a given patient</li>
-                        <li>Detect early signals of treatment effect on specific cognitive functions</li>
-                        <li>Design enrichment strategies for clinical trials based on domain-specific decline patterns</li>
+                        <li>Spot which cognitive domains are declining fastest for a given patient, enabling more targeted interventions</li>
+                        <li>Detect early signs that a treatment is helping one aspect of cognition even if the total score hasn't moved much</li>
+                        <li>Design smarter clinical trials by enriching for patients whose specific decline patterns match the drug's mechanism</li>
                     </ul>
                 </article>
                 <article class="content-card">
-                    <h2>Modeling approach</h2>
-                    <p>Each ADAS-Cog subscore is modeled as a latent smooth function observed with uncertainty. Since subscores are ordered integers (not continuous values), a standard Gaussian likelihood is inappropriate. Instead, an <strong>ordinal likelihood</strong> maps the latent GP output through ordered thresholds to produce properly calibrated category probabilities.</p>
-                    <p style="margin-top:12px;">Five GP configurations were systematically compared — from a continuous-response baseline to variational GP with ordinal likelihood — using 5-fold cross-validation to evaluate predictive accuracy and uncertainty calibration.</p>
+                    <h2>How we approached it</h2>
+                    <p>Each ADAS-Cog subscore is an ordered integer — a Word Recall score of 5 is meaningfully "between" 4 and 6, not just a category label. A standard Gaussian likelihood ignores this structure and can produce predictions like 4.7 that don't correspond to any real score. So we used an <strong>ordinal likelihood</strong> that maps the latent GP function through learned thresholds, producing proper probability distributions over each discrete score level.</p>
+                    <p style="margin-top:12px;">We systematically compared five GP configurations — from a continuous-response baseline to a full variational GP with ordinal likelihood — using 5-fold cross-validation to see which setup gives the best predictions with the most honest uncertainty bands.</p>
                 </article>
             </div>
         </section>
@@ -325,17 +325,17 @@
                 <h2 class="section-title">Ordinal Likelihood</h2>
                 <div class="equation-grid">
                     <article class="equation-card">
-                        <h3>Why ordinal?</h3>
-                        <p>ADAS-Cog subscores are ordered integers (e.g., Word Recall: 0–10). Treating them as continuous values ignores their discrete, ordered nature. The ordinal likelihood maps the latent GP function through ordered thresholds \(\tau_k\), producing calibrated probabilities for each score level.</p>
+                        <h3>Why ordinal matters</h3>
+                        <p>ADAS-Cog subscores are ordered integers (e.g., Word Recall: 0–10). If you treat them as continuous, a prediction of "4.7" doesn't mean anything clinical. The ordinal likelihood maps the GP's latent function through ordered thresholds \(\tau_k\), producing proper probabilities for each score level:</p>
                         <div class="math" style="margin-top:16px;">\[
                             p(y_i = k \mid f_i) = g\big(\tau_k - f_i\big) - g\big(\tau_{k-1} - f_i\big)
                         \]</div>
-                        <p style="margin-top:12px;">where \(\tau_0 &lt; \tau_1 &lt; \cdots &lt; \tau_K\) are learned thresholds and \(g\) is a monotonic link function (e.g., probit or logistic).</p>
+                        <p style="margin-top:12px;">where \(\tau_0 &lt; \tau_1 &lt; \cdots &lt; \tau_K\) are learned thresholds and \(g\) is a monotonic link function (probit or logistic).</p>
                     </article>
                     <article class="equation-card">
-                        <h3>Key advantage</h3>
-                        <p>The ordinal model naturally encodes that a prediction of "score 5" should be more likely to err toward 4 or 6 than toward 0 or 10. This produces more clinically meaningful uncertainty estimates compared to Gaussian or classification likelihoods.</p>
-                        <p style="margin-top:12px;">Combined with the GP prior's flexible longitudinal structure, this approach provides patient-specific progression curves with properly calibrated confidence intervals — essential for clinical trial planning and personalized treatment decisions.</p>
+                        <h3>What this gives us</h3>
+                        <p>The ordinal model naturally captures something intuitive: if the true score is 5, the model should be more likely to guess 4 or 6 than 0 or 10. This "nearness-aware" structure produces uncertainty estimates that are clinically meaningful — a wide band between 4 and 7 means something very different from a wide band between 1 and 10.</p>
+                        <p style="margin-top:12px;">Combined with the GP's flexible longitudinal modeling, this gives us patient-specific progression curves with properly calibrated confidence intervals — exactly what clinical trial planners need for power calculations and what physicians need for treatment conversations.</p>
                     </article>
                 </div>
             </div>

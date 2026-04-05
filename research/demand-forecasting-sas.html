@@ -205,14 +205,14 @@
                 <h1>Demand Forecasting &amp; Special Event Detection</h1>
                 <p class="subtitle">R&amp;D Intern · Jan 2024 — May 2025</p>
                 <span class="research-status status-proprietary">🏢 Proprietary R&amp;D — IDeaS, a SAS Company</span>
-                <p class="tagline" style="color:var(--text-light);max-width:720px;">Developed Sparse Hierarchical Gaussian Process (SHGP) models for hotel room demand forecasting across major chains (Accor, Choice, Wyndham), and Dynamic Mode Decomposition (DMD) with anomaly detection for special event identification in the hospitality industry.</p>
+                <p class="tagline" style="color:var(--text-light);max-width:720px;">When a major concert or sporting event hits a city, hotel demand can spike dramatically — but traditional forecasting systems often miss these patterns until it's too late to adjust pricing. During my R&amp;D internship at IDeaS (a SAS company), I built two systems to tackle this: a Sparse Hierarchical GP model that forecasts room demand by learning shared patterns across hotel chains while respecting each property's individuality, and a Dynamic Mode Decomposition pipeline that automatically detects unusual demand events from occupancy time series.</p>
                 <div class="hero-links" style="margin-top:24px;">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                 </div>
             </div>
             <aside class="info-card" id="overview">
                 <h2>Role &amp; Context</h2>
-                <p>Worked within IDeaS Revenue Solutions (a SAS company), a leading provider of revenue management software for the hospitality industry. Benchmarked GP-based models against the existing IDeaS production forecast system.</p>
+                <p>I worked within IDeaS Revenue Solutions, the hospitality industry's leading revenue management platform. The challenge was practical: can GP-based models outperform the existing IDeaS production forecast system, especially for hotels with limited booking history? I benchmarked every model against real production forecasts.</p>
                 <div class="tech-badges">
                     <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
                     <span class="tech-badge"><i class="fas fa-chart-bar"></i> GPflow / SHGP</span>
@@ -232,25 +232,25 @@
                     <article class="project-card">
                         <div class="project-icon"><i class="fas fa-chart-line"></i></div>
                         <h3>Demand Forecasting with SHGP</h3>
-                        <p>Built a Sparse Hierarchical Gaussian Process (SHGP) model that captures both group-level trends across hotel chains and individual hotel behavior through a hierarchical kernel structure.</p>
+                        <p>The core idea: hotels within the same chain share certain demand patterns (seasonality, day-of-week effects), but each property also has its own quirks (local events, proximity to airports, business vs. leisure mix). The Sparse Hierarchical GP captures both levels through a kernel structure that separates group-level from individual-level variation.</p>
                         <ul>
-                            <li>Custom SHGP model with group kernel (shared across chain) + individual kernels per hotel using GPflow</li>
-                            <li>Predicted occupancy, booking-choice, and whole-group metrics across Accor, Choice, and Wyndham chains</li>
-                            <li>Booking curve analysis to incorporate real-time reservation patterns</li>
-                            <li>Compared forecasts against the IDeaS production system using days-to-arrival accuracy metrics</li>
-                            <li>ARIMA and Naïve baselines for benchmark comparison</li>
+                            <li>Designed a custom SHGP model in GPflow with a group kernel shared across the chain and individual kernels per hotel</li>
+                            <li>Predicted occupancy, booking-choice probability, and whole-group demand metrics across Accor, Choice, and Wyndham chains</li>
+                            <li>Built booking curve analysis tools to incorporate real-time reservation patterns as features</li>
+                            <li>Measured forecast accuracy using days-to-arrival metrics, comparing head-to-head against the IDeaS production system</li>
+                            <li>Used ARIMA and naïve baselines to establish a lower bound for meaningful comparison</li>
                         </ul>
                     </article>
                     <article class="project-card">
                         <div class="project-icon"><i class="fas fa-calendar-day"></i></div>
-                        <h3>Special Event Detection with DMD</h3>
-                        <p>Designed a multi-method pipeline combining Dynamic Mode Decomposition, statistical anomaly detection, and GP classification to identify demand-driving events from occupancy time series.</p>
+                        <h3>Special Event Detection</h3>
+                        <p>A concert, a marathon, or a trade show can send demand through the roof — but these events don't follow regular seasonal patterns and are easy to miss with standard time-series methods. I built a multi-stage pipeline that first decomposes the signal, then flags anomalies, then classifies them.</p>
                         <ul>
-                            <li>Dynamic Mode Decomposition (DMD) to decompose occupancy into trend, seasonal, and residual components</li>
-                            <li>Z-Score anomaly detection on residuals using same-day-of-week moving averages and standard deviations</li>
-                            <li>GP regression with ordinal likelihood for event classification (high-volume vs. low-volume events)</li>
-                            <li>Event calendar integration to correlate detected anomalies with known events (conferences, concerts, holidays, sports)</li>
-                            <li>Gaussian Mixture Models (GMM) for unsupervised event clustering</li>
+                            <li>Used Dynamic Mode Decomposition (DMD) to separate occupancy into trend, seasonal, and residual components</li>
+                            <li>Applied Z-Score anomaly detection on residuals using same-day-of-week moving windows for context-aware thresholds</li>
+                            <li>Built a GP regression model with ordinal likelihood for event classification (high-impact vs. low-impact events)</li>
+                            <li>Integrated an event calendar API to match detected anomalies with known events — conferences, concerts, sports, holidays</li>
+                            <li>Explored Gaussian Mixture Models for unsupervised event clustering when no calendar data was available</li>
                         </ul>
                     </article>
                 </div>

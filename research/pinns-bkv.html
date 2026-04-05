@@ -268,7 +268,7 @@
                 <h1>Interpretable Discovery of Hidden Dynamics in BK Virus Infection</h1>
                 <p class="subtitle">NC State University · PhD Dissertation Research</p>
                 <span class="research-status status-dissertation">🎓 Ph.D. Dissertation Research — Journal manuscript in preparation</span>
-                <p class="hero-summary">BK virus nephropathy is a common cause of kidney transplant loss, and no effective drugs specifically target BKV. Doctors must balance immunosuppressive medication to prevent rejection versus infection. This project developed an integrated PINNs + causal inference + symbolic regression framework to model serum creatinine dynamics and extract interpretable mathematical expressions for the missing physics.</p>
+                <p class="hero-summary">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises — but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. We built a three-stage pipeline that combines physics-informed neural networks, causal inference, and symbolic regression to learn the missing piece of the mathematical model directly from clinical data, producing interpretable equations that clinicians can actually reason about.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publication" class="btn btn-secondary"><i class="fas fa-book"></i> Dissertation</a>
@@ -286,25 +286,25 @@
         <section id="overview" class="section">
             <div class="container methods-grid">
                 <article class="section-card">
-                    <h2>Problem framing</h2>
-                    <p>The mathematical model tracks compartments: susceptible cells (\(H_S\)), infected cells (\(H_I\)), BK virus (\(V\)), BK-specific T-cells (\(E_V\)), allospecific T-cells (\(E_K\)), and serum creatinine (\(C\)). The standard ODE equation for creatinine lacks mechanistic detail on the right-hand side:</p>
+                    <h2>The challenge</h2>
+                    <p>We have a mathematical model that tracks six biological compartments — susceptible cells, infected cells, BK virus, two T-cell populations, and serum creatinine. The model works well for most compartments, but the creatinine equation has a gap: a function \(h(t;\theta)\) on the right-hand side that captures unknown dynamics we don't have a mechanistic theory for.</p>
                     <div class="math">\[
                         \dot{C}(t) = \lambda_C - \delta_{C0} \frac{H_S}{H_S + \kappa_{CH}} + h(t;\theta)
                     \]</div>
-                    <p>The function \(h(t;\theta)\) is unknown. The goal is to learn or modify this functional form through data-driven approaches, extracting an interpretable expression that clinicians can use to understand creatinine dynamics.</p>
+                    <p>The question is: can we learn what \(h\) should look like directly from patient data, without guessing its form in advance?</p>
                 </article>
                 <aside class="focus-stack">
                     <article class="focus-card">
-                        <h3>Clinical setting</h3>
-                        <p>Renal transplantation with serum-creatinine changes following BK virus infection. Data includes BKV load, creatinine, vitals, demographics, and dosage from Duke Hospitals EHR.</p>
+                        <h3>Clinical context</h3>
+                        <p>Working with electronic health records from Duke University Hospitals — over 900 renal transplant patients, 493 with BKV dynamics. The data includes viral load measurements, creatinine trajectories, vitals, demographics, and immunosuppressive dosing.</p>
                     </article>
                     <article class="focus-card">
-                        <h3>Interpretability target</h3>
-                        <p>Recover parsimonious governing terms from black-box PINN trajectories using symbolic regression, producing human-readable ODE terms.</p>
+                        <h3>Why interpretability matters</h3>
+                        <p>A black-box neural network might fit the data well, but a nephrologist can't act on it. By extracting compact, human-readable ODE terms through symbolic regression, we give clinicians equations they can inspect, challenge, and ultimately trust.</p>
                     </article>
                     <article class="focus-card">
-                        <h3>Research outcome</h3>
-                        <p>Successfully extracted interpretable mathematical expressions for the missing physics of creatinine dynamics in BKV infection.</p>
+                        <h3>What we found</h3>
+                        <p>Causal inference revealed that \(h\) depends primarily on susceptible cells and creatinine itself. Symbolic regression then recovered a parsimonious closed-form expression that closely matches the PINN-learned dynamics.</p>
                     </article>
                 </aside>
             </div>
@@ -317,17 +317,17 @@
                     <article class="pipeline-step">
                         <div class="step-number">1</div>
                         <h3>PINNs</h3>
-                        <p>Fit noisy longitudinal trajectories while penalizing violations of the candidate dynamical law, so the learned representation remains scientifically constrained.</p>
+                        <p>Train a neural network that respects the known ODE structure while learning the unknown function \(h\). The physics loss penalizes any solution that violates the compartment model, keeping the learned representation biologically consistent even with noisy, sparse data.</p>
                     </article>
                     <article class="pipeline-step">
                         <div class="step-number">2</div>
                         <h3>Causal inference</h3>
-                        <p>Separate potentially meaningful drivers from spurious correlations to decide which variables and interactions deserve mechanistic interpretation.</p>
+                        <p>Not everything that correlates with creatinine actually drives it. We use causal analysis to separate genuine mechanistic drivers from spurious correlations, narrowing down which variables should appear in the final equation for \(h\).</p>
                     </article>
                     <article class="pipeline-step">
                         <div class="step-number">3</div>
                         <h3>Symbolic regression</h3>
-                        <p>Translate the learned black-box response into compact analytical terms that can be inspected, compared, and communicated as candidate ODE structure.</p>
+                        <p>Turn the PINN's black-box learned function into a compact, human-readable mathematical expression. The result is an equation a clinician can write on a whiteboard — not a neural network with thousands of weights.</p>
                     </article>
                 </div>
                 <div class="figure-panel" style="margin-top:28px;">
