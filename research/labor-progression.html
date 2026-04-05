@@ -300,11 +300,11 @@
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -384,9 +384,9 @@
                     <span class="result-badge"><i class="fas fa-chart-column"></i> What we found</span>
                     <h3>Key takeaways</h3>
                     <ul class="results-list">
-                        <li>Our GP model adapts in real time: each new cervical exam sharpens the prediction and tightens the uncertainty bands, giving clinicians a continuously updated picture.</li>
+                        <li>Our GP model adapts in real time: each new cervical exam sharpens the prediction and tightens the uncertainty bands. Clinicians get a continuously updated picture.</li>
                         <li>Meta-learning lets the model learn general labor patterns from the full dataset, then specialize to a new patient with just a handful of early observations.</li>
-                        <li>Head-to-head comparison showed statistically significant sensitivity improvements over both WHO and ACOG guidelines, suggesting fewer unnecessary interventions without sacrificing safety.</li>
+                        <li>Head-to-head comparison showed statistically significant sensitivity improvements over both WHO and ACOG guidelines. This could mean fewer unnecessary interventions without sacrificing safety.</li>
                     </ul>
                 </aside>
             </div>
@@ -430,7 +430,7 @@
                     <article class="flow-step">
                         <div class="flow-index">2</div>
                         <h3>Fit the GP model</h3>
-                        <p>We use sparse inducing points to keep computation fast enough for real-time use, which is critical when you have nearly 50,000 training births but need predictions in seconds.</p>
+                        <p>We use sparse inducing points to keep computation fast enough for real-time use. With nearly 50,000 training births, predictions need to come back in seconds.</p>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">3</div>
@@ -452,7 +452,7 @@
                 <h2 class="section-title">Results</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
                     <img src="../assets/research/labor-gp-prediction.png" alt="GP prediction for one patient: observed cervical exams with 68% and 95% confidence intervals" loading="lazy">
-                    <div class="figure-caption"><strong>Illustrative GP prediction.</strong> Observed cervical exams (black dots) with the GP posterior mean (blue curve) and 68%/95% prediction intervals (shaded bands). Uncertainty narrows near observed data and widens between exams, providing calibrated confidence for clinical monitoring.</div>
+                    <div class="figure-caption"><strong>Illustrative GP prediction.</strong> Observed cervical exams (black dots) with the GP posterior mean (blue curve) and 68%/95% prediction intervals (shaded bands). Uncertainty narrows near observed data and widens between exams.</div>
                 </div>
                 <div class="figure-panel">
                     <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time: SGPR vs ACOG and WHO guidelines, with RM-ANOVA P-values" loading="lazy">
@@ -487,6 +487,6 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

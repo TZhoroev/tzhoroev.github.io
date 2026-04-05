@@ -170,11 +170,11 @@
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -184,7 +184,7 @@
                 <p class="research-eyebrow"><i class="fas fa-pills"></i> Western Kentucky University · KSEF</p>
                 <h1>Discrete Fractional Pharmacokinetics Modeling</h1>
                 <span class="research-status status-published">📄 Published in Computational and Mathematical Biophysics (2019)</span>
-                <p class="hero-copy">When modeling how a drug moves through the body, classical approaches assume the system has no memory: each time step depends only on the current state. But pharmacological systems often retain memory of earlier drug exposure, and ignoring this can lead to misleading predictions. This project uses discrete fractional calculus, specifically nabla operators, to build PK/PD models that naturally encode this history, providing a mathematically rigorous framework for modeling tumor growth and anti-cancer drug effects.</p>
+                <p class="hero-copy">When modeling how a drug moves through the body, classical approaches assume the system has no memory: each time step depends only on the current state. But pharmacological systems often retain memory of earlier drug exposure, and ignoring this can lead to misleading predictions. In this project, we used discrete fractional calculus, specifically nabla operators, to build PK/PD models that naturally encode this history. We applied the framework to tumor growth and anti-cancer drug response.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publications" class="btn btn-secondary"><i class="fas fa-book"></i> Publications</a>
@@ -192,7 +192,7 @@
             </div>
             <aside class="theorem-card" id="overview">
                 <h2>Why fractional operators?</h2>
-                <p>In a standard discrete difference equation, the next state depends only on the current one and its immediate neighbor. But when a patient receives chemotherapy, the body's response today is shaped by all the doses that came before, not just the last one. Nabla fractional operators encode this entire history through a weighted sum, where the weights decay according to a rising factorial kernel. This makes them a natural mathematical tool for modeling systems with hereditary effects.</p>
+                <p>In a standard discrete difference equation, the next state depends only on the current one and its immediate neighbor. But when a patient receives chemotherapy, the body's response today is shaped by all the doses that came before, not just the last one. Nabla fractional operators encode this entire history through a weighted sum, where the weights decay according to a rising factorial kernel. That memory structure makes nabla operators a natural tool for modeling systems with hereditary effects.</p>
             </aside>
         </div>
     </header>
@@ -221,7 +221,7 @@
                         <div class="math">\[
                             \nabla_a^{\alpha} x(t) = \nabla^{n}\,\nabla_a^{-(n-\alpha)}x(t), \qquad n-1 &lt; \alpha &lt; n
                         \]</div>
-                        <p>The key generalization: extending integer-order differencing to non-integer orders \(\alpha\). When \(\alpha = 1\) you recover the standard backward difference; fractional values give you tunable memory depth.</p>
+                        <p>The key generalization: extending integer-order differencing to non-integer orders \(\alpha\). When \(\alpha = 1\) we recover the standard backward difference; fractional values give tunable control over memory depth.</p>
                     </article>
                 </div>
             </div>
@@ -244,8 +244,8 @@
                 </article>
                 <aside class="assumption-card">
                     <h2>Real-world application</h2>
-                    <p>The mathematical framework was applied to discrete and discrete fractional PK/PD models for tumor growth and anti-cancer drug response. The key contribution is showing that fractional operators provide a principled way to model the memory effects observed in real pharmacological data. A patient's response to a drug depends not just on today's dose, but on the cumulative exposure over weeks.</p>
-                    <p>This work was supported by the Kentucky Science and Engineering Foundation and led to a published journal paper and my master's thesis at Western Kentucky University.</p>
+                    <p>We applied this framework to discrete and discrete fractional PK/PD models for tumor growth and anti-cancer drug response. The main result is that fractional operators capture the memory effects observed in real pharmacological data without ad hoc assumptions. A patient's response to a drug depends not just on today's dose, but on the cumulative exposure over weeks.</p>
+                    <p>The Kentucky Science and Engineering Foundation supported this work, which led to a published journal paper and my master's thesis at WKU.</p>
                 </aside>
             </div>
         </section>
@@ -286,6 +286,6 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

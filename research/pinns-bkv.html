@@ -253,11 +253,11 @@
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -267,7 +267,7 @@
                 <p class="research-eyebrow"><i class="fas fa-brain"></i> NC State University · PhD Research</p>
                 <h1>Interpretable Discovery of Hidden Dynamics in BK Virus Infection</h1>
                 <span class="research-status status-dissertation">🎓 Ph.D. Dissertation Research. Journal manuscript in preparation</span>
-                <p class="hero-summary">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises, but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. We built a three-stage pipeline that combines physics-informed neural networks, causal inference, and symbolic regression to learn the missing piece of the mathematical model directly from clinical data, producing interpretable equations that clinicians can reason about.</p>
+                <p class="hero-summary">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises, but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. We built a three-stage pipeline (physics-informed neural networks, causal inference, and symbolic regression) to learn the missing piece of the mathematical model directly from clinical data. The output: interpretable equations that clinicians can reason about.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publication" class="btn btn-secondary"><i class="fas fa-book"></i> Dissertation</a>
@@ -312,7 +312,7 @@
                     <article class="pipeline-step">
                         <div class="step-number">1</div>
                         <h3>PINNs</h3>
-                        <p>Train a neural network that respects the known ODE structure while learning the unknown function \(h\). The physics loss penalizes any solution that violates the compartment model, keeping the learned representation biologically consistent even with noisy, sparse data.</p>
+                        <p>Train a neural network that respects the known ODE structure while learning the unknown function \(h\). The physics loss penalizes any solution that violates the compartment model, which keeps the learned representation biologically consistent even with noisy, sparse data.</p>
                     </article>
                     <article class="pipeline-step">
                         <div class="step-number">2</div>
@@ -408,6 +408,6 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

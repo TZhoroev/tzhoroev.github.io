@@ -211,11 +211,11 @@
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -225,7 +225,7 @@
                 <p class="research-eyebrow"><i class="fas fa-dna"></i> Johnson &amp; Johnson</p>
                 <h1>Predicting Alzheimer's Disease Progression</h1>
                 <span class="research-status status-proprietary">🏢 Industry Research, Johnson &amp; Johnson Internship (Unpublished)</span>
-                <p class="hero-copy">Alzheimer's disease doesn't affect every cognitive ability equally. Memory, language, and spatial reasoning can decline at very different rates in different patients. Most prediction models only forecast the total ADAS-Cog score, collapsing all that heterogeneity into a single number. During my summer internship at Johnson &amp; Johnson, I built Gaussian Process models with ordinal likelihood that predict each of the 11 individual ADAS-Cog subscores, giving trial designers and clinicians a finer-grained view of how cognition changes over time.</p>
+                <p class="hero-copy">Alzheimer's disease doesn't affect every cognitive ability equally. Memory, language, and spatial reasoning can decline at very different rates in different patients. Most prediction models only forecast the total ADAS-Cog score, collapsing all that heterogeneity into a single number. During my summer internship at Johnson &amp; Johnson, I built Gaussian Process models with ordinal likelihood that predict each of the 11 individual ADAS-Cog subscores. This lets trial designers and clinicians see how specific cognitive abilities change over time, not just the total.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#adas" class="btn btn-secondary"><i class="fas fa-brain"></i> ADAS-Cog Subscores</a>
@@ -282,14 +282,14 @@
                     <h2>Why predict individual subscores?</h2>
                     <p>Most Alzheimer's models focus on the total ADAS-Cog score (0–70), which sums across all cognitive domains. But this total hides important patterns. One patient might be losing language skills rapidly while memory stays relatively intact; another might show the opposite trajectory. Predicting all 11 subscores individually lets us:</p>
                     <ul style="color:var(--text-light);padding-left:18px;display:grid;gap:8px;margin-top:12px;">
-                        <li>Spot which cognitive domains are declining fastest for a given patient, enabling more targeted interventions</li>
+                        <li>Spot which cognitive domains are declining fastest for a given patient, so interventions can be targeted accordingly</li>
                         <li>Detect early signs that a treatment is helping one aspect of cognition even if the total score hasn't moved much</li>
                         <li>Design smarter clinical trials by enriching for patients whose specific decline patterns match the drug's mechanism</li>
                     </ul>
                 </article>
                 <article class="content-card">
                     <h2>How we approached it</h2>
-                    <p>Each ADAS-Cog subscore is an ordered integer. For example, a Word Recall score of 5 is meaningfully "between" 4 and 6, not just a category label. A standard Gaussian likelihood ignores this structure and can produce predictions like 4.7 that don't correspond to any real score. So we used an <strong>ordinal likelihood</strong> that maps the latent GP function through learned thresholds, producing proper probability distributions over each discrete score level.</p>
+                    <p>Each ADAS-Cog subscore is an ordered integer. For example, a Word Recall score of 5 is meaningfully "between" 4 and 6, not just a category label. A standard Gaussian likelihood ignores this structure and can produce predictions like 4.7 that don't correspond to any real score. So we used an <strong>ordinal likelihood</strong> that maps the latent GP function through learned thresholds to produce proper probability distributions over each discrete score level.</p>
                     <p style="margin-top:12px;">We compared five GP configurations, from a continuous-response baseline to a full variational GP with ordinal likelihood, using 5-fold cross-validation to see which setup gives the best predictions with well-calibrated uncertainty bands.</p>
                 </article>
             </div>
@@ -310,7 +310,7 @@
                 <h2 class="section-title">Modeling Pipeline</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
                     <img src="../assets/research/alz-pipeline.jpg" alt="Modeling pipeline: CPAD Database → Feature Engineering → GP Models → 11 ADAS-Cog Subscore Predictions" loading="lazy">
-                    <div class="figure-caption"><strong>End-to-end pipeline.</strong> Patient-level data from CPAD (demographics, APOE4, MMSE, visit timeline) feeds into 5 GP model configurations evaluated with 5-fold cross-validation, producing uncertainty-aware predictions for all 11 ADAS-Cog subscores.</div>
+                    <div class="figure-caption"><strong>End-to-end pipeline.</strong> Patient-level data from CPAD (demographics, APOE4, MMSE, visit timeline) feeds into 5 GP model configurations evaluated with 5-fold cross-validation. Each configuration outputs uncertainty-aware predictions for all 11 ADAS-Cog subscores.</div>
                 </div>
                 <div class="figure-panel">
                     <img src="../assets/research/alz-trajectories.jpg" alt="Illustrative GP-predicted ADAS-Cog trajectories with uncertainty bands for different severity levels" loading="lazy">
@@ -325,7 +325,7 @@
                 <div class="equation-grid">
                     <article class="equation-card">
                         <h3>Why ordinal matters</h3>
-                        <p>ADAS-Cog subscores are ordered integers (e.g., Word Recall: 0–10). If you treat them as continuous, a prediction of "4.7" doesn't mean anything clinical. The ordinal likelihood maps the GP's latent function through ordered thresholds \(\tau_k\), producing proper probabilities for each score level:</p>
+                        <p>ADAS-Cog subscores are ordered integers (e.g., Word Recall: 0-10). Treating them as continuous means a prediction of "4.7" has no clinical meaning. The ordinal likelihood maps the GP's latent function through ordered thresholds \(\tau_k\) to produce proper probabilities for each score level:</p>
                         <div class="math" style="margin-top:16px;">\[
                             p(y_i = k \mid f_i) = g\big(\tau_k - f_i\big) - g\big(\tau_{k-1} - f_i\big)
                         \]</div>
@@ -346,6 +346,6 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

@@ -211,11 +211,11 @@
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -225,7 +225,7 @@
                 <p class="research-eyebrow"><i class="fas fa-chart-line"></i> NSF-Funded Research</p>
                 <h1>Uncertainty Quantification for Physical &amp; Biological Models</h1>
                 <span class="research-status status-funded">🔬 NSF-Funded Research at North Carolina State University</span>
-                <p class="hero-copy">Mathematical models of physical and biological systems are, at best, approximations. The real question is not just "what does the model predict?" but "how much should we trust that prediction, and where does the model break down?" This NSF-funded research developed Bayesian methods for both: propagating uncertainty through model parameters to build reliable prediction intervals, and detecting when the gap between model and data signals a structural problem rather than just noise.</p>
+                <p class="hero-copy">Mathematical models of physical and biological systems are, at best, approximations. The real question is not just "what does the model predict?" but "how much should we trust that prediction, and where does the model break down?" In this NSF-funded project, I developed Bayesian methods for both: propagating uncertainty through model parameters to build reliable prediction intervals, and detecting when the gap between model and data signals a structural problem rather than just noise.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> UQ Repository</a>
@@ -251,7 +251,7 @@
                 <div class="portfolio-grid">
                     <article class="portfolio-card" data-index="01">
                         <h3>Sensitivity Analysis</h3>
-                        <p>Before spending compute on full calibration, figure out which inputs actually matter. Local and global sensitivity methods rank parameters by influence, focusing effort where it counts.</p>
+                        <p>I started by running local and global sensitivity analyses to figure out which parameters actually influence model output, so calibration effort could be focused where it counts.</p>
                     </article>
                     <article class="portfolio-card" data-index="02">
                         <h3>Parameter Estimation</h3>
@@ -259,19 +259,19 @@
                     </article>
                     <article class="portfolio-card" data-index="03">
                         <h3>MCMC Sampling</h3>
-                        <p>When a single best-fit is not enough, we need the full posterior distribution. Markov chain Monte Carlo methods explore the parameter space to map out what is plausible and how plausible.</p>
+                        <p>When a single best-fit is not enough, we need the full posterior distribution. I implemented Markov chain Monte Carlo methods to explore the parameter space and map out what is plausible.</p>
                     </article>
                     <article class="portfolio-card" data-index="04">
                         <h3>Frequentist Intervals</h3>
-                        <p>Sometimes you don't need or want a full Bayesian posterior. Confidence and prediction intervals provide quick, interpretable uncertainty bands using classical statistical theory.</p>
+                        <p>For problems where a full Bayesian posterior is not needed, I used confidence and prediction intervals from classical statistical theory as a faster alternative.</p>
                     </article>
                     <article class="portfolio-card" data-index="05">
                         <h3>Surrogate Modeling</h3>
-                        <p>When the real simulator takes hours to run, build a fast approximation that preserves the important input-output relationships. Essential for making MCMC and sensitivity analysis tractable.</p>
+                        <p>When the real simulator takes hours to run, I built fast approximations that preserve the important input-output relationships. This made MCMC and sensitivity analysis tractable.</p>
                     </article>
                     <article class="portfolio-card" data-index="06">
                         <h3>Model Discrepancy Detection</h3>
-                        <p>The hardest question: is the mismatch between model and data caused by uncertain parameters, or is the model itself structurally wrong? These diagnostics help tell the difference.</p>
+                        <p>The hardest question: is the mismatch between model and data caused by uncertain parameters, or is the model itself structurally wrong? I developed diagnostics to help tell the difference.</p>
                     </article>
                 </div>
             </div>
@@ -346,6 +346,6 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
