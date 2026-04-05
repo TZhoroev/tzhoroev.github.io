@@ -266,9 +266,8 @@
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-brain"></i> NC State University · PhD Research</p>
                 <h1>Interpretable Discovery of Hidden Dynamics in BK Virus Infection</h1>
-                <p class="subtitle">NC State University · PhD Dissertation Research</p>
-                <span class="research-status status-dissertation">🎓 Ph.D. Dissertation Research — Journal manuscript in preparation</span>
-                <p class="hero-summary">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises — but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. We built a three-stage pipeline that combines physics-informed neural networks, causal inference, and symbolic regression to learn the missing piece of the mathematical model directly from clinical data, producing interpretable equations that clinicians can actually reason about.</p>
+                <span class="research-status status-dissertation">🎓 Ph.D. Dissertation Research. Journal manuscript in preparation</span>
+                <p class="hero-summary">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises, but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. We built a three-stage pipeline that combines physics-informed neural networks, causal inference, and symbolic regression to learn the missing piece of the mathematical model directly from clinical data, producing interpretable equations that clinicians can reason about.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publication" class="btn btn-secondary"><i class="fas fa-book"></i> Dissertation</a>
@@ -287,16 +286,12 @@
             <div class="container methods-grid">
                 <article class="section-card">
                     <h2>The challenge</h2>
-                    <p>We have a mathematical model that tracks six biological compartments — susceptible cells, infected cells, BK virus, two T-cell populations, and serum creatinine. The model works well for most compartments, but the creatinine equation has a gap: a function \(h(t;\theta)\) on the right-hand side that captures unknown dynamics we don't have a mechanistic theory for.</p>
-                    <div class="math">\[
-                        \dot{C}(t) = \lambda_C - \delta_{C0} \frac{H_S}{H_S + \kappa_{CH}} + h(t;\theta)
-                    \]</div>
-                    <p>The question is: can we learn what \(h\) should look like directly from patient data, without guessing its form in advance?</p>
+                    <p>We have a mathematical model that tracks six biological compartments: susceptible cells, infected cells, BK virus, two T-cell populations, and serum creatinine. The model works well for most compartments, but the creatinine equation has a gap. A function \(h(t;\theta)\) on the right-hand side captures unknown dynamics we don't have a mechanistic theory for. The question is: can we learn what \(h\) should look like directly from patient data, without guessing its form in advance?</p>
                 </article>
                 <aside class="focus-stack">
                     <article class="focus-card">
                         <h3>Clinical context</h3>
-                        <p>Working with electronic health records from Duke University Hospitals — over 900 renal transplant patients, 493 with BKV dynamics. The data includes viral load measurements, creatinine trajectories, vitals, demographics, and immunosuppressive dosing.</p>
+                        <p>Working with electronic health records from Duke University Hospitals: over 900 renal transplant patients, 493 with BKV dynamics. The data includes viral load measurements, creatinine trajectories, vitals, demographics, and immunosuppressive dosing.</p>
                     </article>
                     <article class="focus-card">
                         <h3>Why interpretability matters</h3>
@@ -327,7 +322,7 @@
                     <article class="pipeline-step">
                         <div class="step-number">3</div>
                         <h3>Symbolic regression</h3>
-                        <p>Turn the PINN's black-box learned function into a compact, human-readable mathematical expression. The result is an equation a clinician can write on a whiteboard — not a neural network with thousands of weights.</p>
+                        <p>Turn the PINN's black-box learned function into a compact, human-readable mathematical expression. The result is an equation a clinician can write on a whiteboard, not a neural network with thousands of weights.</p>
                     </article>
                 </div>
                 <div class="figure-panel" style="margin-top:28px;">
@@ -369,11 +364,17 @@
                 </div>
                 <div class="equation-layout">
                     <article class="equation-panel">
-                        <h3>Composite PINN loss</h3>
+                        <h3>PINN loss components</h3>
+                        <div class="math">\[
+                            \mathcal{L}_{\text{data}} = \frac{1}{N_d}\sum_{i=1}^{N_d}\bigl\|\hat{y}(t_i) - y_i^{\text{obs}}\bigr\|^2
+                        \]</div>
+                        <div class="math">\[
+                            \mathcal{L}_{\text{physics}} = \frac{1}{N_r}\sum_{j=1}^{N_r}\bigl\|\dot{\hat{C}}(t_j) - \lambda_C + \delta_{C0}\tfrac{\hat{H}_S(t_j)}{\hat{H}_S(t_j)+\kappa_{CH}} - \hat{h}(t_j)\bigr\|^2
+                        \]</div>
                         <div class="math">\[
                             \mathcal{L}_{\mathrm{PINN}} = \mathcal{L}_{\mathrm{data}} + \lambda_{\mathrm{phys}}\,\mathcal{L}_{\mathrm{physics}}
                         \]</div>
-                        <p>The data loss fits measured trajectories (creatinine, viral load). The physics loss penalizes violation of the compartment ODE system, enforcing biological consistency.</p>
+                        <p>The data loss fits measured trajectories. The physics loss penalizes violation of the compartment ODE system at collocation points, enforcing biological consistency.</p>
                     </article>
                     <article class="equation-panel">
                         <h3>Creatinine equation with unknown RHS</h3>

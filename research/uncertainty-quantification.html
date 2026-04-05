@@ -224,9 +224,8 @@
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-chart-line"></i> NSF-Funded Research</p>
                 <h1>Uncertainty Quantification for Physical &amp; Biological Models</h1>
-                <p class="subtitle">NC State University · National Science Foundation</p>
                 <span class="research-status status-funded">🔬 NSF-Funded Research at North Carolina State University</span>
-                <p class="hero-copy">Every mathematical model of a physical or biological system is, at best, an approximation. The real question isn't "what does the model predict?" — it's "how much should we trust that prediction, and where does the model break down?" This NSF-funded research developed Bayesian methods for answering both questions: propagating uncertainty through model parameters to build reliable prediction intervals, and detecting when the gap between model and data signals a structural problem rather than just noise.</p>
+                <p class="hero-copy">Mathematical models of physical and biological systems are, at best, approximations. The real question is not just "what does the model predict?" but "how much should we trust that prediction, and where does the model break down?" This NSF-funded research developed Bayesian methods for both: propagating uncertainty through model parameters to build reliable prediction intervals, and detecting when the gap between model and data signals a structural problem rather than just noise.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-github"></i> UQ Repository</a>
@@ -235,7 +234,7 @@
             </div>
             <aside class="language-card" id="overview">
                 <h2>Tools &amp; Funding</h2>
-                <p>This work was funded by the <strong>National Science Foundation (NSF)</strong>. I implemented everything in both Python and MATLAB — Python for rapid prototyping and the scientific stack, MATLAB for compatibility with established engineering workflows and classroom use.</p>
+                <p>This work was funded by the <strong>National Science Foundation (NSF)</strong>. I implemented everything in both Python and MATLAB: Python for rapid prototyping and the scientific stack, MATLAB for compatibility with established engineering workflows and classroom use.</p>
                 <div class="lang-badges">
                     <span class="lang-badge"><i class="fab fa-python"></i> Python</span>
                     <span class="lang-badge"><i class="fas fa-square-root-variable"></i> MATLAB</span>
@@ -260,7 +259,7 @@
                     </article>
                     <article class="portfolio-card" data-index="03">
                         <h3>MCMC Sampling</h3>
-                        <p>When a single best-fit isn't enough, we need the full posterior distribution. Markov chain Monte Carlo methods explore the parameter space to map out what's plausible — and how plausible.</p>
+                        <p>When a single best-fit is not enough, we need the full posterior distribution. Markov chain Monte Carlo methods explore the parameter space to map out what is plausible and how plausible.</p>
                     </article>
                     <article class="portfolio-card" data-index="04">
                         <h3>Frequentist Intervals</h3>
@@ -283,38 +282,47 @@
                 <div class="equation-stack">
                     <article class="theory-card">
                         <h2>The Bayesian foundation</h2>
-                        <p>Everything starts from a model \(y = \mathcal{M}(\theta) + \varepsilon\) and some prior belief about the parameters. Bayes' theorem turns the problem of "what parameters are plausible?" into a clean mathematical question:</p>
+                        <p>Everything starts from a model \(y = \mathcal{M}(\theta) + \varepsilon\) and some prior belief about the parameters. Bayes' theorem gives the posterior:</p>
                         <div class="math">\[
                             p(\theta \mid y) = \frac{p(y \mid \theta)\,p(\theta)}{p(y)}
                         \]</div>
-                        <p>The posterior distribution \(p(\theta \mid y)\) tells us everything we need: the most likely parameter values, how uncertain we are about them, and how that uncertainty propagates into predictions.</p>
+                        <p>The posterior distribution tells us the most likely parameter values, how uncertain we are about them, and how that uncertainty propagates into predictions.</p>
                     </article>
                     <article class="theory-card">
-                        <h2>How MCMC explores the posterior</h2>
-                        <p>For most real problems, we can't compute the posterior analytically. Instead, we draw samples from it using Metropolis-Hastings, accepting or rejecting proposals based on:</p>
+                        <h2>Model discrepancy framework</h2>
+                        <p>When model-data mismatch exceeds what parameter uncertainty can explain, we introduce a discrepancy function \(\delta(x)\):</p>
                         <div class="math">\[
-                            \alpha(\theta, \theta') = \min\!\left(1, \frac{p(y\mid\theta')p(\theta')q(\theta\mid\theta')}{p(y\mid\theta)p(\theta)q(\theta'\mid\theta)}\right).
+                            y(x) = \mathcal{M}(x, \theta) + \delta(x) + \varepsilon, \quad \varepsilon \sim \mathcal{N}(0, \sigma^2)
                         \]</div>
-                        <p>With enough samples, we can estimate prediction intervals, identify multi-modal posteriors, and quantify exactly how much the data constrains each parameter.</p>
+                        <p>If \(\delta\) is negligibly small, the model structure is adequate. If \(\delta\) shows systematic patterns, the model itself needs revision, not just its parameters.</p>
                     </article>
                 </div>
                 <div class="stack-grid">
                     <article class="stack-card">
-                        <h3>Python workflows</h3>
-                        <p>The go-to for rapid iteration: NumPy, SciPy, and custom MCMC implementations for Bayesian calibration, with Matplotlib for diagnostic plots.</p>
-                    </article>
-                    <article class="stack-card">
-                        <h3>MATLAB workflows</h3>
-                        <p>Used for method verification and classroom-friendly examples that integrate with established engineering toolchains.</p>
+                        <h3>MCMC sampling</h3>
+                        <p>For most real problems, we draw posterior samples using Metropolis-Hastings, accepting proposals with probability:</p>
+                        <div class="math" style="font-size:0.85rem;">\[
+                            \alpha = \min\!\left(1, \frac{p(y\mid\theta')p(\theta')}{p(y\mid\theta)p(\theta)}\right)
+                        \]</div>
                     </article>
                     <article class="stack-card">
                         <h3>From screening to inference</h3>
-                        <p>The portfolio is structured so that sensitivity analysis results directly inform the calibration — screened-out parameters get fixed, focusing MCMC on the dimensions that matter.</p>
+                        <p>Sensitivity analysis results directly inform calibration. Screened-out parameters get fixed, focusing MCMC on the dimensions that matter.</p>
+                    </article>
+                    <article class="stack-card">
+                        <h3>Python workflows</h3>
+                        <p>NumPy, SciPy, and custom MCMC implementations for Bayesian calibration, with Matplotlib for diagnostic plots.</p>
                     </article>
                     <article class="stack-card">
                         <h3>Beyond fitting</h3>
-                        <p>Surrogate modeling and discrepancy analysis extend the workflow past "what parameters fit best?" toward "is this model even right?" — a question that's often more important.</p>
+                        <p>Surrogate modeling and discrepancy analysis extend the workflow past parameter estimation toward model criticism.</p>
                     </article>
+                </div>
+            </div>
+            <div class="container" style="margin-top:24px;">
+                <div class="figure-panel">
+                    <img src="../assets/research/uq-posterior-intervals.png" alt="Model prediction with Bayesian prediction intervals fanning out in the extrapolation region" loading="lazy" style="width:100%;">
+                    <div class="figure-caption"><strong>Prediction intervals with extrapolation.</strong> In the observed region (left of the dashed line), prediction intervals are narrow and well-calibrated. Beyond the training data, intervals fan out rapidly, reflecting genuine uncertainty about model behavior in unexplored regions.</div>
                 </div>
             </div>
         </section>
@@ -323,7 +331,7 @@
             <div class="container">
                 <article class="repo-card">
                     <h2>Public Repositories</h2>
-                    <p>The research code is organized across two repositories — the core UQ modules and Bayesian statistics coursework that informed the methodology.</p>
+                    <p>The research code is organized across two repositories: the core UQ modules and Bayesian statistics coursework that informed the methodology.</p>
                     <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;">
                         <a class="btn btn-secondary" href="https://github.com/TZhoroev/Uncertainty-Quantification" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Uncertainty-Quantification</a>
                         <a class="btn btn-outline" href="https://github.com/TZhoroev/Applied-Bayesian-Statistics" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Applied-Bayesian-Statistics</a>

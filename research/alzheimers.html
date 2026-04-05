@@ -224,9 +224,8 @@
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-dna"></i> Johnson &amp; Johnson</p>
                 <h1>Predicting Alzheimer's Disease Progression</h1>
-                <p class="subtitle">Johnson &amp; Johnson · Summer Internship 2023</p>
-                <span class="research-status status-proprietary">🏢 Industry Research — Johnson &amp; Johnson Internship (Unpublished)</span>
-                <p class="hero-copy">Alzheimer's disease doesn't affect every cognitive ability equally — memory, language, and spatial reasoning can decline at very different rates in different patients. Most prediction models only forecast the total ADAS-Cog score, collapsing all that heterogeneity into a single number. During my summer internship at Johnson &amp; Johnson, I built Gaussian Process models with ordinal likelihood that predict each of the 11 individual ADAS-Cog subscores, giving trial designers and clinicians a much finer-grained view of how cognition changes over time.</p>
+                <span class="research-status status-proprietary">🏢 Industry Research, Johnson &amp; Johnson Internship (Unpublished)</span>
+                <p class="hero-copy">Alzheimer's disease doesn't affect every cognitive ability equally. Memory, language, and spatial reasoning can decline at very different rates in different patients. Most prediction models only forecast the total ADAS-Cog score, collapsing all that heterogeneity into a single number. During my summer internship at Johnson &amp; Johnson, I built Gaussian Process models with ordinal likelihood that predict each of the 11 individual ADAS-Cog subscores, giving trial designers and clinicians a finer-grained view of how cognition changes over time.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#adas" class="btn btn-secondary"><i class="fas fa-brain"></i> ADAS-Cog Subscores</a>
@@ -290,8 +289,8 @@
                 </article>
                 <article class="content-card">
                     <h2>How we approached it</h2>
-                    <p>Each ADAS-Cog subscore is an ordered integer — a Word Recall score of 5 is meaningfully "between" 4 and 6, not just a category label. A standard Gaussian likelihood ignores this structure and can produce predictions like 4.7 that don't correspond to any real score. So we used an <strong>ordinal likelihood</strong> that maps the latent GP function through learned thresholds, producing proper probability distributions over each discrete score level.</p>
-                    <p style="margin-top:12px;">We systematically compared five GP configurations — from a continuous-response baseline to a full variational GP with ordinal likelihood — using 5-fold cross-validation to see which setup gives the best predictions with the most honest uncertainty bands.</p>
+                    <p>Each ADAS-Cog subscore is an ordered integer. For example, a Word Recall score of 5 is meaningfully "between" 4 and 6, not just a category label. A standard Gaussian likelihood ignores this structure and can produce predictions like 4.7 that don't correspond to any real score. So we used an <strong>ordinal likelihood</strong> that maps the latent GP function through learned thresholds, producing proper probability distributions over each discrete score level.</p>
+                    <p style="margin-top:12px;">We compared five GP configurations, from a continuous-response baseline to a full variational GP with ordinal likelihood, using 5-fold cross-validation to see which setup gives the best predictions with well-calibrated uncertainty bands.</p>
                 </article>
             </div>
         </section>
@@ -330,12 +329,12 @@
                         <div class="math" style="margin-top:16px;">\[
                             p(y_i = k \mid f_i) = g\big(\tau_k - f_i\big) - g\big(\tau_{k-1} - f_i\big)
                         \]</div>
-                        <p style="margin-top:12px;">where \(\tau_0 &lt; \tau_1 &lt; \cdots &lt; \tau_K\) are learned thresholds and \(g\) is a monotonic link function (probit or logistic).</p>
+                        <p style="margin-top:12px;">where \(\tau_0 = -\infty\), \(\tau_K = +\infty\), the interior thresholds \(\tau_1 &lt; \cdots &lt; \tau_{K-1}\) are learned, and \(g = \Phi\) is the standard normal CDF (probit link).</p>
                     </article>
                     <article class="equation-card">
                         <h3>What this gives us</h3>
-                        <p>The ordinal model naturally captures something intuitive: if the true score is 5, the model should be more likely to guess 4 or 6 than 0 or 10. This "nearness-aware" structure produces uncertainty estimates that are clinically meaningful — a wide band between 4 and 7 means something very different from a wide band between 1 and 10.</p>
-                        <p style="margin-top:12px;">Combined with the GP's flexible longitudinal modeling, this gives us patient-specific progression curves with properly calibrated confidence intervals — exactly what clinical trial planners need for power calculations and what physicians need for treatment conversations.</p>
+                        <p>The ordinal model naturally captures something intuitive: if the true score is 5, the model should be more likely to guess 4 or 6 than 0 or 10. This "nearness-aware" structure produces clinically meaningful uncertainty estimates. A wide band between 4 and 7 means something very different from a wide band between 1 and 10.</p>
+                        <p style="margin-top:12px;">Combined with the GP's flexible longitudinal modeling, this gives us patient-specific progression curves with properly calibrated confidence intervals, which is what clinical trial planners need for power calculations and what physicians need for treatment conversations.</p>
                     </article>
                 </div>
             </div>

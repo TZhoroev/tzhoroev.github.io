@@ -313,9 +313,8 @@
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-heartbeat"></i> PeriGen / NIH / NICHD</p>
                 <h1>Labor Progression Prediction with Gaussian Processes</h1>
-                <p class="subtitle">PeriGen / NIH / NICHD</p>
                 <span class="research-status status-published">📄 Published in American Journal of Obstetrics &amp; Gynecology (2024) and Bioengineering (2024)</span>
-                <p class="hero-note">Predicting how labor will progress is one of the hardest problems in obstetrics. Every patient is different, yet for decades clinicians have relied on population-average curves — like the Friedman curve — that assume labor follows a fixed pattern. These curves don't update as new information arrives, and they can't tell you how confident the prediction is. We set out to change that. Using a Sparse Gaussian Process model with meta-learning, we built a system that watches each patient's labor unfold in real time, adapts its predictions with every new cervical exam, and tells the clinician exactly how uncertain it is.</p>
+                <p class="hero-note">Predicting how labor will progress is one of the hardest problems in obstetrics. Every patient is different, yet for decades clinicians have relied on population-average curves (like the Friedman curve) that assume labor follows a fixed pattern. These curves don't update as new information arrives, and they can't tell you how confident the prediction is. Using a Sparse Gaussian Process model with meta-learning, we built a system that tracks each patient's labor in real time, adapts its predictions with every new cervical exam, and provides calibrated uncertainty estimates.</p>
                 <div class="hero-actions">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publications" class="btn btn-secondary"><i class="fas fa-scroll"></i> Publications</a>
@@ -376,16 +375,16 @@
                     <ul class="assumption-list">
                         <li><strong>One-size-fits-all curves:</strong> The Friedman curve and its variants assume every labor follows the same sigmoidal pattern. In reality, a first-time mother's labor looks very different from her fourth, and epidural or induction further change the trajectory.</li>
                         <li><strong>No real-time feedback loop:</strong> Traditional models are drawn once and never updated. A clinician checking dilation at hour 6 gets no benefit from the exam at hour 4 because the curve was never designed to incorporate new data.</li>
-                        <li><strong>No uncertainty estimate:</strong> Perhaps most critically, these models give a single line on a chart. They can't tell you whether a patient is "slightly behind" or "dangerously stalled" — both situations look the same without a confidence band.</li>
+                        <li><strong>No uncertainty estimate:</strong> These models give a single line on a chart. They can't distinguish between a patient who is "slightly behind" and one who is "dangerously stalled" because both situations look the same without a confidence band.</li>
                     </ul>
                     <h2 style="margin-top:24px;">What we built</h2>
-                    <p>Our SGPR model treats each patient as a separate meta-task. It takes six inputs from the previous time step — cervical dilation, effacement, fetal station, contraction frequency, epidural use, and whether labor was induced — and predicts how dilation and station will evolve. Meta-learning lets the model borrow strength from thousands of prior patients while still adapting to the current one with as few as 2–3 exams.</p>
+                    <p>Our SGPR model treats each patient as a separate meta-task. It takes six inputs from the previous time step (cervical dilation, effacement, fetal station, contraction frequency, epidural use, and whether labor was induced) and predicts how dilation and station will evolve. Meta-learning lets the model borrow strength from thousands of prior patients while still adapting to the current one with as few as 2-3 exams.</p>
                 </article>
                 <aside class="panel results-panel" id="results">
                     <span class="result-badge"><i class="fas fa-chart-column"></i> What we found</span>
                     <h3>Key takeaways</h3>
                     <ul class="results-list">
-                        <li>Our GP model adapts in real time — each new cervical exam sharpens the prediction and tightens the uncertainty bands, giving clinicians a continuously updated picture.</li>
+                        <li>Our GP model adapts in real time: each new cervical exam sharpens the prediction and tightens the uncertainty bands, giving clinicians a continuously updated picture.</li>
                         <li>Meta-learning lets the model learn general labor patterns from the full dataset, then specialize to a new patient with just a handful of early observations.</li>
                         <li>Head-to-head comparison showed statistically significant sensitivity improvements over both WHO and ACOG guidelines, suggesting fewer unnecessary interventions without sacrificing safety.</li>
                     </ul>
@@ -404,16 +403,34 @@
                     <img src="../assets/research/labor-gp-improvements.jpg" alt="Challenges and solutions: scalability with SGPR, adaptability with meta-learning" loading="lazy">
                     <div class="figure-caption"><strong>Key innovations.</strong> SGPR introduces inducing points to reduce complexity from O(n³) to O(nm²). Meta-learning enables rapid adaptation to new patients with limited observations.</div>
                 </div>
+                <div class="overview-grid" style="margin-bottom:24px;">
+                    <article class="panel">
+                        <h2>GP posterior predictive</h2>
+                        <p>Given \(n\) training points and test inputs \(X_*\), the GP posterior provides both a prediction and its uncertainty in closed form:</p>
+                        <div class="math">\[
+                            f_* \mid X, y, X_* \sim \mathcal{N}\bigl(K_{*f}K_{ff}^{-1}y,\; K_{**} - K_{*f}K_{ff}^{-1}K_{f*}\bigr)
+                        \]</div>
+                        <p style="margin-top:12px;">The mean gives the predicted dilation/station, and the covariance gives the uncertainty band. Both are computed analytically.</p>
+                    </article>
+                    <article class="panel">
+                        <h2>SGPR evidence lower bound</h2>
+                        <p>Full GP inference is \(O(n^3)\), which is impractical for 50,000 births. SGPR uses \(m \ll n\) inducing points to approximate the posterior:</p>
+                        <div class="math">\[
+                            \log p(y) \geq \sum_{i=1}^{n}\mathbb{E}_{q(f_i)}\bigl[\log p(y_i \mid f_i)\bigr] - \mathrm{KL}\bigl[q(\mathbf{u}) \,\|\, p(\mathbf{u})\bigr]
+                        \]</div>
+                        <p style="margin-top:12px;">This reduces complexity to \(O(nm^2)\), making real-time bedside prediction practical.</p>
+                    </article>
+                </div>
                 <div class="flowchart">
                     <article class="flow-step">
                         <div class="flow-index">1</div>
                         <h3>Collect exam data</h3>
-                        <p>As labor progresses, nurses record cervical dilation, fetal station, and timing at each exam — typically 3 to 12 exams per patient. This forms a sparse, irregular time series.</p>
+                        <p>As labor progresses, nurses record cervical dilation, fetal station, and timing at each exam, typically 3 to 12 exams per patient. This forms a sparse, irregular time series.</p>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">2</div>
                         <h3>Fit the GP model</h3>
-                        <p>We use sparse inducing points to keep computation fast enough for real-time use — critical when you have nearly 50,000 training births but need predictions in seconds.</p>
+                        <p>We use sparse inducing points to keep computation fast enough for real-time use, which is critical when you have nearly 50,000 training births but need predictions in seconds.</p>
                     </article>
                     <article class="flow-step">
                         <div class="flow-index">3</div>
@@ -433,9 +450,13 @@
         <section id="results-figures" class="section">
             <div class="container">
                 <h2 class="section-title">Results</h2>
+                <div class="figure-panel" style="margin-bottom:24px;">
+                    <img src="../assets/research/labor-gp-prediction.png" alt="GP prediction for one patient: observed cervical exams with 68% and 95% confidence intervals" loading="lazy">
+                    <div class="figure-caption"><strong>Illustrative GP prediction.</strong> Observed cervical exams (black dots) with the GP posterior mean (blue curve) and 68%/95% prediction intervals (shaded bands). Uncertainty narrows near observed data and widens between exams, providing calibrated confidence for clinical monitoring.</div>
+                </div>
                 <div class="figure-panel">
                     <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time: SGPR vs ACOG and WHO guidelines, with RM-ANOVA P-values" loading="lazy">
-                    <div class="figure-caption"><strong>Sensitivity comparison.</strong> Left: Sensitivity over time comparing SGPR model vs. WHO guidelines — SGPR consistently outperforms. Right: RM-ANOVA P-values confirm statistically significant differences (Time, Model, and Time×Model interactions all below the 0.05 significance threshold).</div>
+                    <div class="figure-caption"><strong>Sensitivity comparison.</strong> Left: Sensitivity over time comparing SGPR model vs. WHO guidelines. SGPR consistently outperforms. Right: RM-ANOVA P-values confirm statistically significant differences (Time, Model, and Time x Model interactions all below the 0.05 significance threshold).</div>
                 </div>
             </div>
         </section>

@@ -203,9 +203,9 @@
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-hotel"></i> SAS Institute (IDeaS)</p>
                 <h1>Demand Forecasting &amp; Special Event Detection</h1>
-                <p class="subtitle">R&amp;D Intern · Jan 2024 — May 2025</p>
-                <span class="research-status status-proprietary">🏢 Proprietary R&amp;D — IDeaS, a SAS Company</span>
-                <p class="tagline" style="color:var(--text-light);max-width:720px;">When a major concert or sporting event hits a city, hotel demand can spike dramatically — but traditional forecasting systems often miss these patterns until it's too late to adjust pricing. During my R&amp;D internship at IDeaS (a SAS company), I built two systems to tackle this: a Sparse Hierarchical GP model that forecasts room demand by learning shared patterns across hotel chains while respecting each property's individuality, and a Dynamic Mode Decomposition pipeline that automatically detects unusual demand events from occupancy time series.</p>
+                <p class="subtitle">R&amp;D Intern · Jan 2024 - May 2025</p>
+                <span class="research-status status-proprietary">🏢 Proprietary R&amp;D, IDeaS, a SAS Company</span>
+                <p class="tagline" style="color:var(--text-light);max-width:720px;">Hotel demand can spike dramatically around concerts, conferences, or sporting events, but traditional forecasting systems often miss these patterns until it is too late to adjust pricing. During my R&amp;D internship at IDeaS (a SAS company), I built two systems to tackle this: a Sparse Hierarchical GP model that forecasts room demand by learning shared patterns across hotel chains while respecting each property's individuality, and a Dynamic Mode Decomposition pipeline that automatically detects unusual demand events from occupancy time series.</p>
                 <div class="hero-links" style="margin-top:24px;">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                 </div>
@@ -244,15 +244,43 @@
                     <article class="project-card">
                         <div class="project-icon"><i class="fas fa-calendar-day"></i></div>
                         <h3>Special Event Detection</h3>
-                        <p>A concert, a marathon, or a trade show can send demand through the roof — but these events don't follow regular seasonal patterns and are easy to miss with standard time-series methods. I built a multi-stage pipeline that first decomposes the signal, then flags anomalies, then classifies them.</p>
+                        <p>Concerts, marathons, and trade shows can send demand through the roof, but these events don't follow regular seasonal patterns and are easy to miss with standard time-series methods. I built a multi-stage pipeline that first decomposes the signal, then flags anomalies, then classifies them.</p>
                         <ul>
                             <li>Used Dynamic Mode Decomposition (DMD) to separate occupancy into trend, seasonal, and residual components</li>
                             <li>Applied Z-Score anomaly detection on residuals using same-day-of-week moving windows for context-aware thresholds</li>
                             <li>Built a GP regression model with ordinal likelihood for event classification (high-impact vs. low-impact events)</li>
-                            <li>Integrated an event calendar API to match detected anomalies with known events — conferences, concerts, sports, holidays</li>
+                            <li>Integrated an event calendar API to match detected anomalies with known events (conferences, concerts, sports, holidays)</li>
                             <li>Explored Gaussian Mixture Models for unsupervised event clustering when no calendar data was available</li>
                         </ul>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="methods" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Methods</h2>
+                <div class="projects-grid" style="margin-bottom:24px;">
+                    <article class="project-card">
+                        <h3>Hierarchical GP kernel</h3>
+                        <p>The SHGP model separates group-level patterns (shared across a hotel chain) from individual hotel behavior through a composite kernel:</p>
+                        <div class="math">\[
+                            k(x_i, x_j) = k_{\text{group}}(x_i, x_j) + k_{\text{hotel}}(x_i, x_j) + \sigma^2_n \delta_{ij}
+                        \]</div>
+                        <p style="margin-top:12px;">The group kernel captures seasonality and day-of-week effects common to the chain. The individual kernel captures property-specific variation (location, business mix). Both use squared-exponential ARD kernels.</p>
+                    </article>
+                    <article class="project-card">
+                        <h3>DMD decomposition</h3>
+                        <p>Dynamic Mode Decomposition fits a best-fit linear operator to the time-series data:</p>
+                        <div class="math">\[
+                            \mathbf{X}' \approx \mathbf{A}\mathbf{X}, \quad \text{where } \mathbf{A} = \mathbf{X}'\mathbf{X}^{\dagger}
+                        \]</div>
+                        <p style="margin-top:12px;">The eigenvalues of \(\mathbf{A}\) give frequencies and growth/decay rates. We use the DMD modes to separate trend, seasonal, and residual components, then detect anomalies in the residual.</p>
+                    </article>
+                </div>
+                <div class="figure-panel">
+                    <img src="../assets/research/sas-demand-decomposition.png" alt="Synthetic hotel occupancy decomposition into trend, weekly pattern, and residual with event spikes" loading="lazy" style="width:100%;">
+                    <div class="figure-caption"><strong>Illustrative demand decomposition.</strong> A synthetic hotel occupancy series decomposed into trend, weekly seasonality, and residual components. Event spikes (red dots) in the residual correspond to demand-driving events like conferences or sporting events that fall outside normal seasonal patterns.</div>
                 </div>
             </div>
         </section>
@@ -266,14 +294,14 @@
                             <span class="repo-name"><i class="fas fa-chart-line"></i> Demand Forecasting</span>
                         </div>
                         <p>SHGP model implementation in GPflow with EDA utilities, booking curve analysis, SGPR/SVGP experiments, ARIMA baselines, and system forecast comparison notebooks for Accor, Choice, and Wyndham chains.</p>
-                        <p style="margin-top:12px;font-style:italic;color:var(--text-light);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:6px;"></i> Code availability: Proprietary — not publicly available.</p>
+                        <p style="margin-top:12px;font-style:italic;color:var(--text-light);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:6px;"></i> Code availability: proprietary, not publicly available.</p>
                     </article>
                     <article class="repo-card">
                         <div class="repo-header">
                             <span class="repo-name"><i class="fas fa-calendar-day"></i> Special Event Detection</span>
                         </div>
-                        <p>DMD tutorial and implementation, predictive models (v1–v3), event calendar matching, GMM-based clustering, Z-Score anomaly detection scripts, and hotel revenue analysis demos.</p>
-                        <p style="margin-top:12px;font-style:italic;color:var(--text-light);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:6px;"></i> Code availability: Proprietary — not publicly available.</p>
+                        <p>DMD tutorial and implementation, predictive models (v1-v3), event calendar matching, GMM-based clustering, Z-Score anomaly detection scripts, and hotel revenue analysis demos.</p>
+                        <p style="margin-top:12px;font-style:italic;color:var(--text-light);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:6px;"></i> Code availability: proprietary, not publicly available.</p>
                     </article>
                 </div>
             </div>
@@ -285,5 +313,6 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

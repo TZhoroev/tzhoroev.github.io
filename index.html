@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tilekbek Zhoroev | Applied Mathematician &amp; Data Scientist</title>
-    <meta name="description" content="Tilekbek Zhoroev — Ph.D. in Applied Mathematics, Data Scientist at Microsoft. Research in Gaussian processes, physics-informed neural networks, uncertainty quantification, and clinical decision making.">
+    <meta name="description" content="Tilekbek Zhoroev, Ph.D. in Applied Mathematics, Data Scientist at Microsoft. Research in Gaussian processes, physics-informed neural networks, uncertainty quantification, and clinical decision making.">
     <meta property="og:title" content="Tilekbek Zhoroev | Applied Mathematician & Data Scientist">
     <meta property="og:description" content="Ph.D. in Applied Mathematics. Research in Gaussian processes, PINNs, and uncertainty quantification.">
     <meta property="og:type" content="website">
@@ -76,7 +76,7 @@
             <div class="hero-text">
                 <h1>Tilekbek Zhoroev</h1>
                 <p class="subtitle">Applied Mathematician & Data Scientist</p>
-                <p class="tagline">I build probabilistic models that help doctors make better decisions and help businesses see around corners — always asking "how confident should we be?"</p>
+                <p class="tagline">I develop probabilistic models for clinical decision support and demand forecasting, with a focus on quantifying prediction uncertainty.</p>
                 <p class="hero-metrics">7 Publications · 80+ Citations</p>
                 <div class="hero-links">
                     <a href="https://scholar.google.com/citations?user=ShuoePgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -104,8 +104,8 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <p>I'm a Data Scientist at Microsoft and hold a Ph.D. in Applied Mathematics from North Carolina State University. What drives my work is a simple question: <strong>when a model makes a prediction, how much should we trust it?</strong></p>
-                <p>During my Ph.D., I built Gaussian process and physics-informed neural network models to help clinicians — predicting how labor will progress for individual patients, and uncovering hidden infection dynamics in kidney transplant recipients from sparse clinical records. Along the way, I've also worked on Alzheimer's disease progression forecasting at Johnson &amp; Johnson, hotel demand prediction at SAS, and Bayesian uncertainty quantification funded by the NSF. Each project reinforced the same lesson: the uncertainty around a prediction is often more valuable than the prediction itself.</p>
+                <p>I'm a Data Scientist at Microsoft with a Ph.D. in Applied Mathematics from North Carolina State University. My research centers on <strong>probabilistic machine learning</strong> and <strong>uncertainty quantification</strong>, particularly in settings where predictions directly influence decisions.</p>
+                <p>During my Ph.D., I developed Gaussian process models for predicting labor progression in real time and used physics-informed neural networks to recover hidden infection dynamics in kidney transplant patients. I also worked on Alzheimer's cognitive decline forecasting at Johnson &amp; Johnson, hotel demand prediction at SAS, and Bayesian uncertainty quantification funded by the NSF.</p>
                 <div class="research-interests">
                     <span class="interest-tag">Uncertainty Quantification</span>
                     <span class="interest-tag">Physics-Informed Neural Networks</span>
@@ -126,42 +126,42 @@
                     <div class="research-icon"><i class="fas fa-heartbeat"></i></div>
                     <span class="research-badge">PeriGen / NIH / NICHD</span>
                     <h3>Labor Progression Prediction</h3>
-                    <p>When should a doctor intervene during labor? We built a Gaussian process model that learns each patient's unique labor pattern in real time, outperforming WHO and ACOG guidelines on 49,694 births.</p>
+                    <p>We developed a Gaussian process model that learns each patient's unique labor pattern in real time, outperforming WHO and ACOG guidelines on a dataset of 49,694 births with calibrated uncertainty estimates.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/pinns-bkv.html" class="research-card" style="background-image:url('assets/research/card-bkv.jpg')">
                     <div class="research-icon"><i class="fas fa-brain"></i></div>
                     <span class="research-badge">NC State University (PhD)</span>
                     <h3>Hidden Dynamics in BK Virus Infection</h3>
-                    <p>After a kidney transplant, doctors walk a tightrope between rejection and infection. We combined PINNs with symbolic regression to uncover the missing equations governing creatinine dynamics in BKV patients.</p>
+                    <p>After kidney transplant, BK virus reactivation can cause graft loss, but the mechanism linking viral dynamics to kidney function is poorly understood. We combined PINNs with symbolic regression to recover interpretable ODE terms from sparse clinical data.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/alzheimers.html" class="research-card" style="background-image:url('assets/research/card-alzheimers.jpg')">
                     <div class="research-icon"><i class="fas fa-dna"></i></div>
                     <span class="research-badge">Johnson &amp; Johnson</span>
                     <h3>Alzheimer's Disease Progression</h3>
-                    <p>Can we predict which cognitive abilities will decline fastest in an Alzheimer's patient? Using GP models with ordinal likelihood on CPAD clinical trial data, we forecast all 11 ADAS-Cog subscores individually.</p>
+                    <p>Most Alzheimer's models predict only the total ADAS-Cog score. We used GP models with ordinal likelihood on CPAD clinical trial data to forecast all 11 individual subscores, capturing how different cognitive domains decline at different rates.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/demand-forecasting-sas.html" class="research-card" style="background-image:url('assets/research/card-sas.jpg')">
                     <div class="research-icon"><i class="fas fa-hotel"></i></div>
                     <span class="research-badge">SAS Institute (IDeaS)</span>
                     <h3>Demand Forecasting &amp; Event Detection</h3>
-                    <p>How do you predict hotel demand when a Taylor Swift concert sells out nearby? Built hierarchical GP models and a DMD-based anomaly detection pipeline for IDeaS, tested across Accor, Choice, and Wyndham chains.</p>
+                    <p>Built hierarchical GP models for hotel room demand forecasting and a DMD-based anomaly detection pipeline for identifying demand-driving events, tested across Accor, Choice, and Wyndham hotel chains at IDeaS.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/uncertainty-quantification.html" class="research-card" style="background-image:url('assets/research/card-uq.jpg')">
                     <div class="research-icon"><i class="fas fa-chart-line"></i></div>
                     <span class="research-badge">NC State University · NSF</span>
                     <h3>Uncertainty Quantification</h3>
-                    <p>When your mathematical model disagrees with reality, is it the parameters or the model itself? Developed Bayesian methods for detecting model-data discrepancies and building reliable prediction intervals, funded by the NSF.</p>
+                    <p>Developed Bayesian methods for detecting when model-data mismatch reflects structural model error versus parameter uncertainty, with simultaneous prediction intervals for extrapolation. Funded by the NSF.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/pharmacokinetics.html" class="research-card" style="background-image:url('assets/research/card-pharma.jpg')">
                     <div class="research-icon"><i class="fas fa-pills"></i></div>
                     <span class="research-badge">Western Kentucky University</span>
                     <h3>Fractional Pharmacokinetics</h3>
-                    <p>Standard drug models forget the past — but pharmacological systems don't. Extended classical PK/PD models with fractional calculus to capture memory effects in tumor growth and anti-cancer drug response.</p>
+                    <p>Classical PK/PD models assume memoryless dynamics, but drug response depends on cumulative exposure history. Extended compartmental models with nabla fractional operators to capture memory effects in tumor growth and anti-cancer drug response.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
@@ -200,8 +200,7 @@
                         </div>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Redmond, WA</p>
                         <ul>
-                            <li>Building data science solutions and ML models for large-scale operational analytics across Microsoft's product ecosystem</li>
-                            <li>Applying statistical methods and probabilistic modeling to drive data-informed decisions at production scale</li>
+                            <li>Developing ML models for operational analytics within Microsoft (role started May 2025)</li>
                         </ul>
                     </div>
                 </div>
@@ -257,7 +256,7 @@
                         </div>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Titusville, NJ</p>
                         <ul>
-                            <li>Built a Variational Gaussian Process model with ordinal likelihood to predict the longitudinal progression of all 11 ADAS-Cog subscores — the gold-standard cognitive endpoint in Alzheimer's clinical trials</li>
+                            <li>Built a Variational Gaussian Process model with ordinal likelihood to predict the longitudinal progression of all 11 ADAS-Cog subscores, the gold-standard cognitive endpoint in Alzheimer's clinical trials</li>
                             <li>Worked with patient-level data from the CPAD database (1,683 patients across 36 clinical trials), engineering features from demographics, APOE4 genotype, and MMSE baselines</li>
                             <li>Compared five GP configurations using 5-fold cross-validation, demonstrating that ordinal likelihood better captures the discrete, ordered nature of cognitive assessment scores</li>
                         </ul>
@@ -358,7 +357,7 @@
                 <div class="award-item">
                     <i class="fas fa-trophy"></i>
                     <div>
-                        <h4>Honorable Mention, 54th IMO</h4>
+                        <h4>Honorable Mention, 55th IMO</h4>
                         <p>International Mathematical Olympiad, Cape Town, 2014</p>
                     </div>
                 </div>

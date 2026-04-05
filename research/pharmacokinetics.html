@@ -183,9 +183,8 @@
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-pills"></i> Western Kentucky University · KSEF</p>
                 <h1>Discrete Fractional Pharmacokinetics Modeling</h1>
-                <p class="subtitle">Western Kentucky University</p>
                 <span class="research-status status-published">📄 Published in Computational and Mathematical Biophysics (2019)</span>
-                <p class="hero-copy">When modeling how a drug moves through the body, classical approaches assume the system has no memory — each time step depends only on the current state. But pharmacological systems often retain memory of earlier drug exposure, and ignoring this can lead to misleading predictions. This project uses discrete fractional calculus — specifically nabla operators — to build PK/PD models that naturally encode this history, providing a mathematically rigorous framework for modeling tumor growth and anti-cancer drug effects.</p>
+                <p class="hero-copy">When modeling how a drug moves through the body, classical approaches assume the system has no memory: each time step depends only on the current state. But pharmacological systems often retain memory of earlier drug exposure, and ignoring this can lead to misleading predictions. This project uses discrete fractional calculus, specifically nabla operators, to build PK/PD models that naturally encode this history, providing a mathematically rigorous framework for modeling tumor growth and anti-cancer drug effects.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publications" class="btn btn-secondary"><i class="fas fa-book"></i> Publications</a>
@@ -193,7 +192,7 @@
             </div>
             <aside class="theorem-card" id="overview">
                 <h2>Why fractional operators?</h2>
-                <p>In a standard discrete difference equation, the next state depends only on the current one and its immediate neighbor. But when a patient receives chemotherapy, the body's response today is shaped by all the doses that came before — not just the last one. Nabla fractional operators encode this entire history through a weighted sum, where the weights decay according to a rising factorial kernel. This makes them a natural mathematical tool for modeling systems with hereditary effects.</p>
+                <p>In a standard discrete difference equation, the next state depends only on the current one and its immediate neighbor. But when a patient receives chemotherapy, the body's response today is shaped by all the doses that came before, not just the last one. Nabla fractional operators encode this entire history through a weighted sum, where the weights decay according to a rising factorial kernel. This makes them a natural mathematical tool for modeling systems with hereditary effects.</p>
             </aside>
         </div>
     </header>
@@ -215,7 +214,7 @@
                         <div class="math">\[
                             \nabla_a^{-\alpha} x(t) = \frac{1}{\Gamma(\alpha)} \sum_{s=a+1}^{t} \big(t-\rho(s)\big)^{\overline{\alpha-1}} x(s), \qquad \rho(s)=s-1
                         \]</div>
-                        <p>This is where memory enters the picture. The fractional sum aggregates all prior states, weighted by a kernel that decays over time — so recent history matters more, but old history isn't forgotten.</p>
+                        <p>This is where memory enters the picture. The fractional sum aggregates all prior states, weighted by a kernel that decays over time. Recent history matters more, but old history is not forgotten.</p>
                     </article>
                     <article class="definition-card">
                         <h3>Fractional nabla difference</h3>
@@ -234,7 +233,7 @@
                     <h2>Modeling setup</h2>
                     <p>To keep the mathematics clean, we work under a few assumptions:</p>
                     <ul class="assumption-list">
-                        <li>Time is sampled on a discrete grid \(t \in \mathbb{N}_a\) — natural for dosing schedules and clinical measurements;</li>
+                        <li>Time is sampled on a discrete grid \(t \in \mathbb{N}_a\), natural for dosing schedules and clinical measurements;</li>
                         <li>The fractional order satisfies \(0 &lt; \alpha &lt; 1\), which gives us "partial memory" rather than full or zero memory;</li>
                         <li>State variables represent drug concentrations and tumor volumes whose current values depend on the entire dosing history.</li>
                     </ul>
@@ -245,9 +244,19 @@
                 </article>
                 <aside class="assumption-card">
                     <h2>Real-world application</h2>
-                    <p>The mathematical framework was applied to discrete and discrete fractional PK/PD models for tumor growth and anti-cancer drug response. The key contribution is showing that fractional operators provide a principled way to model the memory effects observed in real pharmacological data — like the way a patient's response to a drug depends not just on today's dose, but on the cumulative exposure over weeks.</p>
+                    <p>The mathematical framework was applied to discrete and discrete fractional PK/PD models for tumor growth and anti-cancer drug response. The key contribution is showing that fractional operators provide a principled way to model the memory effects observed in real pharmacological data. A patient's response to a drug depends not just on today's dose, but on the cumulative exposure over weeks.</p>
                     <p>This work was supported by the Kentucky Science and Engineering Foundation and led to a published journal paper and my master's thesis at Western Kentucky University.</p>
                 </aside>
+            </div>
+        </section>
+
+        <section id="comparison" class="section">
+            <div class="container">
+                <h2 class="section-title">Integer vs. Fractional Order</h2>
+                <div class="figure-panel">
+                    <img src="../assets/research/pharma-fractional-comparison.png" alt="Comparison of integer-order and fractional-order drug decay models against observed data" loading="lazy" style="width:100%;">
+                    <div class="figure-caption"><strong>Memory effects in drug response.</strong> The integer-order model (red dashed, \(\alpha = 1\)) follows standard exponential decay, while the fractional-order model (blue solid, \(\alpha = 0.85\)) retains a heavier tail that better captures the slow elimination observed in clinical data. The fractional model accounts for cumulative drug exposure history.</div>
+                </div>
             </div>
         </section>
 
@@ -256,12 +265,12 @@
                 <article class="publication-card">
                     <h3>A study on discrete and discrete fractional pharmacokinetics-pharmacodynamics models for tumor growth and anti-cancer effects</h3>
                     <p>F.M. Atıcı, M. Atıcı, N. Nguyen, <strong>T. Zhoroev</strong>, G. Koch · <em>Computational and Mathematical Biophysics</em>, 2019 · 61 citations</p>
-                    <a class="resource-link" href="https://www.academia.edu/download/99140844/cmb-2019-0002.pdf" target="_blank" rel="noopener noreferrer">Read the paper</a>
+                    <a class="resource-link" href="https://doi.org/10.1515/cmb-2019-0002" target="_blank" rel="noopener noreferrer">Read the paper</a>
                 </article>
                 <article class="publication-card">
                     <h3>Controllability and observability of time-invariant linear nabla fractional systems</h3>
                     <p><strong>T. Zhoroev</strong>, F.M. Atıcı · <em>Fractional Differential Calculus</em>, 2019 · 4 citations</p>
-                    <a class="resource-link" href="https://elibrary.ru/item.asp?id=78177190" target="_blank" rel="noopener noreferrer">Read the paper</a>
+                    <a class="resource-link" href="https://doi.org/10.7153/fdc-2019-09-01" target="_blank" rel="noopener noreferrer">Read the paper</a>
                 </article>
                 <article class="publication-card">
                     <h3>Controllability and Observability of Linear Nabla Discrete Fractional Systems</h3>
