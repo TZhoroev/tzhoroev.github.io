@@ -10,6 +10,11 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tzhoroev.github.io/research/labor-progression.html">
     <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <meta name="author" content="Tilekbek Zhoroev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Labor Progression Prediction with Gaussian Processes | Tilekbek Zhoroev">
+    <meta name="twitter:description" content="Data-driven overview of Gaussian Process labor progression prediction validated on 49,694 births with individualized uncertainty-aware forecasts.">
+    <link rel="canonical" href="https://tzhoroev.github.io/research/labor-progression.html">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -266,6 +271,19 @@
             border-top: 1px solid var(--border);
         }
         .figure-caption strong { color: var(--text); }
+        .research-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .status-published {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -296,6 +314,7 @@
                 <p class="research-eyebrow"><i class="fas fa-heartbeat"></i> PeriGen / NIH / NICHD</p>
                 <h1>Labor Progression Prediction with Gaussian Processes</h1>
                 <p class="subtitle">PeriGen / NIH / NICHD</p>
+                <span class="research-status status-published">📄 Published in American Journal of Obstetrics &amp; Gynecology (2024) and Bioengineering (2024)</span>
                 <p class="hero-note">Predicting labor progression is crucial for timely clinical decisions such as determining when to intervene with cesarean sections. Fixed-structure models like the Friedman curve assume labor follows a predefined pattern, fail to adapt in real time, and do not account for individual variations. This project developed a Sparse Gaussian Process model with meta-learning that provides patient-specific predictions with calibrated uncertainty.</p>
                 <div class="hero-actions">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>

@@ -10,6 +10,11 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tzhoroev.github.io/research/demand-forecasting-sas.html">
     <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <meta name="author" content="Tilekbek Zhoroev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Demand Forecasting &amp; Special Event Detection | Tilekbek Zhoroev">
+    <meta name="twitter:description" content="Demand forecasting with meta-learning and semi-supervised special event detection for the hospitality industry.">
+    <link rel="canonical" href="https://tzhoroev.github.io/research/demand-forecasting-sas.html">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -139,6 +144,19 @@
             color: #cbd5e1; text-decoration: none; font-weight: 400;
         }
         .footer-link:hover { color: #ffffff; }
+        .research-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .status-proprietary {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
         @media (max-width: 900px) {
             .hero-panel,
             .projects-grid,
@@ -186,6 +204,7 @@
                 <p class="research-eyebrow"><i class="fas fa-hotel"></i> SAS Institute (IDeaS)</p>
                 <h1>Demand Forecasting &amp; Special Event Detection</h1>
                 <p class="subtitle">R&amp;D Intern · Jan 2024 — May 2025</p>
+                <span class="research-status status-proprietary">🏢 Proprietary R&amp;D — IDeaS, a SAS Company</span>
                 <p class="tagline" style="color:var(--text-light);max-width:720px;">Developed Sparse Hierarchical Gaussian Process (SHGP) models for hotel room demand forecasting across major chains (Accor, Choice, Wyndham), and Dynamic Mode Decomposition (DMD) with anomaly detection for special event identification in the hospitality industry.</p>
                 <div class="hero-links" style="margin-top:24px;">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
@@ -240,21 +259,21 @@
 
         <section id="repositories" class="section section-alt">
             <div class="container">
-                <h2 class="section-title">Repositories</h2>
+                <h2 class="section-title">Code Availability</h2>
                 <div class="repo-grid">
                     <article class="repo-card">
                         <div class="repo-header">
-                            <span class="repo-name"><i class="fab fa-github"></i> Demand-Forecasting-Project</span>
-                            <span class="private-badge"><i class="fas fa-lock"></i> Private</span>
+                            <span class="repo-name"><i class="fas fa-chart-line"></i> Demand Forecasting</span>
                         </div>
                         <p>SHGP model implementation in GPflow with EDA utilities, booking curve analysis, SGPR/SVGP experiments, ARIMA baselines, and system forecast comparison notebooks for Accor, Choice, and Wyndham chains.</p>
+                        <p style="margin-top:12px;font-style:italic;color:var(--text-light);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:6px;"></i> Code availability: Proprietary — not publicly available.</p>
                     </article>
                     <article class="repo-card">
                         <div class="repo-header">
-                            <span class="repo-name"><i class="fab fa-github"></i> Special-Event-Detection-Project</span>
-                            <span class="private-badge"><i class="fas fa-lock"></i> Private</span>
+                            <span class="repo-name"><i class="fas fa-calendar-day"></i> Special Event Detection</span>
                         </div>
                         <p>DMD tutorial and implementation, predictive models (v1–v3), event calendar matching, GMM-based clustering, Z-Score anomaly detection scripts, and hotel revenue analysis demos.</p>
+                        <p style="margin-top:12px;font-style:italic;color:var(--text-light);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:6px;"></i> Code availability: Proprietary — not publicly available.</p>
                     </article>
                 </div>
             </div>

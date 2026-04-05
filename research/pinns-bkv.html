@@ -10,6 +10,11 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tzhoroev.github.io/research/pinns-bkv.html">
     <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <meta name="author" content="Tilekbek Zhoroev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interpretable Discovery of Hidden Dynamics in BK Virus Infection | Tilekbek Zhoroev">
+    <meta name="twitter:description" content="Methods-focused overview of PINNs, causal inference, and symbolic regression for interpretable hidden-dynamics discovery in BK virus infection.">
+    <link rel="canonical" href="https://tzhoroev.github.io/research/pinns-bkv.html">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -211,6 +216,19 @@
             border-top: 1px solid var(--border);
         }
         .figure-caption strong { color: var(--text); }
+        .research-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .status-dissertation {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
         .figures-row {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -249,6 +267,7 @@
                 <p class="research-eyebrow"><i class="fas fa-brain"></i> NC State University · PhD Research</p>
                 <h1>Interpretable Discovery of Hidden Dynamics in BK Virus Infection</h1>
                 <p class="subtitle">NC State University · PhD Dissertation Research</p>
+                <span class="research-status status-dissertation">🎓 Ph.D. Dissertation Research — Journal manuscript in preparation</span>
                 <p class="hero-summary">BK virus nephropathy is a common cause of kidney transplant loss, and no effective drugs specifically target BKV. Doctors must balance immunosuppressive medication to prevent rejection versus infection. This project developed an integrated PINNs + causal inference + symbolic regression framework to model serum creatinine dynamics and extract interpretable mathematical expressions for the missing physics.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
@@ -376,7 +395,7 @@
                     <p>This dissertation provides the broader methodological context for the BK virus hidden-dynamics study and situates the work within clinically grounded, interpretable machine learning.</p>
                     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
                         <a class="resource-link" href="https://search.proquest.com/openview/831101f864e3d5342dec420d86815d6f/1?pq-origsite=gscholar&amp;cbl=18750&amp;diss=y" target="_blank" rel="noopener noreferrer"><i class="fas fa-book"></i> View dissertation record</a>
-                        <a class="resource-link" href="https://github.com/TZhoroev/PINNS-BKV" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> PINNS-BKV <span style="background:var(--accent);color:#fff;font-size:0.7rem;padding:2px 6px;border-radius:8px;margin-left:4px;">Private</span></a>
+                        <span class="resource-link" style="cursor:default;"><i class="fab fa-github"></i> Code availability: Repository is private as it contains research-stage material. A public methods repository will be released upon publication.</span>
                     </div>
                 </article>
             </div>

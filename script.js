@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !expanded);
         });
     }
     document.querySelectorAll('.nav-menu a').forEach(link => {
@@ -50,19 +52,26 @@ document.addEventListener('DOMContentLoaded', function() {
     loadPublications();
 
     // Scroll animations
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                if (!prefersReducedMotion) {
+                    entry.target.style.transform = 'translateY(0)';
+                }
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.research-card, .timeline-item, .education-card, .award-item').forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        if (!prefersReducedMotion) {
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        } else {
+            el.style.transition = 'opacity 0.3s ease';
+        }
         observer.observe(el);
     });
 });
@@ -121,6 +130,10 @@ async function loadPublications() {
                 <div class="stat-item">
                     <span class="stat-number">${data.total_citations}</span>
                     <span class="stat-label">Total Citations</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">${data.h_index}</span>
+                    <span class="stat-label">h-index</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">${data.publications.length}</span>

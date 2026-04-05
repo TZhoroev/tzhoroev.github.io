@@ -10,6 +10,11 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tzhoroev.github.io/research/alzheimers.html">
     <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <meta name="author" content="Tilekbek Zhoroev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alzheimer's Disease Progression Modeling | Tilekbek Zhoroev">
+    <meta name="twitter:description" content="Predicting progression of 11 ADAS-Cog subscores using Gaussian Processes with ordinal likelihood on CPAD clinical trial data.">
+    <link rel="canonical" href="https://tzhoroev.github.io/research/alzheimers.html">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -149,6 +154,19 @@
             text-decoration: none;
         }
         .footer-link:hover { color: #ffffff; }
+        .research-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .status-proprietary {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
         @media (max-width: 1100px) {
             .metric-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -207,6 +225,7 @@
                 <p class="research-eyebrow"><i class="fas fa-dna"></i> Johnson &amp; Johnson</p>
                 <h1>Predicting Alzheimer's Disease Progression</h1>
                 <p class="subtitle">Johnson &amp; Johnson · Summer Internship 2023</p>
+                <span class="research-status status-proprietary">🏢 Industry Research — Johnson &amp; Johnson Internship (Unpublished)</span>
                 <p class="hero-copy">The objective was to predict the longitudinal progression of all 11 ADAS-Cog (Alzheimer's Disease Assessment Scale – Cognitive) subscores using Gaussian Process models with ordinal likelihood. ADAS-Cog is the gold-standard cognitive endpoint in AD clinical trials, and accurate subscore-level forecasting enables finer-grained understanding of how different cognitive domains decline over time.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>

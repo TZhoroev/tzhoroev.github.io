@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tzhoroev.github.io/sitemap.xml

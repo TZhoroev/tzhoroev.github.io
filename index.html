@@ -10,12 +10,45 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tzhoroev.github.io">
     <meta property="og:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <meta property="og:site_name" content="Tilekbek Zhoroev">
+    <meta property="og:image:alt" content="Tilekbek Zhoroev - Applied Mathematician and Data Scientist">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tilekbek Zhoroev | Applied Mathematician &amp; Data Scientist">
+    <meta name="twitter:description" content="Ph.D. in Applied Mathematics. Research in Gaussian processes, PINNs, and uncertainty quantification.">
+    <meta name="twitter:image" content="https://tzhoroev.github.io/assets/profile.jpg">
+    <meta name="author" content="Tilekbek Zhoroev">
+    <meta name="keywords" content="applied mathematics, machine learning, Gaussian processes, physics-informed neural networks, uncertainty quantification, data science, clinical decision support">
+    <link rel="canonical" href="https://tzhoroev.github.io/">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Tilekbek Zhoroev",
+      "jobTitle": "Data Scientist",
+      "worksFor": {"@type": "Organization", "name": "Microsoft"},
+      "alumniOf": [
+        {"@type": "CollegeOrUniversity", "name": "North Carolina State University"},
+        {"@type": "CollegeOrUniversity", "name": "Western Kentucky University"}
+      ],
+      "url": "https://tzhoroev.github.io",
+      "image": "https://tzhoroev.github.io/assets/profile.jpg",
+      "sameAs": [
+        "https://scholar.google.com/citations?user=ShuoePgAAAAJ&hl=en",
+        "https://github.com/TZhoroev",
+        "https://linkedin.com/in/tzhoroev"
+      ],
+      "knowsAbout": ["Gaussian Processes", "Physics-Informed Neural Networks", "Uncertainty Quantification", "Bayesian Inference", "Clinical Decision Support"]
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">TZ</a>
@@ -30,11 +63,11 @@
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="hamburger">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -42,8 +75,9 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Tilekbek Zhoroev</h1>
-                <p class="subtitle">Ph.D. in Applied Mathematics</p>
-                <p class="tagline">Data Scientist at Microsoft | Scientific Machine Learning | Uncertainty Quantification</p>
+                <p class="subtitle">Applied Mathematician & Data Scientist</p>
+                <p class="tagline">Building uncertainty-aware ML models for clinical decision-making and scientific computing</p>
+                <p class="hero-metrics">8 Publications · 80+ Citations · h-index 3</p>
                 <div class="hero-links">
                     <a href="https://scholar.google.com/citations?user=ShuoePgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                         <i class="fas fa-graduation-cap"></i> Google Scholar
@@ -60,17 +94,18 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="assets/profile.jpg" alt="Tilekbek Zhoroev" loading="lazy">
+                <img src="assets/profile.jpg" alt="Tilekbek Zhoroev" fetchpriority="high" width="300" height="300">
             </div>
         </div>
     </header>
 
+    <main id="main-content">
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <p>I am a Data Scientist at Microsoft with a Ph.D. in Applied Mathematics from North Carolina State University. My research focuses on developing <strong>Gaussian Process</strong> and <strong>Physics-Informed Neural Network</strong> models for clinical decision making.</p>
-                <p>I am passionate about applying rigorous mathematical methods to solve real-world problems, particularly at the intersection of machine learning, statistics, and scientific computing. My work spans uncertainty quantification, Bayesian inference, and computational modeling of physical and biological systems.</p>
+                <p>I am a Data Scientist at Microsoft with a Ph.D. in Applied Mathematics from North Carolina State University. My work sits at the intersection of <strong>probabilistic machine learning</strong>, <strong>scientific computing</strong>, and <strong>decision-making under uncertainty</strong>.</p>
+                <p>My dissertation developed Gaussian process and physics-informed neural network models for clinical decision support — predicting labor progression and BK virus infection dynamics from sparse patient data. I have also worked on Alzheimer's disease progression modeling, pharmacokinetic systems, demand forecasting, and Bayesian uncertainty quantification across healthcare, pharmaceutical, and hospitality domains.</p>
                 <div class="research-interests">
                     <span class="interest-tag">Uncertainty Quantification</span>
                     <span class="interest-tag">Physics-Informed Neural Networks</span>
@@ -91,42 +126,42 @@
                     <div class="research-icon"><i class="fas fa-heartbeat"></i></div>
                     <span class="research-badge">PeriGen / NIH / NICHD</span>
                     <h3>Labor Progression Prediction</h3>
-                    <p>Developed Sparse Gaussian Process models with meta-learning to predict cervical dilation and fetal station in real time, improving clinical decision-making in obstetrics. Validated on 49,694 births, demonstrating superiority over WHO and ACOG guidelines.</p>
+                    <p>Developed patient-specific labor progression curves using sparse Gaussian processes, improving prediction sensitivity over WHO and ACOG guidelines while quantifying uncertainty for clinical monitoring.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/pinns-bkv.html" class="research-card" style="background-image:url('assets/research/card-bkv.jpg')">
                     <div class="research-icon"><i class="fas fa-brain"></i></div>
                     <span class="research-badge">NC State University (PhD)</span>
                     <h3>Interpretable Discovery of Hidden Dynamics in BKV Infection</h3>
-                    <p>Integrated Physics-Informed Neural Networks, causal inference, and symbolic regression to uncover hidden creatinine dynamics in BK virus infection after kidney transplantation. Extracted interpretable ODE terms from black-box models.</p>
+                    <p>Modeled hidden BK virus dynamics after kidney transplant using PINNs and symbolic regression, recovering interpretable equations from sparse clinical data for early infection detection.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/alzheimers.html" class="research-card" style="background-image:url('assets/research/card-alzheimers.jpg')">
                     <div class="research-icon"><i class="fas fa-dna"></i></div>
                     <span class="research-badge">Johnson &amp; Johnson</span>
                     <h3>Alzheimer's Disease Progression Modeling</h3>
-                    <p>Developed Variational Gaussian Process models with ordinal likelihood to predict ADAS cognitive scores and quantify uncertainty in Alzheimer's disease progression, using clinical trial data from 1,683 patients.</p>
+                    <p>Predicted progression of 11 ADAS-Cog subscores in Alzheimer's patients using longitudinal clinical trial data from the CPAD database, enabling individualized trajectory forecasting.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/demand-forecasting-sas.html" class="research-card" style="background-image:url('assets/research/card-sas.jpg')">
                     <div class="research-icon"><i class="fas fa-hotel"></i></div>
                     <span class="research-badge">SAS Institute (IDeaS)</span>
                     <h3>Demand Forecasting &amp; Special Event Detection</h3>
-                    <p>Developed demand forecasting models for hotel occupancy across multiple chains using meta-learning for data-scarce hotels. Designed a semi-supervised learning model for special event detection in the hospitality industry.</p>
+                    <p>Built structured heteroscedastic GP models and anomaly detection systems for hotel demand forecasting across major hospitality chains at IDeaS, a SAS company.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/uncertainty-quantification.html" class="research-card" style="background-image:url('assets/research/card-uq.jpg')">
                     <div class="research-icon"><i class="fas fa-chart-line"></i></div>
                     <span class="research-badge">NC State University · NSF</span>
                     <h3>Uncertainty Quantification for Physical &amp; Biological Models</h3>
-                    <p>Employed uncertainty propagation techniques to detect model–data discrepancies and estimate associated uncertainty. Developed Bayesian methods for simultaneous interval prediction, addressing extrapolation-domain uncertainty to support informed decision-making.</p>
+                    <p>Developed Bayesian methods for simultaneous interval prediction and model-discrepancy detection, addressing uncertainty in extrapolation domains for physical and biological systems.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="research/pharmacokinetics.html" class="research-card" style="background-image:url('assets/research/card-pharma.jpg')">
                     <div class="research-icon"><i class="fas fa-pills"></i></div>
                     <span class="research-badge">Western Kentucky University</span>
                     <h3>Discrete Fractional Pharmacokinetics Modeling</h3>
-                    <p>Studied discrete and discrete fractional PK/PD models for tumor growth and anti-cancer effects using nabla fractional calculus. Established controllability and observability conditions for fractional systems. Funded by KSEF.</p>
+                    <p>Formulated discrete fractional PK/PD models for tumor growth and anti-cancer drug effects, bridging fractional calculus with compartmental pharmacokinetic modeling.</p>
                     <span class="research-link">Read more <i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
@@ -156,7 +191,7 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <img src="assets/logos/microsoft.svg" alt="Microsoft" class="timeline-logo">
+                            <img src="assets/logos/microsoft.svg" alt="Microsoft" class="timeline-logo" loading="lazy">
                             <div>
                                 <h3>Data Scientist</h3>
                                 <span class="company">Microsoft</span>
@@ -164,13 +199,14 @@
                             </div>
                         </div>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Redmond, WA</p>
+                        <p>Developing data science solutions and machine learning models for large-scale operational analytics, applying statistical methods and ML techniques to drive data-informed decision-making.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <img src="assets/logos/sas.svg" alt="SAS Institute" class="timeline-logo">
+                            <img src="assets/logos/sas.svg" alt="SAS Institute" class="timeline-logo" loading="lazy">
                             <div>
                                 <h3>R&amp;D Intern</h3>
                                 <span class="company">SAS Institute (IDeaS)</span>
@@ -189,7 +225,7 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <img src="assets/logos/perigen.png" alt="PeriGen" class="timeline-logo">
+                            <img src="assets/logos/perigen.png" alt="PeriGen" class="timeline-logo" loading="lazy">
                             <div>
                                 <h3>Data Science Intern</h3>
                                 <span class="company">PeriGen</span>
@@ -208,7 +244,7 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <img src="assets/logos/jnj.svg" alt="Johnson &amp; Johnson" class="timeline-logo">
+                            <img src="assets/logos/jnj.svg" alt="Johnson &amp; Johnson" class="timeline-logo" loading="lazy">
                             <div>
                                 <h3>Data Science Intern</h3>
                                 <span class="company">Johnson &amp; Johnson</span>
@@ -227,7 +263,7 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <img src="assets/logos/ncstate.svg" alt="NC State University" class="timeline-logo">
+                            <img src="assets/logos/ncstate.svg" alt="NC State University" class="timeline-logo" loading="lazy">
                             <div>
                                 <h3>Research &amp; Teaching Assistant</h3>
                                 <span class="company">North Carolina State University</span>
@@ -253,7 +289,7 @@
                 <div class="education-card" style="background-image: url('assets/campus-ncstate.jpg');">
                     <div class="edu-overlay">
                         <div class="edu-top">
-                            <img src="assets/logos/ncstate.svg" alt="NC State" class="edu-logo-img">
+                            <img src="assets/logos/ncstate.svg" alt="NC State" class="edu-logo-img" loading="lazy">
                             <span class="edu-date">Aug 2020 — May 2025</span>
                         </div>
                         <h3>Ph.D. in Applied Mathematics</h3>
@@ -266,7 +302,7 @@
                 <div class="education-card" style="background-image: url('assets/campus-wku.jpg');">
                     <div class="edu-overlay">
                         <div class="edu-top">
-                            <img src="assets/logos/wku.svg" alt="WKU" class="edu-logo-img">
+                            <img src="assets/logos/wku.svg" alt="WKU" class="edu-logo-img" loading="lazy">
                             <span class="edu-date">Aug 2018 — May 2020</span>
                         </div>
                         <h3>M.S. in Mathematics</h3>
@@ -278,7 +314,7 @@
                 <div class="education-card" style="background-image: url('assets/campus-erciyes.jpg');">
                     <div class="edu-overlay">
                         <div class="edu-top">
-                            <img src="assets/logos/erciyes.svg" alt="Erciyes" class="edu-logo-img">
+                            <img src="assets/logos/erciyes.svg" alt="Erciyes" class="edu-logo-img" loading="lazy">
                             <span class="edu-date">Sep 2014 — Jun 2017</span>
                         </div>
                         <h3>B.S. in Mathematics</h3>
@@ -355,27 +391,28 @@
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="https://scholar.google.com/citations?user=ShuoePgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar">
+                    <a href="https://scholar.google.com/citations?user=ShuoePgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar">
                         <i class="fas fa-graduation-cap"></i>
                     </a>
-                    <a href="https://github.com/TZhoroev" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <a href="https://github.com/TZhoroev" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://linkedin.com/in/tzhoroev" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <a href="https://linkedin.com/in/tzhoroev" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-social">
-                    <a href="https://scholar.google.com/citations?user=ShuoePgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                    <a href="https://github.com/TZhoroev" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/tzhoroev" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://scholar.google.com/citations?user=ShuoePgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://github.com/TZhoroev" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/tzhoroev" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
                 <p>&copy; 2026 Tilekbek Zhoroev. All rights reserved.</p>
             </div>

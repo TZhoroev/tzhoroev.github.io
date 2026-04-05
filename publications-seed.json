@@ -1,6 +1,4 @@
 {
-  "total_citations": 82,
-  "h_index": 3,
   "publications": [
     {
       "title": "Developing Gaussian Process and Theory-Informed Neural Network Models for Clinical Decision Making",
@@ -59,5 +57,5 @@
       "url": "https://doi.org/10.7153/fdc-2019-09-04"
     }
   ],
-  "last_updated": "2026-03-16"
+  "source": "Semantic Scholar API + manual curation"
 }

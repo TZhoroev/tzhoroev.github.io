@@ -79,9 +79,16 @@ body.dark .theme-toggle i::before { content: "\f185"; }
 .hero { padding: 120px 24px 80px; background: var(--hero-gradient); transition: background 0.3s ease; }
 .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 60px; }
 .hero-text { flex: 1; }
-.hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+.hero h1 { font-size: clamp(1.75rem, 5vw, 3rem); font-weight: 700; margin-bottom: 8px; color: var(--text); }
 .subtitle { font-size: 1.25rem; color: var(--primary); font-weight: 600; margin-bottom: 8px; }
 .tagline { font-size: 1.1rem; color: var(--text-light); margin-bottom: 24px; }
+.hero-metrics {
+    font-size: 0.95rem;
+    color: var(--text-secondary, var(--text-light));
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-top: 0.5rem;
+}
 .hero-links { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .btn {
@@ -107,7 +114,7 @@ body.dark .btn-secondary { background: #475569; }
 .section { padding: 80px 24px; }
 .section-alt { background: var(--bg-alt); transition: background-color 0.3s ease; }
 .section-title {
-    font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 48px; color: var(--text);
+    font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; text-align: center; margin-bottom: 48px; color: var(--text);
     position: relative; display: inline-block; width: 100%;
 }
 .section-title::after {
@@ -276,6 +283,38 @@ a.research-card:hover .research-link i { transform: translateX(4px); }
     transition: all 0.2s; border: 1px solid var(--border);
 }
 .social-links a:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    z-index: 10000;
+    transition: top 0.2s;
+    font-size: 0.875rem;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus visible */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
 
 /* Responsive */
 @media (max-width: 768px) {

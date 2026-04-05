@@ -1,78 +1,111 @@
 #!/usr/bin/env python3
-"""
-Fetch publications from Google Scholar and save to JSON.
-Uses the scholarly library to scrape Google Scholar data.
-"""
+"""Fetch publication metrics from Semantic Scholar API and merge with curated seed data."""
 
 import json
-from scholarly import scholarly
+import time
+import urllib.request
+import urllib.parse
+import urllib.error
+from datetime import date
 
-SCHOLAR_ID = "ShuoePgAAAAJ"  # Your Google Scholar ID
+SEED_FILE = "publications-seed.json"
+OUTPUT_FILE = "publications.json"
+API_BASE = "https://api.semanticscholar.org/graph/v1"
 
-def fetch_publications():
-    """Fetch all publications for the author."""
+
+def search_paper(title):
+    """Search for a paper by title on Semantic Scholar."""
+    query = urllib.parse.quote(title)
+    url = f"{API_BASE}/paper/search?query={query}&limit=3&fields=citationCount,externalIds,url,title"
     try:
-        # Search for author by ID
-        author = scholarly.search_author_id(SCHOLAR_ID)
-        author = scholarly.fill(author, sections=['publications'])
-        
-        publications = []
-        for pub in author.get('publications', []):
-            # Fill in publication details
-            try:
-                pub_filled = scholarly.fill(pub)
-            except:
-                pub_filled = pub
-            
-            pub_data = {
-                'title': pub_filled.get('bib', {}).get('title', ''),
-                'authors': pub_filled.get('bib', {}).get('author', ''),
-                'venue': pub_filled.get('bib', {}).get('journal', '') or pub_filled.get('bib', {}).get('venue', '') or pub_filled.get('bib', {}).get('conference', ''),
-                'year': pub_filled.get('bib', {}).get('pub_year', ''),
-                'citations': pub_filled.get('num_citations', 0),
-                'url': pub_filled.get('pub_url', ''),
-            }
-            
-            # Only add if we have a title
-            if pub_data['title']:
-                publications.append(pub_data)
-        
-        # Sort by year (newest first), then by citations
-        publications.sort(key=lambda x: (-(int(x['year']) if x['year'] else 0), -x['citations']))
-        
-        # Get total citations
-        total_citations = author.get('citedby', 0)
-        h_index = author.get('hindex', 0)
-        
-        result = {
-            'total_citations': total_citations,
-            'h_index': h_index,
-            'publications': publications,
-            'last_updated': None  # Will be set with current date
-        }
-        
-        # Set last_updated to today
-        from datetime import date
-        result['last_updated'] = date.today().isoformat()
-        
-        return result
-        
+        req = urllib.request.Request(url, headers={"User-Agent": "AcademicWebsite/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+            if data.get("data"):
+                # Find best match by title similarity
+                for paper in data["data"]:
+                    if paper.get("title", "").lower().strip() == title.lower().strip():
+                        return paper
+                # Fallback to first result
+                return data["data"][0]
     except Exception as e:
-        print(f"Error fetching publications: {e}")
-        return None
+        print(f"  Warning: Could not fetch '{title[:50]}...': {e}")
+    return None
+
+
+def calculate_h_index(citation_counts):
+    """Calculate h-index from a list of citation counts."""
+    sorted_counts = sorted(citation_counts, reverse=True)
+    h = 0
+    for i, c in enumerate(sorted_counts):
+        if c >= i + 1:
+            h = i + 1
+        else:
+            break
+    return h
+
 
 def main():
-    print("Fetching publications from Google Scholar...")
-    data = fetch_publications()
-    
-    if data:
-        with open('publications.json', 'w') as f:
-            json.dump(data, f, indent=2)
-        print(f"Successfully saved {len(data['publications'])} publications")
-        print(f"Total citations: {data['total_citations']}, h-index: {data['h_index']}")
-    else:
-        print("Failed to fetch publications")
+    print("Loading seed publications...")
+    try:
+        with open(SEED_FILE) as f:
+            seed = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: {SEED_FILE} not found. Create it first.")
         exit(1)
+
+    # Load existing output for validation comparison
+    try:
+        with open(OUTPUT_FILE) as f:
+            existing = json.load(f)
+        old_total = existing.get("total_citations", 0)
+    except (FileNotFoundError, json.JSONDecodeError):
+        old_total = 0
+
+    publications = seed.get("publications", [])
+    total_citations = 0
+    citation_counts = []
+
+    for pub in publications:
+        title = pub.get("title", "")
+        print(f"  Searching: {title[:60]}...")
+
+        result = search_paper(title)
+        if result and result.get("citationCount") is not None:
+            pub["citations"] = result["citationCount"]
+            print(f"    Found: {pub['citations']} citations")
+        else:
+            print(f"    Not found, keeping seed value: {pub.get('citations', 0)}")
+
+        total_citations += pub.get("citations", 0)
+        citation_counts.append(pub.get("citations", 0))
+        time.sleep(1)  # Rate limit
+
+    h_index = calculate_h_index(citation_counts)
+
+    # Validation gate
+    if old_total > 0 and total_citations < old_total * 0.85:
+        print(f"VALIDATION FAILED: Citations dropped from {old_total} to {total_citations} (>15% drop)")
+        print("Keeping existing publications.json")
+        exit(1)
+
+    # Sort by year desc, then citations desc
+    publications.sort(key=lambda x: (-(int(x.get("year", 0)) if x.get("year") else 0), -x.get("citations", 0)))
+
+    output = {
+        "total_citations": total_citations,
+        "h_index": h_index,
+        "publications": publications,
+        "source": "Semantic Scholar API + manual curation",
+        "last_updated": date.today().isoformat()
+    }
+
+    with open(OUTPUT_FILE, "w") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+
+    print(f"\nSaved {len(publications)} publications")
+    print(f"Total citations: {total_citations}, h-index: {h_index}")
+
 
 if __name__ == "__main__":
     main()
