@@ -21,139 +21,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
-        .research-hero {
-            padding-top: 140px;
-            padding-bottom: 64px;
-        }
-        .research-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-        .theory-hero {
+        .definition-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.92fr);
-            gap: 24px;
-            align-items: stretch;
-        }
-        .theorem-card,
-        .definition-card,
-        .assumption-card,
-        .publication-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-        .theorem-card,
-        .definition-card,
-        .assumption-card,
-        .publication-card {
-            padding: 28px;
-        }
-        .theorem-card {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(249, 115, 22, 0.08));
-        }
-        body.dark .theorem-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(249, 115, 22, 0.12));
-        }
-        .definition-grid,
-        .publication-grid {
-            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 18px;
         }
-        .definition-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-        .content-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-            gap: 24px;
-            align-items: start;
-        }
-        .theorem-card h2,
-        .definition-card h3,
-        .assumption-card h2,
-        .publication-card h3 {
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-        .theorem-card p,
-        .definition-card p,
-        .assumption-card p,
-        .publication-card p,
-        .assumption-list li {
-            color: var(--text-light);
-        }
-        .definition-card {
-            overflow-x: auto;
-        }
-        .assumption-list {
-            margin: 0;
-            padding-left: 18px;
-            display: grid;
-            gap: 10px;
-        }
-        .resource-link,
-        .footer-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .resource-link:hover,
-        .footer-link:hover {
-            color: var(--primary-dark);
-        }
-        .footer-link {
-            color: #cbd5e1;
-            font-weight: 400;
-        }
-        .footer-link:hover {
-            color: #ffffff;
-        }
-        .research-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .status-published {
-            background: rgba(34, 197, 94, 0.15);
-            color: #22c55e;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-        }
         @media (max-width: 1100px) {
-            .definition-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 900px) {
-            .theory-hero,
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .research-hero {
-                padding-top: 120px;
-                padding-bottom: 56px;
-            }
-            .theorem-card,
-            .definition-card,
-            .assumption-card,
-            .publication-card {
-                padding: 22px;
-            }
+            .definition-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -180,7 +54,7 @@
     </nav>
 
     <header class="hero research-hero">
-        <div class="container theory-hero">
+        <div class="container research-hero-grid">
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-pills"></i> Western Kentucky University · KSEF</p>
                 <h1>Discrete Fractional Pharmacokinetics Modeling</h1>
@@ -191,9 +65,27 @@
                     <a href="#publications" class="btn btn-secondary"><i class="fas fa-book"></i> Publications</a>
                 </div>
             </div>
-            <aside class="theorem-card" id="overview">
+            <aside class="research-sidebar" id="overview">
                 <h2>Why fractional operators?</h2>
                 <p>In a standard discrete difference equation, the next state depends only on the current one and its immediate neighbor. But when a patient receives chemotherapy, the body's response today is shaped by all the doses that came before, not just the last one. Nabla fractional operators encode this entire history through a weighted sum, where the weights decay according to a rising factorial kernel. That memory structure makes nabla operators a natural tool for modeling systems with hereditary effects.</p>
+                <div class="research-kpis">
+                    <div class="research-kpi">
+                        <span>2</span>
+                        journal papers published
+                    </div>
+                    <div class="research-kpi">
+                        <span>68</span>
+                        combined citations
+                    </div>
+                    <div class="research-kpi">
+                        <span>&alpha; &isin; (0,1)</span>
+                        fractional order range
+                    </div>
+                    <div class="research-kpi">
+                        <span>2019</span>
+                        Master&#39;s thesis, WKU
+                    </div>
+                </div>
             </aside>
         </div>
     </header>
@@ -203,21 +95,21 @@
             <div class="container">
                 <h2 class="section-title">Prominent Nabla Definitions</h2>
                 <div class="definition-grid">
-                    <article class="definition-card">
+                    <article class="research-panel panel-equation">
                         <h3>Backward difference</h3>
                         <div class="math">\[
                             \nabla x(t) = x(t) - x(t-1)
                         \]</div>
                         <p>The starting point: a discrete-time analogue of the first derivative. Simple, memoryless, and the building block for everything that follows.</p>
                     </article>
-                    <article class="definition-card">
+                    <article class="research-panel panel-equation">
                         <h3>Fractional nabla sum</h3>
                         <div class="math">\[
                             \nabla_a^{-\alpha} x(t) = \frac{1}{\Gamma(\alpha)} \sum_{s=a+1}^{t} \big(t-\rho(s)\big)^{\overline{\alpha-1}} x(s), \qquad \rho(s)=s-1
                         \]</div>
                         <p>This is where memory enters the picture. The fractional sum aggregates all prior states, weighted by a kernel that decays over time. Recent history matters more, but old history is not forgotten.</p>
                     </article>
-                    <article class="definition-card">
+                    <article class="research-panel panel-equation">
                         <h3>Fractional nabla difference</h3>
                         <div class="math">\[
                             \nabla_a^{\alpha} x(t) = \nabla^{n}\,\nabla_a^{-(n-\alpha)}x(t), \qquad n-1 &lt; \alpha &lt; n
@@ -229,11 +121,11 @@
         </section>
 
         <section id="assumptions" class="section section-alt">
-            <div class="container content-grid">
-                <article class="assumption-card">
+            <div class="container research-grid-2">
+                <article class="research-panel">
                     <h2>Modeling setup</h2>
                     <p>To keep the mathematics clean, we work under a few assumptions:</p>
-                    <ul class="assumption-list">
+                    <ul class="research-list">
                         <li>Time is sampled on a discrete grid \(t \in \mathbb{N}_a\), natural for dosing schedules and clinical measurements;</li>
                         <li>The fractional order satisfies \(0 &lt; \alpha &lt; 1\), which gives us "partial memory" rather than full or zero memory;</li>
                         <li>State variables represent drug concentrations and tumor volumes whose current values depend on the entire dosing history.</li>
@@ -243,7 +135,7 @@
                     \]</div>
                     <p>This state-space form is our entry point for studying controllability (can we steer the system to a desired state?) and observability (can we infer hidden states from measurements?) in fractional PK/PD systems.</p>
                 </article>
-                <aside class="assumption-card">
+                <aside class="research-panel">
                     <h2>Real-world application</h2>
                     <p>We applied this framework to discrete and discrete fractional PK/PD models for tumor growth and anti-cancer drug response. The main result is that fractional operators capture the memory effects observed in real pharmacological data without ad hoc assumptions. A patient's response to a drug depends not just on today's dose, but on the cumulative exposure over weeks.</p>
                     <p>The Kentucky Science and Engineering Foundation supported this work, which led to a published journal paper and my master's thesis at WKU.</p>
@@ -280,6 +172,12 @@
                 </article>
             </div>
         </section>
+
+    <nav class="research-nav" aria-label="Research navigation">
+        <a href="uncertainty-quantification.html"><i class="fas fa-arrow-left"></i> Uncertainty Quantification</a>
+        <a href="../index.html#research"><i class="fas fa-home"></i> All Research</a>
+        <a href="labor-progression.html">Labor Progression <i class="fas fa-arrow-right"></i></a>
+    </nav>
     </main>
 
     <footer class="footer">

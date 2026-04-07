@@ -21,222 +21,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
-        .research-hero {
-            padding-top: 140px;
-            padding-bottom: 64px;
-        }
-        .research-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-        .hero-shell {
-            display: grid;
-            gap: 28px;
-        }
-        .hero-summary {
-            max-width: 880px;
-            color: var(--text-light);
-        }
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .hero-tag,
-        .section-card,
-        .pipeline-step,
-        .equation-panel,
-        .dissertation-card,
-        .focus-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
         .hero-tag {
-            padding: 12px 16px;
-            color: var(--text-light);
-        }
-        .section-card,
-        .equation-panel,
-        .dissertation-card,
-        .focus-card {
-            padding: 28px;
-        }
-        .methods-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
-            gap: 24px;
-            align-items: start;
+            padding: 12px 16px; color: var(--text-light);
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; box-shadow: var(--shadow); font-size: 0.93rem;
         }
         .pipeline {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 26px;
+            gap: 18px; margin-top: 26px;
         }
         .pipeline-step {
-            padding: 24px;
-            position: relative;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; padding: 24px; box-shadow: var(--shadow); position: relative;
         }
         .pipeline-step::after {
-            content: '→';
-            position: absolute;
-            right: -14px;
-            top: 44px;
-            font-size: 1.6rem;
-            color: var(--primary);
+            content: '\2192'; position: absolute; right: -14px; top: 44px;
+            font-size: 1.6rem; color: var(--primary);
         }
-        .pipeline-step:last-child::after {
-            display: none;
-        }
-        .step-number {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: inline-grid;
-            place-items: center;
-            background: rgba(37, 99, 235, 0.12);
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-        .pipeline-step h3,
-        .section-card h2,
-        .focus-card h3,
-        .equation-panel h3,
-        .dissertation-card h3 {
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-        .pipeline-step p,
-        .section-card p,
-        .focus-card p,
-        .equation-panel p,
-        .assumptions li,
-        .dissertation-card p {
-            color: var(--text-light);
-        }
-        .assumptions {
-            margin: 0;
-            padding-left: 18px;
-            display: grid;
-            gap: 10px;
-        }
-        .focus-stack {
-            display: grid;
-            gap: 16px;
-        }
-        .equation-layout {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 24px;
-        }
-        .equation-panel {
-            overflow-x: auto;
-        }
-        .dissertation-card {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            max-width: 760px;
-        }
-        .resource-link,
-        .footer-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .resource-link:hover,
-        .footer-link:hover {
-            color: var(--primary-dark);
-        }
-        .footer-link {
-            color: #cbd5e1;
-            font-weight: 400;
-        }
-        .footer-link:hover {
-            color: #ffffff;
-        }
+        .pipeline-step:last-child::after { display: none; }
+        .pipeline-step h3 { color: var(--text); margin-bottom: 12px; }
+        .pipeline-step p { color: var(--text-light); }
         @media (max-width: 1080px) {
-            .pipeline {
-                grid-template-columns: 1fr;
-            }
+            .pipeline { grid-template-columns: 1fr; }
             .pipeline-step::after {
-                content: '↓';
-                right: auto;
-                left: 24px;
-                bottom: -16px;
-                top: auto;
+                content: '\2193'; right: auto; left: 24px; bottom: -16px; top: auto;
             }
-        }
-        @media (max-width: 900px) {
-            .methods-grid,
-            .equation-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .research-hero {
-                padding-top: 120px;
-                padding-bottom: 56px;
-            }
-            .section-card,
-            .pipeline-step,
-            .equation-panel,
-            .dissertation-card,
-            .focus-card {
-                padding: 22px;
-            }
-        }
-        .figure-panel {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-        .figure-panel img {
-            width: 100%;
-            display: block;
-        }
-        .figure-caption {
-            padding: 16px 24px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            border-top: 1px solid var(--border);
-        }
-        .figure-caption strong { color: var(--text); }
-        .research-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .status-dissertation {
-            background: rgba(59, 130, 246, 0.15);
-            color: #3b82f6;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-        .figures-row {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
-        }
-        @media (max-width: 768px) {
-            .figures-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -263,42 +73,64 @@
     </nav>
 
     <header class="hero research-hero">
-        <div class="container hero-shell">
+        <div class="container research-hero-grid">
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-brain"></i> NC State University · PhD Research</p>
                 <h1>Interpretable Discovery of Hidden Dynamics in BK Virus Infection</h1>
                 <span class="research-status status-dissertation">🎓 Ph.D. Dissertation Research. Journal manuscript in preparation</span>
-                <p class="hero-summary">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises, but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. We built a three-stage pipeline (physics-informed neural networks, causal inference, and symbolic regression) to learn the missing piece of the mathematical model directly from clinical data. The output: interpretable equations that clinicians can reason about.</p>
+                <p class="hero-copy">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises, but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. We built a three-stage pipeline (physics-informed neural networks, causal inference, and symbolic regression) to learn the missing piece of the mathematical model directly from clinical data. The output: interpretable equations that clinicians can reason about.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publication" class="btn btn-secondary"><i class="fas fa-book"></i> Dissertation</a>
                 </div>
             </div>
-            <div class="hero-tags">
-                <div class="hero-tag"><i class="fas fa-database"></i> EHR from Duke Hospitals · 900+ patients · 493 with BKV dynamics</div>
-                <div class="hero-tag"><i class="fas fa-diagram-project"></i> PINNs + Causal Inference + Symbolic Regression pipeline</div>
-                <div class="hero-tag"><i class="fas fa-magnifying-glass-chart"></i> Goal: model serum creatinine to predict immunosuppression dosage</div>
-            </div>
+            <aside class="research-sidebar">
+                <h2>At a Glance</h2>
+                <p>Learning hidden ODE dynamics from clinical EHR data using a physics-informed pipeline.</p>
+                <div class="research-kpis">
+                    <div class="research-kpi">
+                        <span>900+</span>
+                        renal transplant patients
+                    </div>
+                    <div class="research-kpi">
+                        <span>493</span>
+                        patients with BKV dynamics
+                    </div>
+                    <div class="research-kpi">
+                        <span>6</span>
+                        ODE compartments
+                    </div>
+                    <div class="research-kpi">
+                        <span>3-stage</span>
+                        PINN → Causal → SR
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="container" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;">
+            <div class="hero-tag"><i class="fas fa-database"></i> EHR from Duke Hospitals · 900+ patients · 493 with BKV dynamics</div>
+            <div class="hero-tag"><i class="fas fa-diagram-project"></i> PINNs + Causal Inference + Symbolic Regression pipeline</div>
+            <div class="hero-tag"><i class="fas fa-magnifying-glass-chart"></i> Goal: model serum creatinine to predict immunosuppression dosage</div>
         </div>
     </header>
 
     <main>
         <section id="overview" class="section">
-            <div class="container methods-grid">
-                <article class="section-card">
+            <div class="container research-hero-grid">
+                <article class="research-panel">
                     <h2>The challenge</h2>
                     <p>We have a mathematical model that tracks six biological compartments: susceptible cells, infected cells, BK virus, two T-cell populations, and serum creatinine. The model works well for most compartments, but the creatinine equation has a gap. A function \(h(t;\theta)\) on the right-hand side captures unknown dynamics we don't have a mechanistic theory for. The question is: can we learn what \(h\) should look like directly from patient data, without guessing its form in advance?</p>
                 </article>
-                <aside class="focus-stack">
-                    <article class="focus-card">
+                <aside style="display:grid;gap:16px">
+                    <article class="research-panel">
                         <h3>Clinical context</h3>
                         <p>Working with electronic health records from Duke University Hospitals: over 900 renal transplant patients, 493 with BKV dynamics. The data includes viral load measurements, creatinine trajectories, vitals, demographics, and immunosuppressive dosing.</p>
                     </article>
-                    <article class="focus-card">
+                    <article class="research-panel">
                         <h3>Why interpretability matters</h3>
                         <p>A black-box neural network might fit the data well, but a nephrologist can't act on it. By extracting compact, human-readable ODE terms through symbolic regression, we give clinicians equations they can inspect, challenge, and ultimately trust.</p>
                     </article>
-                    <article class="focus-card">
+                    <article class="research-panel">
                         <h3>What we found</h3>
                         <p>Causal inference revealed that \(h\) depends primarily on susceptible cells and creatinine itself. Symbolic regression then recovered a parsimonious closed-form expression that closely matches the PINN-learned dynamics.</p>
                     </article>
@@ -311,17 +143,17 @@
                 <h2 class="section-title">Three-Stage Pipeline</h2>
                 <div class="pipeline">
                     <article class="pipeline-step">
-                        <div class="step-number">1</div>
+                        <div class="research-flow-index">1</div>
                         <h3>PINNs</h3>
                         <p>Train a neural network that respects the known ODE structure while learning the unknown function \(h\). The physics loss penalizes any solution that violates the compartment model, which keeps the learned representation biologically consistent even with noisy, sparse data.</p>
                     </article>
                     <article class="pipeline-step">
-                        <div class="step-number">2</div>
+                        <div class="research-flow-index">2</div>
                         <h3>Causal inference</h3>
                         <p>Not everything that correlates with creatinine actually drives it. We use causal analysis to separate genuine mechanistic drivers from spurious correlations, narrowing down which variables should appear in the final equation for \(h\).</p>
                     </article>
                     <article class="pipeline-step">
-                        <div class="step-number">3</div>
+                        <div class="research-flow-index">3</div>
                         <h3>Symbolic regression</h3>
                         <p>Turn the PINN's black-box learned function into a compact, human-readable mathematical expression. The result is an equation a clinician can write on a whiteboard, not a neural network with thousands of weights.</p>
                     </article>
@@ -363,8 +195,8 @@
                     <img src="../assets/research/bkv-compartments.jpg" alt="Compartment model diagram and governing equations" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Compartment model.</strong> Seven state variables govern BKV infection dynamics: susceptible cells (H<sub>S</sub>), infected cells (H<sub>I</sub>), BK virus (V), BK-specific T-cells (E<sub>V</sub>), allospecific T-cells (E<sub>K</sub>), serum creatinine (C), and hidden dynamics h.</div>
                 </div>
-                <div class="equation-layout">
-                    <article class="equation-panel">
+                <div class="research-grid-2">
+                    <article class="research-panel panel-equation">
                         <h3>PINN loss components</h3>
                         <div class="math">\[
                             \mathcal{L}_{\text{data}} = \frac{1}{N_d}\sum_{i=1}^{N_d}\bigl\|\hat{y}(t_i) - y_i^{\text{obs}}\bigr\|^2
@@ -377,7 +209,7 @@
                         \]</div>
                         <p>The data loss fits measured trajectories. The physics loss penalizes violation of the compartment ODE system at collocation points, enforcing biological consistency.</p>
                     </article>
-                    <article class="equation-panel">
+                    <article class="research-panel panel-equation">
                         <h3>Creatinine equation with unknown RHS</h3>
                         <div class="math">\[
                             \dot{C}(t) = \lambda_C - \delta_{C0}\,\frac{H_S}{H_S + \kappa_{CH}} + h(t;\theta)
@@ -391,7 +223,7 @@
         <section id="publication" class="section section-alt">
             <div class="container">
                 <h2 class="section-title">Dissertation</h2>
-                <article class="dissertation-card">
+                <article class="research-panel">
                     <h3>Developing Gaussian Process and Theory-Informed Neural Network Models for Clinical Decision Making</h3>
                     <p><strong>T. Zhoroev</strong> · Ph.D. Dissertation, North Carolina State University, 2025</p>
                     <p>This dissertation provides the broader methodological context for the BK virus hidden-dynamics study and situates the work within clinically grounded, interpretable machine learning.</p>
@@ -402,6 +234,12 @@
                 </article>
             </div>
         </section>
+
+    <nav class="research-nav" aria-label="Research navigation">
+        <a href="labor-progression.html"><i class="fas fa-arrow-left"></i> Labor Progression</a>
+        <a href="../index.html#research"><i class="fas fa-home"></i> All Research</a>
+        <a href="alzheimers.html">Alzheimer&#39;s Disease <i class="fas fa-arrow-right"></i></a>
+    </nav>
     </main>
 
     <footer class="footer">

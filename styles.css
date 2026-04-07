@@ -692,3 +692,383 @@ body.dark .interest-tag {
 .nav-menu a.active-link {
     color: var(--primary);
 }
+
+/* ================================
+   Research Pages
+   ================================ */
+
+.research-hero {
+    padding-top: 140px;
+    padding-bottom: 64px;
+}
+
+.research-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+/* Hero two-column grid */
+.research-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.hero-copy { color: var(--text-light); }
+
+/* Gradient sidebar in hero */
+.research-sidebar {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.11), rgba(16, 185, 129, 0.08));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+}
+body.dark .research-sidebar {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(16, 185, 129, 0.12));
+}
+.research-sidebar h2 {
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.research-sidebar p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* At a Glance KPIs */
+.research-kpis {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+.research-kpi {
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+body.dark .research-kpi {
+    background: rgba(15, 23, 42, 0.45);
+    border-color: rgba(96, 165, 250, 0.18);
+}
+.research-kpi span {
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+/* General content card */
+.research-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+}
+.research-panel h2,
+.research-panel h3 {
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.research-panel p,
+.research-panel li {
+    color: var(--text-light);
+}
+.research-panel.panel-equation {
+    overflow-x: auto;
+}
+
+/* Metric cards & grid */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+.metric-card strong {
+    display: block;
+    font-size: 1.55rem;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+.metric-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+}
+.metric-value {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+}
+.metric-detail {
+    margin-top: 8px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Figure panels */
+.figure-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.figure-panel img {
+    width: 100%;
+    display: block;
+}
+.figure-caption {
+    padding: 16px 24px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+}
+.figure-caption strong {
+    color: var(--text);
+}
+.figures-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Links */
+.resource-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+.resource-link:hover {
+    color: var(--primary-dark);
+}
+.footer-link {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+.footer-link:hover {
+    color: #ffffff;
+}
+
+/* Status badges */
+.research-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.status-published {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.status-dissertation {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+.status-proprietary {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.status-funded {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+/* Two-column content grid */
+.research-grid-2 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+/* Publication cards */
+.publication-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+.publication-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: var(--shadow);
+}
+.publication-card h3 {
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.publication-card p {
+    color: var(--text-light);
+}
+.pub-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+/* Flow / pipeline steps */
+.research-flow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+.research-flow-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+.research-flow-step h3 {
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.research-flow-step p {
+    color: var(--text-light);
+}
+.research-flow-index {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--primary);
+}
+
+/* Tech / language badges */
+.research-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+.research-badge-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+}
+body.dark .research-badge-item {
+    background: rgba(15, 23, 42, 0.45);
+    border-color: rgba(96, 165, 250, 0.2);
+}
+
+/* Research list */
+.research-list {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 10px;
+}
+.research-list li {
+    color: var(--text-light);
+}
+
+/* Bottom navigation */
+.research-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+}
+.research-nav a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.research-nav a:hover {
+    color: var(--primary-dark);
+}
+
+/* Research responsive */
+@media (max-width: 1100px) {
+    .metric-grid,
+    .research-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .research-hero-grid,
+    .research-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .research-hero {
+        padding-top: 120px;
+        padding-bottom: 56px;
+    }
+    .metric-grid,
+    .research-kpis,
+    .research-flow,
+    .figures-row {
+        grid-template-columns: 1fr;
+    }
+    .research-sidebar,
+    .research-panel,
+    .metric-card,
+    .publication-card,
+    .research-flow-step {
+        padding: 22px;
+    }
+}

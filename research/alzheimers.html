@@ -20,183 +20,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
-    <style>
-        .research-hero {
-            padding-top: 140px;
-            padding-bottom: 64px;
-        }
-        .research-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-        .hero-clinical {
-            display: grid;
-            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.92fr);
-            gap: 24px;
-            align-items: stretch;
-        }
-        .hero-copy { color: var(--text-light); }
-        .data-panel,
-        .metric-card,
-        .content-card,
-        .equation-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-        .data-panel,
-        .content-card,
-        .equation-card {
-            padding: 28px;
-        }
-        .data-panel {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.11), rgba(16, 185, 129, 0.08));
-        }
-        body.dark .data-panel {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(16, 185, 129, 0.12));
-        }
-        .data-panel p,
-        .content-card p,
-        .equation-card p {
-            color: var(--text-light);
-        }
-        .data-panel h2,
-        .content-card h2,
-        .equation-card h3 {
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-        .data-kpis {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 20px;
-        }
-        .data-kpi {
-            padding: 16px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.62);
-            border: 1px solid rgba(37, 99, 235, 0.14);
-        }
-        body.dark .data-kpi {
-            background: rgba(15, 23, 42, 0.45);
-        }
-        .data-kpi span {
-            display: block;
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-        .data-kpi { color: var(--text-light); font-size: 0.9rem; }
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
-        .metric-card {
-            padding: 20px;
-        }
-        .metric-card strong {
-            display: block;
-            font-size: 1.55rem;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
-        .overview-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-            gap: 24px;
-            align-items: start;
-        }
-        .resource-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .resource-link:hover { color: var(--primary-dark); }
-        .figure-panel {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-        .figure-panel img {
-            width: 100%;
-            display: block;
-        }
-        .figure-caption {
-            padding: 16px 24px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            border-top: 1px solid var(--border);
-        }
-        .figure-caption strong { color: var(--text); }
-        .equation-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-        .equation-card { overflow-x: auto; }
-        .footer-link {
-            color: #cbd5e1;
-            text-decoration: none;
-        }
-        .footer-link:hover { color: #ffffff; }
-        .research-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .status-proprietary {
-            background: rgba(245, 158, 11, 0.15);
-            color: #f59e0b;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-        @media (max-width: 1100px) {
-            .metric-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-        @media (max-width: 900px) {
-            .hero-clinical,
-            .overview-grid,
-            .equation-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .research-hero {
-                padding-top: 120px;
-                padding-bottom: 56px;
-            }
-            .metric-grid,
-            .data-kpis {
-                grid-template-columns: 1fr;
-            }
-            .data-panel,
-            .content-card,
-            .equation-card,
-            .metric-card {
-                padding: 22px;
-            }
-        }
-    </style>
+    <style>/* page-specific: none */</style>
 </head>
 <body>
     <nav class="navbar">
@@ -221,7 +45,7 @@
     </nav>
 
     <header class="hero research-hero">
-        <div class="container hero-clinical">
+        <div class="container research-hero-grid">
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-dna"></i> Johnson &amp; Johnson</p>
                 <h1>Predicting Alzheimer's Disease Progression</h1>
@@ -232,23 +56,23 @@
                     <a href="#adas" class="btn btn-secondary"><i class="fas fa-brain"></i> ADAS-Cog Subscores</a>
                 </div>
             </div>
-            <aside class="data-panel">
+            <aside class="research-sidebar">
                 <h2>Dataset</h2>
                 <p>Patient-level data from the <strong>CPAD</strong> (Critical Path for Alzheimer's Disease) database, hosted by C-Path. Includes demographics, APOE4 genotype, concomitant medications, MMSE, and ADAS-Cog assessments remapped to CDISC SDTM standard.</p>
-                <div class="data-kpis">
-                    <div class="data-kpi">
+                <div class="research-kpis">
+                    <div class="research-kpi">
                         <span>1,683</span>
                         patients in analysis cohort
                     </div>
-                    <div class="data-kpi">
+                    <div class="research-kpi">
                         <span>36</span>
                         clinical trials in CPAD
                     </div>
-                    <div class="data-kpi">
+                    <div class="research-kpi">
                         <span>11</span>
                         ADAS-Cog subscores predicted
                     </div>
-                    <div class="data-kpi">
+                    <div class="research-kpi">
                         <span>5-fold</span>
                         cross-validation
                     </div>
@@ -278,8 +102,8 @@
 
     <main>
         <section id="overview" class="section">
-            <div class="container overview-grid">
-                <article class="content-card">
+            <div class="container research-grid-2">
+                <article class="research-panel">
                     <h2>Why predict individual subscores?</h2>
                     <p>Most Alzheimer's models focus on the total ADAS-Cog score (0–70), which sums across all cognitive domains. But this total hides important patterns. One patient might be losing language skills rapidly while memory stays relatively intact; another might show the opposite trajectory. Predicting all 11 subscores individually lets us:</p>
                     <ul style="color:var(--text-light);padding-left:18px;display:grid;gap:8px;margin-top:12px;">
@@ -288,7 +112,7 @@
                         <li>Design smarter clinical trials by enriching for patients whose specific decline patterns match the drug's mechanism</li>
                     </ul>
                 </article>
-                <article class="content-card">
+                <article class="research-panel">
                     <h2>How we approached it</h2>
                     <p>Each ADAS-Cog subscore is an ordered integer. For example, a Word Recall score of 5 is meaningfully "between" 4 and 6, not just a category label. A standard Gaussian likelihood ignores this structure and can produce predictions like 4.7 that don't correspond to any real score. So we used an <strong>ordinal likelihood</strong> that maps the latent GP function through learned thresholds to produce proper probability distributions over each discrete score level.</p>
                     <p style="margin-top:12px;">We compared five GP configurations, from a continuous-response baseline to a full variational GP with ordinal likelihood, using 5-fold cross-validation to see which setup gives the best predictions with well-calibrated uncertainty bands.</p>
@@ -323,8 +147,8 @@
         <section id="likelihood" class="section section-alt">
             <div class="container">
                 <h2 class="section-title">Ordinal Likelihood</h2>
-                <div class="equation-grid">
-                    <article class="equation-card">
+                <div class="research-grid-2">
+                    <article class="research-panel panel-equation">
                         <h3>Why ordinal matters</h3>
                         <p>ADAS-Cog subscores are ordered integers (e.g., Word Recall: 0-10). Treating them as continuous means a prediction of "4.7" has no clinical meaning. The ordinal likelihood maps the GP's latent function through ordered thresholds \(\tau_k\) to produce proper probabilities for each score level:</p>
                         <div class="math" style="margin-top:16px;">\[
@@ -332,7 +156,7 @@
                         \]</div>
                         <p style="margin-top:12px;">where \(\tau_0 = -\infty\), \(\tau_K = +\infty\), the interior thresholds \(\tau_1 &lt; \cdots &lt; \tau_{K-1}\) are learned, and \(g = \Phi\) is the standard normal CDF (probit link).</p>
                     </article>
-                    <article class="equation-card">
+                    <article class="research-panel panel-equation">
                         <h3>What this gives us</h3>
                         <p>The ordinal model naturally captures something intuitive: if the true score is 5, the model should be more likely to guess 4 or 6 than 0 or 10. This "nearness-aware" structure produces clinically meaningful uncertainty estimates. A wide band between 4 and 7 means something very different from a wide band between 1 and 10.</p>
                         <p style="margin-top:12px;">Combined with the GP's flexible longitudinal modeling, this gives us patient-specific progression curves with properly calibrated confidence intervals, which is what clinical trial planners need for power calculations and what physicians need for treatment conversations.</p>
@@ -340,6 +164,12 @@
                 </div>
             </div>
         </section>
+
+    <nav class="research-nav" aria-label="Research navigation">
+        <a href="pinns-bkv.html"><i class="fas fa-arrow-left"></i> BK Virus &amp; PINNs</a>
+        <a href="../index.html#research"><i class="fas fa-home"></i> All Research</a>
+        <a href="demand-forecasting-sas.html">Demand Forecasting <i class="fas fa-arrow-right"></i></a>
+    </nav>
     </main>
 
     <footer class="footer">

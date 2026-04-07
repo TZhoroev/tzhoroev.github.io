@@ -21,180 +21,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
-        .research-hero {
-            padding-top: 140px;
-            padding-bottom: 64px;
-        }
-        .research-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-        .portfolio-hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.92fr);
-            gap: 24px;
-            align-items: stretch;
-        }
-        .language-card,
-        .portfolio-card,
-        .theory-card,
-        .repo-card,
-        .stack-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-        .language-card,
-        .theory-card,
-        .repo-card,
-        .stack-card {
-            padding: 28px;
-        }
-        .language-card {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.08));
-        }
-        body.dark .language-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(124, 58, 237, 0.14));
-        }
-        .language-card h2,
-        .portfolio-card h3,
-        .theory-card h2,
-        .repo-card h2,
-        .stack-card h3 {
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-        .language-card p,
-        .portfolio-card p,
-        .theory-card p,
-        .repo-card p,
-        .stack-card p {
-            color: var(--text-light);
-        }
-        .lang-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
-        }
-        .lang-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 14px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.7);
-            color: var(--text);
-            font-weight: 600;
-            border: 1px solid rgba(37, 99, 235, 0.15);
-        }
-        body.dark .lang-badge {
-            background: rgba(15, 23, 42, 0.45);
-            border-color: rgba(96, 165, 250, 0.2);
-        }
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 18px;
         }
-        .portfolio-card {
-            padding: 24px;
-            position: relative;
-            overflow: hidden;
-        }
+        .portfolio-card { padding: 24px; position: relative; overflow: hidden; }
         .portfolio-card::before {
             content: attr(data-index);
-            position: absolute;
-            right: 18px;
-            top: 16px;
-            font-size: 2.4rem;
-            font-weight: 700;
+            position: absolute; right: 18px; top: 16px;
+            font-size: 2.4rem; font-weight: 700;
             color: rgba(37, 99, 235, 0.12);
         }
-        body.dark .portfolio-card::before {
-            color: rgba(96, 165, 250, 0.14);
-        }
-        .details-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-            gap: 24px;
-            align-items: start;
-        }
-        .equation-stack,
-        .stack-grid {
-            display: grid;
-            gap: 18px;
-        }
-        .stack-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-        .resource-link,
-        .footer-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .resource-link:hover,
-        .footer-link:hover {
-            color: var(--primary-dark);
-        }
-        .footer-link {
-            color: #cbd5e1;
-            font-weight: 400;
-        }
-        .footer-link:hover {
-            color: #ffffff;
-        }
-        .research-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .status-funded {
-            background: rgba(139, 92, 246, 0.15);
-            color: #8b5cf6;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-        }
+        body.dark .portfolio-card::before { color: rgba(96, 165, 250, 0.14); }
         @media (max-width: 1100px) {
-            .portfolio-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-        @media (max-width: 900px) {
-            .portfolio-hero,
-            .details-grid,
-            .stack-grid {
-                grid-template-columns: 1fr;
-            }
+            .portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 768px) {
-            .research-hero {
-                padding-top: 120px;
-                padding-bottom: 56px;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .language-card,
-            .portfolio-card,
-            .theory-card,
-            .repo-card,
-            .stack-card {
-                padding: 22px;
-            }
+            .portfolio-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -221,7 +65,7 @@
     </nav>
 
     <header class="hero research-hero">
-        <div class="container portfolio-hero">
+        <div class="container research-hero-grid">
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-chart-line"></i> NSF-Funded Research</p>
                 <h1>Uncertainty Quantification for Physical &amp; Biological Models</h1>
@@ -233,13 +77,31 @@
                     <a href="https://github.com/TZhoroev/Applied-Bayesian-Statistics" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-github"></i> Bayesian Statistics</a>
                 </div>
             </div>
-            <aside class="language-card" id="overview">
+            <aside class="research-sidebar" id="overview">
                 <h2>Tools &amp; Funding</h2>
                 <p>This work was funded by the <strong>National Science Foundation (NSF)</strong>. I implemented everything in both Python and MATLAB: Python for rapid prototyping and the scientific stack, MATLAB for compatibility with established engineering workflows and classroom use.</p>
-                <div class="lang-badges">
-                    <span class="lang-badge"><i class="fab fa-python"></i> Python</span>
-                    <span class="lang-badge"><i class="fas fa-square-root-variable"></i> MATLAB</span>
-                    <span class="lang-badge"><i class="fas fa-dice"></i> Bayesian Inference</span>
+                <div class="research-badges">
+                    <span class="research-badge-item"><i class="fab fa-python"></i> Python</span>
+                    <span class="research-badge-item"><i class="fas fa-square-root-variable"></i> MATLAB</span>
+                    <span class="research-badge-item"><i class="fas fa-dice"></i> Bayesian Inference</span>
+                </div>
+                <div class="research-kpis">
+                    <div class="research-kpi">
+                        <span>6</span>
+                        project areas covered
+                    </div>
+                    <div class="research-kpi">
+                        <span>NSF</span>
+                        funded research
+                    </div>
+                    <div class="research-kpi">
+                        <span>Py + MAT</span>
+                        dual implementation
+                    </div>
+                    <div class="research-kpi">
+                        <span>2</span>
+                        public repositories
+                    </div>
                 </div>
             </aside>
         </div>
@@ -250,27 +112,27 @@
             <div class="container">
                 <h2 class="section-title">Six Project Areas</h2>
                 <div class="portfolio-grid">
-                    <article class="portfolio-card" data-index="01">
+                    <article class="research-panel portfolio-card" data-index="01">
                         <h3>Sensitivity Analysis</h3>
                         <p>I started by running local and global sensitivity analyses to figure out which parameters actually influence model output, so calibration effort could be focused where it counts.</p>
                     </article>
-                    <article class="portfolio-card" data-index="02">
+                    <article class="research-panel portfolio-card" data-index="02">
                         <h3>Parameter Estimation</h3>
                         <p>The classical starting point: find the parameter values that make the model best match observed data, using well-defined objective functions and optimization.</p>
                     </article>
-                    <article class="portfolio-card" data-index="03">
+                    <article class="research-panel portfolio-card" data-index="03">
                         <h3>MCMC Sampling</h3>
                         <p>When a single best-fit is not enough, we need the full posterior distribution. I implemented Markov chain Monte Carlo methods to explore the parameter space and map out what is plausible.</p>
                     </article>
-                    <article class="portfolio-card" data-index="04">
+                    <article class="research-panel portfolio-card" data-index="04">
                         <h3>Frequentist Intervals</h3>
                         <p>For problems where a full Bayesian posterior is not needed, I used confidence and prediction intervals from classical statistical theory as a faster alternative.</p>
                     </article>
-                    <article class="portfolio-card" data-index="05">
+                    <article class="research-panel portfolio-card" data-index="05">
                         <h3>Surrogate Modeling</h3>
                         <p>When the real simulator takes hours to run, I built fast approximations that preserve the important input-output relationships. This made MCMC and sensitivity analysis tractable.</p>
                     </article>
-                    <article class="portfolio-card" data-index="06">
+                    <article class="research-panel portfolio-card" data-index="06">
                         <h3>Model Discrepancy Detection</h3>
                         <p>The hardest question: is the mismatch between model and data caused by uncertain parameters, or is the model itself structurally wrong? I developed diagnostics to help tell the difference.</p>
                     </article>
@@ -279,9 +141,9 @@
         </section>
 
         <section id="methods" class="section section-alt">
-            <div class="container details-grid">
-                <div class="equation-stack">
-                    <article class="theory-card">
+            <div class="container research-grid-2">
+                <div style="display:grid;gap:18px">
+                    <article class="research-panel">
                         <h2>The Bayesian foundation</h2>
                         <p>Everything starts from a model \(y = \mathcal{M}(\theta) + \varepsilon\) and some prior belief about the parameters. Bayes' theorem gives the posterior:</p>
                         <div class="math">\[
@@ -289,7 +151,7 @@
                         \]</div>
                         <p>The posterior distribution tells us the most likely parameter values, how uncertain we are about them, and how that uncertainty propagates into predictions.</p>
                     </article>
-                    <article class="theory-card">
+                    <article class="research-panel">
                         <h2>Model discrepancy framework</h2>
                         <p>When model-data mismatch exceeds what parameter uncertainty can explain, we introduce a discrepancy function \(\delta(x)\):</p>
                         <div class="math">\[
@@ -298,23 +160,23 @@
                         <p>If \(\delta\) is negligibly small, the model structure is adequate. If \(\delta\) shows systematic patterns, the model itself needs revision, not just its parameters.</p>
                     </article>
                 </div>
-                <div class="stack-grid">
-                    <article class="stack-card">
+                <div class="research-grid-2">
+                    <article class="research-panel">
                         <h3>MCMC sampling</h3>
                         <p>For most real problems, we draw posterior samples using Metropolis-Hastings, accepting proposals with probability:</p>
                         <div class="math" style="font-size:0.85rem;">\[
                             \alpha = \min\!\left(1, \frac{p(y\mid\theta')p(\theta')}{p(y\mid\theta)p(\theta)}\right)
                         \]</div>
                     </article>
-                    <article class="stack-card">
+                    <article class="research-panel">
                         <h3>From screening to inference</h3>
                         <p>Sensitivity analysis results directly inform calibration. Screened-out parameters get fixed, focusing MCMC on the dimensions that matter.</p>
                     </article>
-                    <article class="stack-card">
+                    <article class="research-panel">
                         <h3>Python workflows</h3>
                         <p>NumPy, SciPy, and custom MCMC implementations for Bayesian calibration, with Matplotlib for diagnostic plots.</p>
                     </article>
-                    <article class="stack-card">
+                    <article class="research-panel">
                         <h3>Beyond fitting</h3>
                         <p>Surrogate modeling and discrepancy analysis extend the workflow past parameter estimation toward model criticism.</p>
                     </article>
@@ -330,7 +192,7 @@
 
         <section id="repository" class="section">
             <div class="container">
-                <article class="repo-card">
+                <article class="research-panel">
                     <h2>Public Repositories</h2>
                     <p>The research code is organized across two repositories: the core UQ modules and Bayesian statistics coursework that informed the methodology.</p>
                     <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;">
@@ -340,6 +202,12 @@
                 </article>
             </div>
         </section>
+
+    <nav class="research-nav" aria-label="Research navigation">
+        <a href="demand-forecasting-sas.html"><i class="fas fa-arrow-left"></i> Demand Forecasting</a>
+        <a href="../index.html#research"><i class="fas fa-home"></i> All Research</a>
+        <a href="pharmacokinetics.html">Pharmacokinetics <i class="fas fa-arrow-right"></i></a>
+    </nav>
     </main>
 
     <footer class="footer">

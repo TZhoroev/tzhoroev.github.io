@@ -21,161 +21,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
-        .research-hero {
-            padding-top: 140px;
-            padding-bottom: 64px;
-        }
-        .research-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-        .hero-panel {
-            display: grid;
-            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
-            gap: 24px;
-            align-items: stretch;
-        }
-        .info-card,
-        .project-card,
-        .repo-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow: var(--shadow);
-        }
-        .info-card {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(16, 185, 129, 0.08));
-        }
-        body.dark .info-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(16, 185, 129, 0.14));
-        }
-        .info-card h2,
-        .project-card h3,
-        .repo-card h2 {
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-        .info-card p,
-        .project-card p,
-        .repo-card p {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        .tech-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .tech-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.7);
-            color: var(--text);
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px solid rgba(37, 99, 235, 0.15);
-        }
-        body.dark .tech-badge {
-            background: rgba(15, 23, 42, 0.45);
-            border-color: rgba(96, 165, 250, 0.2);
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 24px;
-        }
-        .project-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .project-card .project-icon {
+        .project-icon {
             width: 48px; height: 48px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 16px;
         }
-        .project-card .project-icon i { font-size: 1.2rem; color: white; }
-        .project-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
-        .project-card ul {
-            list-style: none; padding: 0; margin-top: 12px;
-        }
-        .project-card li {
-            position: relative; padding-left: 18px; color: var(--text-light);
-            margin-bottom: 8px; font-size: 0.93rem;
-        }
-        .project-card li::before {
-            content: '\2022'; color: var(--primary); position: absolute; left: 0;
-        }
+        .project-icon i { font-size: 1.2rem; color: white; }
+        .research-panel h3 { font-size: 1.15rem; margin-bottom: 10px; }
+        .research-panel ul { list-style: none; padding: 0; margin-top: 12px; }
+        .research-panel li { position: relative; padding-left: 18px; margin-bottom: 8px; font-size: 0.93rem; }
+        .research-panel li::before { content: '\2022'; color: var(--primary); position: absolute; left: 0; }
         .private-badge {
             display: inline-flex; align-items: center; gap: 6px;
             padding: 4px 12px; border-radius: 999px; font-size: 0.8rem;
             background: var(--bg-alt); color: var(--text-light);
             border: 1px solid var(--border); font-weight: 500;
         }
-        .repo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 24px;
-        }
-        .repo-card .repo-header {
+        .repo-header {
             display: flex; align-items: center; justify-content: space-between;
             margin-bottom: 12px;
         }
-        .repo-card .repo-name {
+        .repo-name {
             display: flex; align-items: center; gap: 8px;
             font-weight: 600; color: var(--text); font-size: 1.05rem;
         }
-        .repo-card .repo-name i { color: var(--primary); }
-        .footer-link {
-            color: #cbd5e1; text-decoration: none; font-weight: 400;
-        }
-        .footer-link:hover { color: #ffffff; }
-        .research-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .status-proprietary {
-            background: rgba(245, 158, 11, 0.15);
-            color: #f59e0b;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-        @media (max-width: 900px) {
-            .hero-panel,
-            .projects-grid,
-            .repo-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .research-hero {
-                padding-top: 120px;
-                padding-bottom: 56px;
-            }
-            .info-card,
-            .project-card,
-            .repo-card {
-                padding: 22px;
-            }
-        }
+        .repo-name i { color: var(--primary); }
     </style>
 </head>
 <body>
@@ -200,7 +72,7 @@
     </nav>
 
     <header class="hero research-hero">
-        <div class="container hero-panel">
+        <div class="container research-hero-grid">
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-hotel"></i> SAS Institute (IDeaS)</p>
                 <h1>Demand Forecasting &amp; Special Event Detection</h1>
@@ -211,15 +83,33 @@
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                 </div>
             </div>
-            <aside class="info-card" id="overview">
+            <aside class="research-sidebar" id="overview">
                 <h2>Role &amp; Context</h2>
                 <p>I worked within IDeaS Revenue Solutions, the hospitality industry's leading revenue management platform. The challenge was practical: can GP-based models outperform the existing IDeaS production forecast system, especially for hotels with limited booking history? I benchmarked every model against real production forecasts.</p>
-                <div class="tech-badges">
-                    <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
-                    <span class="tech-badge"><i class="fas fa-chart-bar"></i> GPflow / SHGP</span>
-                    <span class="tech-badge"><i class="fas fa-brain"></i> Meta-Learning</span>
-                    <span class="tech-badge"><i class="fas fa-wave-square"></i> DMD</span>
-                    <span class="tech-badge"><i class="fas fa-magnifying-glass-chart"></i> Anomaly Detection</span>
+                <div class="research-badges">
+                    <span class="research-badge-item"><i class="fab fa-python"></i> Python</span>
+                    <span class="research-badge-item"><i class="fas fa-chart-bar"></i> GPflow / SHGP</span>
+                    <span class="research-badge-item"><i class="fas fa-brain"></i> Meta-Learning</span>
+                    <span class="research-badge-item"><i class="fas fa-wave-square"></i> DMD</span>
+                    <span class="research-badge-item"><i class="fas fa-magnifying-glass-chart"></i> Anomaly Detection</span>
+                </div>
+                <div class="research-kpis">
+                    <div class="research-kpi">
+                        <span>SHGP</span>
+                        Sparse Hierarchical GP model
+                    </div>
+                    <div class="research-kpi">
+                        <span>3</span>
+                        hotel chains benchmarked
+                    </div>
+                    <div class="research-kpi">
+                        <span>DMD</span>
+                        event detection pipeline
+                    </div>
+                    <div class="research-kpi">
+                        <span>Semi-sup</span>
+                        anomaly classification
+                    </div>
                 </div>
             </aside>
         </div>
@@ -229,8 +119,8 @@
         <section id="projects" class="section">
             <div class="container">
                 <h2 class="section-title">Research Projects</h2>
-                <div class="projects-grid">
-                    <article class="project-card">
+                <div class="research-grid-2">
+                    <article class="research-panel">
                         <div class="project-icon"><i class="fas fa-chart-line"></i></div>
                         <h3>Demand Forecasting with SHGP</h3>
                         <p>The core idea: hotels within the same chain share certain demand patterns (seasonality, day-of-week effects), but each property also has its own quirks (local events, proximity to airports, business vs. leisure mix). The Sparse Hierarchical GP captures both levels through a kernel structure that separates group-level from individual-level variation.</p>
@@ -242,7 +132,7 @@
                             <li>Used ARIMA and naïve baselines to establish a lower bound for meaningful comparison</li>
                         </ul>
                     </article>
-                    <article class="project-card">
+                    <article class="research-panel">
                         <div class="project-icon"><i class="fas fa-calendar-day"></i></div>
                         <h3>Special Event Detection</h3>
                         <p>Concerts, marathons, and trade shows can send demand through the roof, but these events don't follow regular seasonal patterns and are easy to miss with standard time-series methods. I built a multi-stage pipeline that first decomposes the signal, then flags anomalies, then classifies them.</p>
@@ -261,8 +151,8 @@
         <section id="methods" class="section section-alt">
             <div class="container">
                 <h2 class="section-title">Methods</h2>
-                <div class="projects-grid" style="margin-bottom:24px;">
-                    <article class="project-card">
+                <div class="research-grid-2" style="margin-bottom:24px;">
+                    <article class="research-panel">
                         <h3>Hierarchical GP kernel</h3>
                         <p>The SHGP model separates group-level patterns (shared across a hotel chain) from individual hotel behavior through a composite kernel:</p>
                         <div class="math">\[
@@ -270,7 +160,7 @@
                         \]</div>
                         <p style="margin-top:12px;">The group kernel captures seasonality and day-of-week effects common to the chain. The individual kernel captures property-specific variation (location, business mix). Both use squared-exponential ARD kernels.</p>
                     </article>
-                    <article class="project-card">
+                    <article class="research-panel">
                         <h3>DMD decomposition</h3>
                         <p>Dynamic Mode Decomposition fits a best-fit linear operator to the time-series data:</p>
                         <div class="math">\[
@@ -289,15 +179,15 @@
         <section id="repositories" class="section section-alt">
             <div class="container">
                 <h2 class="section-title">Code Availability</h2>
-                <div class="repo-grid">
-                    <article class="repo-card">
+                <div class="research-grid-2">
+                    <article class="research-panel">
                         <div class="repo-header">
                             <span class="repo-name"><i class="fas fa-chart-line"></i> Demand Forecasting</span>
                         </div>
                         <p>SHGP model implementation in GPflow with EDA utilities, booking curve analysis, SGPR/SVGP experiments, ARIMA baselines, and system forecast comparison notebooks for Accor, Choice, and Wyndham chains.</p>
                         <p style="margin-top:12px;font-style:italic;color:var(--text-light);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:6px;"></i> Code availability: proprietary, not publicly available.</p>
                     </article>
-                    <article class="repo-card">
+                    <article class="research-panel">
                         <div class="repo-header">
                             <span class="repo-name"><i class="fas fa-calendar-day"></i> Special Event Detection</span>
                         </div>
@@ -307,6 +197,12 @@
                 </div>
             </div>
         </section>
+
+    <nav class="research-nav" aria-label="Research navigation">
+        <a href="alzheimers.html"><i class="fas fa-arrow-left"></i> Alzheimer&#39;s Disease</a>
+        <a href="../index.html#research"><i class="fas fa-home"></i> All Research</a>
+        <a href="uncertainty-quantification.html">Uncertainty Quantification <i class="fas fa-arrow-right"></i></a>
+    </nav>
     </main>
 
     <footer class="footer">

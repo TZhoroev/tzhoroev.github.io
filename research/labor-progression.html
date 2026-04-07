@@ -21,269 +21,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
-        .research-hero {
-            padding-top: 140px;
-            padding-bottom: 72px;
-        }
-        .hero-panel {
-            display: grid;
-            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
-            gap: 24px;
-            align-items: stretch;
-        }
-        .research-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-        .hero-note {
-            color: var(--text-light);
-            max-width: 760px;
-        }
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 24px;
-        }
-        .data-banner,
-        .panel,
-        .metric-card,
-        .publication-card,
-        .flow-step {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-        .data-banner {
-            padding: 28px;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(14, 165, 233, 0.08));
-        }
-        body.dark .data-banner {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(14, 165, 233, 0.12));
-        }
-        .data-banner h2,
-        .panel h2,
-        .results-panel h3,
-        .publication-card h3,
-        .flow-step h3 {
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-        .data-banner p,
-        .panel p,
-        .results-list li,
-        .publication-card p,
-        .flow-step p,
-        .assumption-list li {
-            color: var(--text-light);
-        }
-        .dataset-kpis {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 20px;
-        }
-        .dataset-kpi {
-            padding: 16px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.62);
-            border: 1px solid rgba(37, 99, 235, 0.14);
-        }
-        body.dark .dataset-kpi {
-            background: rgba(15, 23, 42, 0.45);
-            border-color: rgba(96, 165, 250, 0.18);
-        }
-        .dataset-kpi span {
-            display: block;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 6px;
-        }
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 24px;
-        }
-        .metric-card {
-            padding: 20px;
-        }
-        .metric-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-light);
-        }
-        .metric-value {
-            display: block;
-            margin-top: 10px;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-        .metric-detail {
-            margin-top: 8px;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-        .overview-grid,
-        .math-grid,
-        .publication-grid {
-            display: grid;
-            gap: 24px;
-        }
-        .overview-grid {
-            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
-        }
-        .panel {
-            padding: 30px;
-        }
-        .assumption-list,
-        .results-list {
-            margin: 0;
-            padding-left: 18px;
-            display: grid;
-            gap: 10px;
-        }
-        .results-panel {
-            display: grid;
-            gap: 18px;
-        }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
         .result-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: var(--bg-alt);
-            color: var(--primary);
-            font-weight: 600;
-            border: 1px solid var(--border);
-            width: fit-content;
-        }
-        .flowchart {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 28px;
-        }
-        .flow-step {
-            padding: 24px;
-            position: relative;
-        }
-        .flow-index {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: inline-grid;
-            place-items: center;
-            font-weight: 700;
-            margin-bottom: 16px;
-            background: rgba(37, 99, 235, 0.12);
-            color: var(--primary);
-        }
-        .publication-grid {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        }
-        .publication-card {
-            padding: 26px;
-        }
-        .pub-meta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 14px;
-        }
-        .resource-link,
-        .footer-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .resource-link:hover,
-        .footer-link:hover {
-            color: var(--primary-dark);
-        }
-        .footer-link {
-            color: #cbd5e1;
-            font-weight: 400;
-        }
-        .footer-link:hover {
-            color: #ffffff;
-        }
-        @media (max-width: 1100px) {
-            .metrics-grid,
-            .flowchart {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-        @media (max-width: 900px) {
-            .hero-panel,
-            .overview-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .research-hero {
-                padding-top: 120px;
-                padding-bottom: 56px;
-            }
-            .metrics-grid,
-            .flowchart,
-            .dataset-kpis {
-                grid-template-columns: 1fr;
-            }
-            .panel,
-            .data-banner,
-            .publication-card,
-            .flow-step,
-            .metric-card {
-                padding: 22px;
-            }
-        }
-        .figure-panel {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-        .figure-panel img {
-            width: 100%;
-            display: block;
-        }
-        .figure-caption {
-            padding: 16px 24px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            border-top: 1px solid var(--border);
-        }
-        .figure-caption strong { color: var(--text); }
-        .research-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .status-published {
-            background: rgba(34, 197, 94, 0.15);
-            color: #22c55e;
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 14px; border-radius: 999px;
+            background: var(--bg-alt); color: var(--primary);
+            font-weight: 600; border: 1px solid var(--border); width: fit-content;
         }
     </style>
 </head>
@@ -310,41 +53,41 @@
     </nav>
 
     <header class="hero research-hero">
-        <div class="container hero-panel">
+        <div class="container research-hero-grid">
             <div class="hero-text">
                 <p class="research-eyebrow"><i class="fas fa-heartbeat"></i> PeriGen / NIH / NICHD</p>
                 <h1>Labor Progression Prediction with Gaussian Processes</h1>
                 <span class="research-status status-published">📄 Published in American Journal of Obstetrics &amp; Gynecology (2024) and Bioengineering (2024)</span>
-                <p class="hero-note">Predicting how labor will progress is one of the hardest problems in obstetrics. Every patient is different, yet for decades clinicians have relied on population-average curves (like the Friedman curve) that assume labor follows a fixed pattern. These curves don't update as new information arrives, and they can't tell you how confident the prediction is. Using a Sparse Gaussian Process model with meta-learning, we built a system that tracks each patient's labor in real time, adapts its predictions with every new cervical exam, and provides calibrated uncertainty estimates.</p>
+                <p class="hero-copy">Predicting how labor will progress is one of the hardest problems in obstetrics. Every patient is different, yet for decades clinicians have relied on population-average curves (like the Friedman curve) that assume labor follows a fixed pattern. These curves don't update as new information arrives, and they can't tell you how confident the prediction is. Using a Sparse Gaussian Process model with meta-learning, we built a system that tracks each patient's labor in real time, adapts its predictions with every new cervical exam, and provides calibrated uncertainty estimates.</p>
                 <div class="hero-actions">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publications" class="btn btn-secondary"><i class="fas fa-scroll"></i> Publications</a>
                 </div>
             </div>
-            <aside class="data-banner" aria-label="Labor dataset summary">
+            <aside class="research-sidebar" aria-label="Labor dataset summary">
                 <h2>Dataset</h2>
                 <p>Labor progression records from the Consortium on Safe Labor, including time series of cervical dilation, effacement, fetal station, contractions, and epidural use.</p>
-                <div class="dataset-kpis">
-                    <div class="dataset-kpi">
+                <div class="research-kpis">
+                    <div class="research-kpi">
                         <span>49,694</span>
                         births in the evaluation dataset
                     </div>
-                    <div class="dataset-kpi">
+                    <div class="research-kpi">
                         <span>3–12</span>
                         cervical exams per patient
                     </div>
-                    <div class="dataset-kpi">
+                    <div class="research-kpi">
                         <span>D(t), S(t)</span>
                         dilation and station predicted
                     </div>
-                    <div class="dataset-kpi">
+                    <div class="research-kpi">
                         <span>WHO + ACOG</span>
                         benchmarked against guidelines
                     </div>
                 </div>
             </aside>
         </div>
-        <div class="container metrics-grid">
+        <div class="container metric-grid">
             <article class="metric-card">
                 <div class="metric-label">Model</div>
                 <span class="metric-value">SGPR</span>
@@ -370,10 +113,10 @@
 
     <main>
         <section id="overview" class="section">
-            <div class="container overview-grid">
-                <article class="panel">
+            <div class="container research-hero-grid">
+                <article class="research-panel">
                     <h2>Why existing approaches fall short</h2>
-                    <ul class="assumption-list">
+                    <ul class="research-list">
                         <li><strong>One-size-fits-all curves:</strong> The Friedman curve and its variants assume every labor follows the same sigmoidal pattern. In reality, a first-time mother's labor looks very different from her fourth, and epidural or induction further change the trajectory.</li>
                         <li><strong>No real-time feedback loop:</strong> Traditional models are drawn once and never updated. A clinician checking dilation at hour 6 gets no benefit from the exam at hour 4 because the curve was never designed to incorporate new data.</li>
                         <li><strong>No uncertainty estimate:</strong> These models give a single line on a chart. They can't distinguish between a patient who is "slightly behind" and one who is "dangerously stalled" because both situations look the same without a confidence band.</li>
@@ -381,10 +124,10 @@
                     <h2 style="margin-top:24px;">What we built</h2>
                     <p>Our SGPR model treats each patient as a separate meta-task. It takes six inputs from the previous time step (cervical dilation, effacement, fetal station, contraction frequency, epidural use, and whether labor was induced) and predicts how dilation and station will evolve. Meta-learning lets the model borrow strength from thousands of prior patients while still adapting to the current one with as few as 2-3 exams.</p>
                 </article>
-                <aside class="panel results-panel" id="results">
+                <aside class="research-panel" id="results">
                     <span class="result-badge"><i class="fas fa-chart-column"></i> What we found</span>
                     <h3>Key takeaways</h3>
-                    <ul class="results-list">
+                    <ul class="research-list">
                         <li>Our GP model adapts in real time: each new cervical exam sharpens the prediction and tightens the uncertainty bands. Clinicians get a continuously updated picture.</li>
                         <li>Meta-learning lets the model learn general labor patterns from the full dataset, then specialize to a new patient with just a handful of early observations.</li>
                         <li>Head-to-head comparison showed statistically significant sensitivity improvements over both WHO and ACOG guidelines. This could mean fewer unnecessary interventions without sacrificing safety.</li>
@@ -404,8 +147,8 @@
                     <img src="../assets/research/labor-gp-improvements.jpg" alt="Standard GP vs SGPR comparison: O(n^3) full covariance vs O(nm^2) with inducing points" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Standard GP vs. SGPR.</strong> Left: full GP requires inverting an n x n covariance matrix at O(n<sup>3</sup>) cost. Right: SGPR uses m inducing points (blue diamonds) to approximate the posterior at O(nm<sup>2</sup>) cost, achieving a 10x speedup when m is much smaller than n.</div>
                 </div>
-                <div class="overview-grid" style="margin-bottom:24px;">
-                    <article class="panel">
+                <div class="research-hero-grid" style="margin-bottom:24px;">
+                    <article class="research-panel">
                         <h2>GP posterior predictive</h2>
                         <p>Given \(n\) training points and test inputs \(X_*\), the GP posterior provides both a prediction and its uncertainty in closed form:</p>
                         <div class="math">\[
@@ -413,7 +156,7 @@
                         \]</div>
                         <p style="margin-top:12px;">The mean gives the predicted dilation/station, and the covariance gives the uncertainty band. Both are computed analytically.</p>
                     </article>
-                    <article class="panel">
+                    <article class="research-panel">
                         <h2>SGPR evidence lower bound</h2>
                         <p>Full GP inference is \(O(n^3)\), which is impractical for 50,000 births. SGPR uses \(m \ll n\) inducing points to approximate the posterior:</p>
                         <div class="math">\[
@@ -422,24 +165,24 @@
                         <p style="margin-top:12px;">This reduces complexity to \(O(nm^2)\), making real-time bedside prediction practical.</p>
                     </article>
                 </div>
-                <div class="flowchart">
-                    <article class="flow-step">
-                        <div class="flow-index">1</div>
+                <div class="research-flow">
+                    <article class="research-flow-step">
+                        <div class="research-flow-index">1</div>
                         <h3>Collect exam data</h3>
                         <p>As labor progresses, nurses record cervical dilation, fetal station, and timing at each exam, typically 3 to 12 exams per patient. This forms a sparse, irregular time series.</p>
                     </article>
-                    <article class="flow-step">
-                        <div class="flow-index">2</div>
+                    <article class="research-flow-step">
+                        <div class="research-flow-index">2</div>
                         <h3>Fit the GP model</h3>
                         <p>We use sparse inducing points to keep computation fast enough for real-time use. With nearly 50,000 training births, predictions need to come back in seconds.</p>
                     </article>
-                    <article class="flow-step">
-                        <div class="flow-index">3</div>
+                    <article class="research-flow-step">
+                        <div class="research-flow-index">3</div>
                         <h3>Adapt to the patient</h3>
                         <p>Meta-learning lets the model specialize: after seeing just 2–3 exams from a new patient, it adjusts its predictions to match her specific labor pattern rather than the population average.</p>
                     </article>
-                    <article class="flow-step">
-                        <div class="flow-index">4</div>
+                    <article class="research-flow-step">
+                        <div class="research-flow-index">4</div>
                         <h3>Benchmark against guidelines</h3>
                         <p>We compared our predictions head-to-head with WHO and ACOG labor curves to measure whether individualized forecasting actually improves clinical sensitivity.</p>
                     </article>
@@ -481,6 +224,12 @@
                 </div>
             </div>
         </section>
+
+    <nav class="research-nav" aria-label="Research navigation">
+        <a href="pharmacokinetics.html"><i class="fas fa-arrow-left"></i> Pharmacokinetics</a>
+        <a href="../index.html#research"><i class="fas fa-home"></i> All Research</a>
+        <a href="pinns-bkv.html">BK Virus &amp; PINNs <i class="fas fa-arrow-right"></i></a>
+    </nav>
     </main>
 
     <footer class="footer">
