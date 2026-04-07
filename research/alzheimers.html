@@ -17,6 +17,7 @@
     <link rel="canonical" href="https://tzhoroev.github.io/research/alzheimers.html">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
@@ -299,7 +300,7 @@
             <div class="container">
                 <h2 class="section-title">ADAS-Cog 11 Subscales</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
-                    <img src="../assets/research/alz-adas-subscores.jpg" alt="ADAS-Cog 11 subscales breakdown by cognitive domain with maximum scores" loading="lazy">
+                    <img src="../assets/research/alz-adas-subscores.jpg" alt="ADAS-Cog 11 subscales breakdown by cognitive domain with maximum scores" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>ADAS-Cog 11 subscales.</strong> The assessment covers 5 cognitive domains: Memory (Word Recall, Delayed Word Recall, Orientation, Word Recognition), Language (Commands, Naming, Spoken Language, Word Finding), Visuospatial (Constructional Praxis), Praxis (Ideational Praxis), and Attention (Remembering Test Instructions). Total score range: 0–70 (higher = worse cognition).</div>
                 </div>
             </div>
@@ -309,11 +310,11 @@
             <div class="container">
                 <h2 class="section-title">Modeling Pipeline</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
-                    <img src="../assets/research/alz-pipeline.jpg" alt="Modeling pipeline: CPAD Database → Feature Engineering → GP Models → 11 ADAS-Cog Subscore Predictions" loading="lazy">
+                    <img src="../assets/research/alz-pipeline.jpg" alt="Modeling pipeline: CPAD Database → Feature Engineering → GP Models → 11 ADAS-Cog Subscore Predictions" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>End-to-end pipeline.</strong> Patient-level data from CPAD (demographics, APOE4, MMSE, visit timeline) feeds into 5 GP model configurations evaluated with 5-fold cross-validation. Each configuration outputs uncertainty-aware predictions for all 11 ADAS-Cog subscores.</div>
                 </div>
                 <div class="figure-panel">
-                    <img src="../assets/research/alz-trajectories.jpg" alt="Illustrative GP-predicted ADAS-Cog trajectories with uncertainty bands for different severity levels" loading="lazy">
+                    <img src="../assets/research/alz-trajectories.jpg" alt="Illustrative GP-predicted ADAS-Cog trajectories with uncertainty bands for different severity levels" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Illustrative GP trajectories.</strong> ADAS-Cog total score predictions over 36 months for Normal Cognition (green), Mild AD (blue), and Moderate AD (red). Shaded bands represent 68% and 95% prediction intervals. Uncertainty grows with prediction horizon, reflecting genuine clinical unpredictability in long-term disease progression.</div>
                 </div>
             </div>

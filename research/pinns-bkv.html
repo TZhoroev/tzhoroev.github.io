@@ -17,6 +17,7 @@
     <link rel="canonical" href="https://tzhoroev.github.io/research/pinns-bkv.html">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
@@ -326,7 +327,7 @@
                     </article>
                 </div>
                 <div class="figure-panel" style="margin-top:28px;">
-                    <img src="../assets/research/bkv-framework.jpg" alt="Framework schematic: Clinical Data → ODE Model → PINNs → Causal Inference → Symbolic Regression" loading="lazy">
+                    <img src="../assets/research/bkv-framework.jpg" alt="Framework schematic: Clinical Data → ODE Model → PINNs → Causal Inference → Symbolic Regression" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Framework schematic.</strong> Clinical data (C, V) feeds into an ODE model. PINNs learn the time-dependent RHS, causal inference identifies variables that affect h(t), and symbolic regression extracts the final interpretable form.</div>
                 </div>
             </div>
@@ -336,21 +337,21 @@
             <div class="container">
                 <h2 class="section-title">Results</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
-                    <img src="../assets/research/bkv-pinns-results.jpg" alt="PINNs results: exact vs learned dynamics for all compartments" loading="lazy">
+                    <img src="../assets/research/bkv-pinns-results.jpg" alt="PINNs results: exact vs learned dynamics for all compartments" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>PINNs trajectory fitting on real patient data.</strong> Magenta dots show observed clinical data; black dashed curves show PINNs-learned dynamics for all six compartments: susceptible cells (H<sub>S</sub>), infected cells (H<sub>I</sub>), creatinine (C), BK-specific T-cells (E<sub>V</sub>), allospecific T-cells (E<sub>K</sub>), and BK virus (V).</div>
                 </div>
                 <div class="figures-row" style="margin-bottom:24px;">
                     <div class="figure-panel">
-                        <img src="../assets/research/bkv-causal-network.jpg" alt="Causal inference network showing h regulated by Hs and C" loading="lazy">
+                        <img src="../assets/research/bkv-causal-network.jpg" alt="Causal inference network showing h regulated by Hs and C" loading="lazy" width="400" height="400">
                         <div class="figure-caption"><strong>Causal inference network.</strong> Combined network reveals that the hidden function h is primarily regulated by susceptible cells (H<sub>S</sub>) and creatinine (C).</div>
                     </div>
                     <div class="figure-panel">
-                        <img src="../assets/research/bkv-sr-simulation.jpg" alt="ODE simulation using learned symbolic form vs real patient data" loading="lazy">
+                        <img src="../assets/research/bkv-sr-simulation.jpg" alt="ODE simulation using learned symbolic form vs real patient data" loading="lazy" width="400" height="400">
                         <div class="figure-caption"><strong>Final validation.</strong> ODE simulation using the learned symbolic form (patient-specific and combined) fitted against real patient creatinine data.</div>
                     </div>
                 </div>
                 <div class="figure-panel">
-                    <img src="../assets/research/bkv-sr-results.jpg" alt="Symbolic regression: true h vs PINNs learned vs SR predicted, and complexity-error tradeoff" loading="lazy">
+                    <img src="../assets/research/bkv-sr-results.jpg" alt="Symbolic regression: true h vs PINNs learned vs SR predicted, and complexity-error tradeoff" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Symbolic regression.</strong> Left: the true h function (red), PINNs-learned (black dashed), and SR-predicted (purple) overlap closely. Right: complexity vs. error Pareto front showing error drops rapidly with moderate complexity.</div>
                 </div>
             </div>
@@ -359,7 +360,7 @@
             <div class="container">
                 <h2 class="section-title">Compartment Model & Equations</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
-                    <img src="../assets/research/bkv-compartments.jpg" alt="Compartment model diagram and governing equations" loading="lazy">
+                    <img src="../assets/research/bkv-compartments.jpg" alt="Compartment model diagram and governing equations" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Compartment model.</strong> Seven state variables govern BKV infection dynamics: susceptible cells (H<sub>S</sub>), infected cells (H<sub>I</sub>), BK virus (V), BK-specific T-cells (E<sub>V</sub>), allospecific T-cells (E<sub>K</sub>), serum creatinine (C), and hidden dynamics h.</div>
                 </div>
                 <div class="equation-layout">

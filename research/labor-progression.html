@@ -17,6 +17,7 @@
     <link rel="canonical" href="https://tzhoroev.github.io/research/labor-progression.html">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
@@ -396,11 +397,11 @@
             <div class="container">
                 <h2 class="section-title">Methodology</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
-                    <img src="../assets/research/labor-sgpr-overview.jpg" alt="SGPR model schematic: 6 input features feed into Sparse Gaussian Process Regression to predict cervical dilation and fetal station with uncertainty" loading="lazy">
+                    <img src="../assets/research/labor-sgpr-overview.jpg" alt="SGPR model schematic: 6 input features feed into Sparse Gaussian Process Regression to predict cervical dilation and fetal station with uncertainty" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Model schematic.</strong> Six clinical features from the previous time step feed into the SGPR model, which outputs predicted cervical dilation D(t) and fetal station S(t) with uncertainty bands. Each patient is treated as a separate meta-task.</div>
                 </div>
                 <div class="figure-panel" style="margin-bottom:24px;">
-                    <img src="../assets/research/labor-gp-improvements.jpg" alt="Standard GP vs SGPR comparison: O(n^3) full covariance vs O(nm^2) with inducing points" loading="lazy">
+                    <img src="../assets/research/labor-gp-improvements.jpg" alt="Standard GP vs SGPR comparison: O(n^3) full covariance vs O(nm^2) with inducing points" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Standard GP vs. SGPR.</strong> Left: full GP requires inverting an n x n covariance matrix at O(n<sup>3</sup>) cost. Right: SGPR uses m inducing points (blue diamonds) to approximate the posterior at O(nm<sup>2</sup>) cost, achieving a 10x speedup when m is much smaller than n.</div>
                 </div>
                 <div class="overview-grid" style="margin-bottom:24px;">
@@ -451,11 +452,11 @@
             <div class="container">
                 <h2 class="section-title">Results</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
-                    <img src="../assets/research/labor-gp-prediction.png" alt="Two-panel GP prediction: left shows patient-specific prediction with uncertainty bands, right shows how prediction sharpens as more cervical exams arrive" loading="lazy">
+                    <img src="../assets/research/labor-gp-prediction.webp" alt="Two-panel GP prediction: left shows patient-specific prediction with uncertainty bands, right shows how prediction sharpens as more cervical exams arrive" loading="lazy" width="2574" height="974">
                     <div class="figure-caption"><strong>GP prediction with real-time adaptation.</strong> Left: patient-specific dilation prediction with 68% and 95% prediction intervals. Uncertainty narrows near observed exams and widens between them. Right: after only 2 exams (orange), the prediction is wide; after 5 exams (blue), it has converged to the patient's actual trajectory.</div>
                 </div>
                 <div class="figure-panel">
-                    <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time: SGPR vs ACOG and WHO guidelines, with RM-ANOVA P-values" loading="lazy">
+                    <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time: SGPR vs ACOG and WHO guidelines, with RM-ANOVA P-values" loading="lazy" width="800" height="400">
                     <div class="figure-caption"><strong>Sensitivity comparison.</strong> Left: Sensitivity over time comparing SGPR model vs. WHO guidelines. SGPR consistently outperforms. Right: RM-ANOVA P-values confirm statistically significant differences (Time, Model, and Time x Model interactions all below the 0.05 significance threshold).</div>
                 </div>
             </div>
