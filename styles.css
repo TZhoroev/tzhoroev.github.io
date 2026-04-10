@@ -327,10 +327,6 @@ body.dark a.research-card:hover {
 a.research-card:hover .research-link i { transform: translateX(6px); }
 
 /* Publications */
-.publications-stats { display: flex; justify-content: center; gap: 48px; margin-bottom: 40px; }
-.stat-item { text-align: center; }
-.stat-number { display: block; font-size: 2.5rem; font-weight: 700; color: var(--primary); }
-.stat-label { font-size: 0.95rem; color: var(--text-light); }
 .publications-list { max-width: 900px; margin: 0 auto; }
 .publications-list .loading { text-align: center; color: var(--text-light); }
 .publication { display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--border); }
@@ -442,17 +438,7 @@ a.research-card:hover .research-link i { transform: translateX(6px); }
 .footer-social a:hover { color: var(--primary-light); }
 .footer p { font-size: 0.9rem; }
 
-/* Scroll to top */
-.scroll-top {
-    position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px;
-    background: var(--primary); color: white; border: none; border-radius: 50%;
-    cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center;
-    box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 999;
-}
-.scroll-top.visible { opacity: 1; pointer-events: auto; }
-.scroll-top:hover { transform: translateY(-2px); }
+/* Scroll to top – base overridden in polish section */
 .contact-content { text-align: center; }
 .contact-info { display: flex; justify-content: center; gap: 48px; margin-bottom: 32px; flex-wrap: wrap; }
 .contact-item { display: flex; align-items: center; gap: 12px; color: var(--text); }
@@ -463,9 +449,8 @@ a.research-card:hover .research-link i { transform: translateX(6px); }
 .social-links a {
     width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
     border-radius: 50%; background: var(--bg-alt); color: var(--text); font-size: 1.3rem;
-    transition: all 0.2s; border: 1px solid var(--border);
+    transition: all 0.3s ease; border: 1px solid var(--border);
 }
-.social-links a:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
 /* Tools & Skills */
 .tools-skills { margin-top: var(--sp-8); text-align: center; }
@@ -578,6 +563,12 @@ body.dark .interest-tag {
     }
     .reveal { opacity: 1; transform: none; }
     .timeline-marker.in-view { animation: none; }
+    .focus-card:hover { transform: none; }
+    .stat-item:hover { transform: none; }
+    .scroll-top.visible { transform: none; }
+    .scroll-top:hover { transform: none; }
+    .social-links a:hover { transform: none; }
+    .typing-cursor { display: none !important; }
 }
 
 /* Responsive */
@@ -691,6 +682,254 @@ body.dark .interest-tag {
 /* Active nav link highlight */
 .nav-menu a.active-link {
     color: var(--primary);
+}
+
+/* ================================
+   Focus Area Cards
+   ================================ */
+.focus-areas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: var(--sp-8);
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.focus-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 210px;
+    padding: 24px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+.focus-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: calc(var(--radius-sm) + 1px);
+    background: linear-gradient(135deg, var(--primary), rgba(99, 102, 241, 0.4), transparent);
+    z-index: -1;
+    opacity: 0.5;
+    transition: opacity 0.25s ease;
+}
+.focus-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+.focus-card:hover::before {
+    opacity: 1;
+}
+.focus-card i {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+.focus-card span {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+}
+body.dark .focus-card {
+    background: var(--bg-alt);
+    box-shadow: 0 0 12px rgba(96, 165, 250, 0.06);
+}
+body.dark .focus-card::before {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.6), rgba(139, 92, 246, 0.3), transparent);
+    opacity: 0.4;
+}
+body.dark .focus-card:hover {
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.12);
+}
+body.dark .focus-card:hover::before {
+    opacity: 0.8;
+}
+
+/* ================================
+   Section Dividers
+   ================================ */
+.section + .section::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
+    opacity: 0.25;
+    margin-bottom: 0;
+}
+
+/* ================================
+   Publication Stats – Glass KPI
+   ================================ */
+.publications-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+.stat-item {
+    text-align: center;
+    padding: 20px 32px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow), 0 0 24px var(--primary-glow);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 32px var(--primary-glow);
+}
+.stat-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
+}
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    margin-top: 4px;
+}
+body.dark .stat-item {
+    background: rgba(17, 24, 39, 0.8);
+    border-color: rgba(96, 165, 250, 0.15);
+    box-shadow: var(--shadow), 0 0 24px rgba(96, 165, 250, 0.08);
+}
+body.dark .stat-item:hover {
+    box-shadow: var(--shadow-lg), 0 0 32px rgba(96, 165, 250, 0.15);
+}
+
+/* ================================
+   Contact Section Polish
+   ================================ */
+.contact-section {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 40%, var(--bg) 100%);
+    position: relative;
+}
+body.dark .contact-section {
+    background: linear-gradient(180deg, var(--bg) 0%, rgba(17, 24, 39, 0.6) 40%, var(--bg) 100%);
+}
+.contact-cta {
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: var(--sp-8);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.social-links a {
+    transition: all 0.3s ease;
+}
+.social-links a:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: scale(1.12) translateY(-2px);
+    box-shadow: 0 4px 16px var(--primary-glow);
+}
+
+/* ================================
+   Scroll-to-Top Polish
+   ================================ */
+.scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+    z-index: 999;
+}
+.scroll-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.scroll-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.4);
+}
+body.dark .scroll-top {
+    box-shadow: 0 4px 16px rgba(96, 165, 250, 0.25);
+}
+body.dark .scroll-top:hover {
+    box-shadow: 0 6px 24px rgba(96, 165, 250, 0.35);
+}
+
+/* ================================
+   Typing cursor
+   ================================ */
+.subtitle .typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background: var(--primary);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink-cursor 0.75s step-end infinite;
+}
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ================================
+   Responsive – Focus Cards
+   ================================ */
+@media (max-width: 768px) {
+    .focus-areas {
+        gap: 12px;
+    }
+    .focus-card {
+        width: calc(50% - 8px);
+        min-width: 140px;
+        padding: 18px 12px;
+    }
+    .stat-item {
+        padding: 16px 20px;
+    }
+    .stat-number {
+        font-size: 1.8rem;
+    }
+}
+@media (max-width: 480px) {
+    .focus-card {
+        width: calc(50% - 6px);
+        min-width: 0;
+    }
+    .publications-stats {
+        gap: 12px;
+    }
 }
 
 /* ================================

@@ -119,6 +119,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load publications
     loadPublications();
 
+    // Typing effect for subtitle
+    initTypingEffect();
+
     // Scroll animations with staggered card reveal
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -318,4 +321,39 @@ function formatAuthors(authorString) {
         }
         return author;
     }).join(', ');
+}
+
+// Typing effect
+function initTypingEffect() {
+    const el = document.getElementById('typed-subtitle');
+    if (!el) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    if (sessionStorage.getItem('typingDone')) return;
+
+    const text = el.getAttribute('data-text') || el.textContent;
+    el.textContent = '';
+
+    const cursor = document.createElement('span');
+    cursor.className = 'typing-cursor';
+    cursor.textContent = '\u200B';
+    el.appendChild(cursor);
+
+    let i = 0;
+    const speed = 45;
+
+    function type() {
+        if (i < text.length) {
+            el.insertBefore(document.createTextNode(text.charAt(i)), cursor);
+            i++;
+            setTimeout(type, speed);
+        } else {
+            sessionStorage.setItem('typingDone', '1');
+            setTimeout(() => { cursor.remove(); }, 2000);
+        }
+    }
+
+    setTimeout(type, 400);
 }
