@@ -196,7 +196,7 @@
                 <h2 class="section-title">Results</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
                     <img src="../assets/research/labor-gp-prediction.webp" alt="Two-panel GP prediction: left shows patient-specific prediction with uncertainty bands, right shows how prediction sharpens as more cervical exams arrive" loading="lazy" width="2574" height="1073">
-                    <div class="figure-caption"><strong>GP prediction with real-time adaptation.</strong> Left: patient-specific dilation prediction with 68% and 95% prediction intervals. Uncertainty narrows near observed exams and widens between them. Right: after only 2 exams (orange), the prediction is wide; after 5 exams (blue), it has converged to the patient's actual trajectory.</div>
+                    <div class="figure-caption"><strong>GP prediction with real-time adaptation.</strong> (a) Patient-specific dilation prediction: the GP posterior mean (blue line) with 68% and 95% prediction intervals fitted to 8 cervical exams. Uncertainty is tight where observations are dense and grows in the unobserved future (hours 10-12). (b) Prediction sharpens as more data arrives: after 2 exams (orange, dashed), the uncertainty band is wide; after 5 exams (blue, solid), the prediction interval tightens substantially, showing how the model updates in real time at the bedside.</div>
                 </div>
                 <div class="figure-panel">
                     <img src="../assets/research/labor-sensitivity.jpg" alt="Sensitivity over time: SGPR vs ACOG and WHO guidelines, with RM-ANOVA P-values" loading="lazy" width="800" height="400">
