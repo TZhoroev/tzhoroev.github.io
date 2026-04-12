@@ -78,7 +78,7 @@
                 <p class="research-eyebrow"><i class="fas fa-brain"></i> NC State University · PhD Research</p>
                 <h1>Interpretable Discovery of Hidden Dynamics in BK Virus Infection</h1>
                 <span class="research-status status-dissertation">🎓 Ph.D. Dissertation Research. Journal manuscript in preparation</span>
-                <p class="hero-copy">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises, but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. We built a three-stage pipeline (physics-informed neural networks, causal inference, and symbolic regression) to learn the missing piece of the mathematical model directly from clinical data. The output: interpretable equations that clinicians can reason about.</p>
+                <p class="hero-copy">After a kidney transplant, doctors face a delicate balancing act: suppress the immune system enough to prevent rejection, but not so much that viruses like BK can take hold. When BKV reactivates, serum creatinine rises, but the exact mechanism connecting viral dynamics to kidney function has been poorly understood. I built a three-stage pipeline (physics-informed neural networks, causal inference, and symbolic regression) to learn the missing piece of the mathematical model directly from clinical data. The output: interpretable equations that clinicians can reason about.</p>
                 <div class="hero-links">
                     <a href="../index.html#research" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
                     <a href="#publication" class="btn btn-secondary"><i class="fas fa-book"></i> Dissertation</a>
@@ -184,7 +184,7 @@
                 </div>
                 <div class="figure-panel">
                     <img src="../assets/research/bkv-sr-results.jpg" alt="Symbolic regression: true h vs PINNs learned vs SR predicted, and complexity-error tradeoff" loading="lazy" width="800" height="400">
-                    <div class="figure-caption"><strong>Symbolic regression.</strong> Left: the true h function (red), PINNs-learned (black dashed), and SR-predicted (purple) overlap closely. Right: complexity vs. error Pareto front showing error drops rapidly with moderate complexity.</div>
+                    <div class="figure-caption"><strong>Symbolic regression (synthetic validation).</strong> Left: on a benchmark where the true h is known by construction, the PINN-learned h (black dashed) and SR-predicted h (purple) both recover the ground truth (red) closely. Right: complexity vs. error Pareto front showing error drops rapidly with moderate complexity.</div>
                 </div>
             </div>
         </section>
@@ -193,7 +193,7 @@
                 <h2 class="section-title">Compartment Model & Equations</h2>
                 <div class="figure-panel" style="margin-bottom:24px;">
                     <img src="../assets/research/bkv-compartments.jpg" alt="Compartment model diagram and governing equations" loading="lazy" width="800" height="400">
-                    <div class="figure-caption"><strong>Compartment model.</strong> Seven state variables govern BKV infection dynamics: susceptible cells (H<sub>S</sub>), infected cells (H<sub>I</sub>), BK virus (V), BK-specific T-cells (E<sub>V</sub>), allospecific T-cells (E<sub>K</sub>), serum creatinine (C), and hidden dynamics h.</div>
+                    <div class="figure-caption"><strong>Compartment model.</strong> Six state variables govern BKV infection dynamics: susceptible cells (H<sub>S</sub>), infected cells (H<sub>I</sub>), BK virus (V), BK-specific T-cells (E<sub>V</sub>), allospecific T-cells (E<sub>K</sub>), and serum creatinine (C). A seventh term, the unknown forcing function h(t), appears in the creatinine equation to capture uncharacterized dynamics — its mathematical form is what the PINN learns from data.</div>
                 </div>
                 <div class="research-grid-2">
                     <article class="research-panel panel-equation">
