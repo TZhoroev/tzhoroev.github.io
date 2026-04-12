@@ -1082,7 +1082,9 @@ body.dark .research-kpi {
 }
 .figure-panel img {
     width: 100%;
+    height: auto;
     display: block;
+    object-fit: contain;
 }
 .figure-caption {
     padding: 16px 24px;
