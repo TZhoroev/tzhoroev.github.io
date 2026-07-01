@@ -1,5 +1,5 @@
 {
-  "total_citations": 80,
+  "total_citations": 82,
   "h_index": 3,
   "publications": [
     {
@@ -23,7 +23,7 @@
       "authors": "Tilekbek Zhoroev and Emily F. Hamilton and Philip A. Warrick",
       "venue": "Bioengineering",
       "year": 2024,
-      "citations": 0,
+      "citations": 2,
       "url": "https://www.mdpi.com/2306-5354/11/1/73"
     },
     {
@@ -60,5 +60,5 @@
     }
   ],
   "source": "Semantic Scholar API + manual curation",
-  "last_updated": "2026-06-15"
+  "last_updated": "2026-07-01"
 }
